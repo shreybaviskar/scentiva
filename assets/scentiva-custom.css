@@ -1,221 +1,519 @@
-/* Scentiva luxury header */
+/* =========================================================
+   SCENTIVA — LUXURY HEADER
+   Clean desktop layout
+   ========================================================= */
+
+
+/* =========================================================
+   DESKTOP
+   ========================================================= */
+
 @media screen and (min-width: 990px) {
+
+  /* -------------------------------------------------------
+     HEADER BASE
+     ------------------------------------------------------- */
+
   .scentiva-header {
     position: relative;
+
     min-height: 118px;
+
     display: grid !important;
+
+    /*
+     * Left navigation | Logo | Right navigation
+     */
     grid-template-columns: minmax(300px, 1fr) auto minmax(300px, 1fr);
+
     align-items: center;
+
     column-gap: 40px;
+
     padding-left: 34px !important;
     padding-right: 34px !important;
+
+    overflow: visible;
   }
 
-  .scentiva-header.page-width { max-width: none; }
+  .scentiva-header.page-width {
+    max-width: none;
+  }
+
+
+  /* =======================================================
+     CENTER LOGO
+     ======================================================= */
 
   .scentiva-header .header__heading {
     grid-column: 2;
     grid-row: 1;
+
     justify-self: center;
+    align-self: stretch;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
     margin: 0;
-    z-index: 3;
+
+    z-index: 10;
   }
 
   .scentiva-header .header__heading-link {
     display: flex;
+
     align-items: center;
     justify-content: center;
+
+    width: 220px;
+    min-width: 220px;
+
+    height: 118px;
+    min-height: 118px;
+
+    margin: 0;
+    padding: 0;
+
+    text-decoration: none;
+  }
+
+  .scentiva-header .header__heading-logo-wrapper {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 220px;
+    height: 118px;
+
+    overflow: hidden;
   }
 
   .scentiva-header .header__heading-logo {
     display: block;
-    max-height: 92px;
-    width: auto;
+
+    width: 220px;
+    height: 118px;
+
+    max-width: none;
+    max-height: none;
+
     object-fit: contain;
+
+    /*
+     * Removes the obvious white/light rectangle around
+     * the logo and lets it visually blend into the header.
+     */
+    mix-blend-mode: multiply;
   }
 
+  /*
+   * Text logo fallback.
+   */
   .scentiva-header .header__heading .h2 {
     font-family: var(--font-heading-family), Georgia, serif;
+
     font-size: 31px;
     font-weight: 400;
+
     letter-spacing: 0.08em;
     line-height: 1;
+
     text-transform: uppercase;
+
     white-space: nowrap;
   }
+
+
+  /* =======================================================
+     LEFT NAVIGATION
+     ======================================================= */
 
   .scentiva-header .header__inline-menu {
     grid-column: 1;
     grid-row: 1;
+
     justify-self: start;
+    align-self: center;
+
     margin: 0;
-    z-index: 4;
+
+    z-index: 20;
   }
 
   .scentiva-header .header__inline-menu .list-menu--inline {
     display: flex;
+
     align-items: center;
+
     gap: 34px;
+
     flex-wrap: nowrap;
   }
 
   .scentiva-header .header__inline-menu .list-menu__item--link,
   .scentiva-header .header__inline-menu summary {
     font-family: var(--font-body-family), Arial, sans-serif;
+
     font-size: 11px;
     font-weight: 400;
+
     letter-spacing: 0.20em;
     line-height: 1;
+
     text-transform: uppercase;
+
     white-space: nowrap;
+
     padding: 8px 0;
   }
 
-  .scentiva-header .header__inline-menu .icon-caret { display: none; }
+  .scentiva-header .header__inline-menu .icon-caret {
+    display: none;
+  }
+
+
+  /* =======================================================
+     RIGHT SIDE — OUR STORY
+     ======================================================= */
 
   .scentiva-header .scentiva-right-menu {
     grid-column: 3;
     grid-row: 1;
+
     justify-self: end;
+    align-self: center;
+
     display: flex !important;
+
     align-items: center;
-    gap: 30px;
-    margin-right: 165px;
-    z-index: 4;
+
+    /*
+     * IMPORTANT:
+     * Do not use the old 180px margin.
+     * The icon group is positioned separately.
+     */
+    margin: 0;
+    padding: 0;
+
+    z-index: 20;
   }
 
   .scentiva-header .scentiva-right-menu a {
+    display: inline-flex;
+
+    align-items: center;
+
     color: rgb(var(--color-foreground));
+
     font-family: var(--font-body-family), Arial, sans-serif;
+
     font-size: 11px;
     font-weight: 400;
+
     letter-spacing: 0.20em;
     line-height: 1;
+
     text-decoration: none;
     text-transform: uppercase;
+
     white-space: nowrap;
+
+    /*
+     * Creates actual breathing room before search.
+     */
+    margin-right: 30px;
   }
 
-  .scentiva-header .scentiva-right-menu a:hover { opacity: 0.65; }
+  .scentiva-header .scentiva-right-menu a:hover {
+    opacity: 0.65;
+  }
+
+  /*
+   * Journal should not appear.
+   */
+  .scentiva-header .scentiva-right-menu a:nth-child(2) {
+    display: none !important;
+  }
+
+
+  /* =======================================================
+     SEARCH / ACCOUNT / CART GROUP
+     ======================================================= */
 
   .scentiva-header .header__icons {
     position: absolute;
+
     top: 0;
     right: 27px;
+
     height: 100%;
-    transform: none;
-    display: flex;
+
+    display: flex !important;
+
     align-items: center;
-    gap: 5px;
-    z-index: 5;
+    justify-content: flex-end;
+
+    /*
+     * THIS controls the spacing between:
+     * Search → Account → Cart
+     */
+    gap: 16px;
+
+    margin: 0;
+    padding: 0;
+
+    z-index: 30;
   }
 
-  .scentiva-header .header__icons .desktop-localization-wrapper { display: none; }
+  /*
+   * Hide country/language controls because they aren't
+   * part of the Scentiva header.
+   */
+  .scentiva-header .header__icons .desktop-localization-wrapper {
+    display: none !important;
+  }
+
+
+  /* =======================================================
+     ICON CONTAINERS
+     ======================================================= */
 
   .scentiva-header .header__icon {
-    width: 42px;
-    height: 42px;
+    width: 32px;
+    height: 32px;
+
+    min-width: 32px;
+    min-height: 32px;
+
+    padding: 0 !important;
+
+    margin: 0 !important;
+
+    display: inline-flex !important;
+
+    align-items: center;
+    justify-content: center;
+
+    flex: 0 0 32px;
   }
 
-  .scentiva-header .header__icon .svg-wrapper,
-  .scentiva-header .header__icon svg {
+  /*
+   * Normal icon size.
+   */
+  .scentiva-header .header__icon .svg-wrapper {
     width: 21px;
     height: 21px;
-  }
-}
 
-@media screen and (max-width: 989px) {
-  .scentiva-header .scentiva-right-menu { display: none !important; }
+    display: inline-flex;
 
-  .scentiva-header .header__heading .h2 {
-    font-family: var(--font-heading-family), Georgia, serif;
-    font-size: 23px;
-    font-weight: 400;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-  }
-}
-
-/* Global header refinements */
-@media screen and (min-width: 990px) {
-  /* On non-home pages Dawn does not wrap the logo link in the homepage <h1>.
-     Target the link itself so the center logo remains centered everywhere. */
-  .scentiva-header .header__heading-link {
-    grid-column: 2;
-    grid-row: 1;
-    justify-self: center;
-    align-self: center;
-    margin: 0;
-    z-index: 3;
-    min-width: 170px;
-    min-height: 96px;
-  }
-
-  .scentiva-header .header__heading {
-    grid-column: 2;
-    grid-row: 1;
-    justify-self: center;
-    align-self: center;
-    margin: 0;
-    z-index: 3;
-  }
-
-  .scentiva-header .header__heading-logo-wrapper {
-    display: flex;
     align-items: center;
     justify-content: center;
   }
 
-  .scentiva-header .header__heading-logo {
-    max-width: 170px;
-    max-height: 92px;
-    width: auto;
-    height: auto;
-    object-fit: contain;
+  .scentiva-header .header__icon svg {
+    width: 21px;
+    height: 21px;
+
+    display: block;
   }
 
-  .scentiva-header .header__heading-link .h2 {
-    font-family: var(--font-heading-family), Georgia, serif;
-    font-size: 31px;
-    font-weight: 400;
-    letter-spacing: 0.08em;
-    line-height: 1;
-    text-transform: uppercase;
-    white-space: nowrap;
+
+  /* =======================================================
+     SEARCH ICON — FIX THE EXTRA X
+     ======================================================= */
+
+  /*
+   * Dawn's search button contains both:
+   *
+   *   .icon-search
+   *   .icon-close
+   *
+   * Your previous broad SVG rules allowed the close icon
+   * to appear alongside the search icon.
+   *
+   * Keep ONLY the magnifying glass visible.
+   */
+
+  .scentiva-header .header__icon--search .icon-search {
+    display: block !important;
+
+    width: 21px;
+    height: 21px;
   }
 
-  /* Cart icon was visually undersized compared with search/account. */
-  .scentiva-header .header__icon--cart {
-    width: 44px;
-    height: 44px;
+  .scentiva-header .header__icon--search .icon-close {
+    display: none !important;
+
+    width: 0;
+    height: 0;
   }
 
-  .scentiva-header .header__icon--cart .svg-wrapper,
-  .scentiva-header .header__icon--cart svg {
-    width: 24px;
-    height: 24px;
+  /*
+   * Also protect against Shopify/Dawn's details-open
+   * state changing the icon.
+   */
+  .scentiva-header .header__icon--search details[open] .icon-search,
+  .scentiva-header .header__icon--search[open] .icon-search {
+    display: block !important;
   }
 
-  /* Journal is not part of the Scentiva navigation. */
-  .scentiva-header .scentiva-right-menu a:nth-child(2) {
+  .scentiva-header .header__icon--search details[open] .icon-close,
+  .scentiva-header .header__icon--search[open] .icon-close {
     display: none !important;
   }
+
+
+  /* =======================================================
+     ACCOUNT ICON
+     ======================================================= */
+
+  .scentiva-header .header__icon--account {
+    width: 32px;
+    height: 32px;
+
+    min-width: 32px;
+    min-height: 32px;
+  }
+
+  .scentiva-header .header__icon--account .svg-wrapper,
+  .scentiva-header .header__icon--account svg {
+    width: 21px;
+    height: 21px;
+  }
+
+
+  /* =======================================================
+     CART ICON
+     ======================================================= */
+
+  /*
+   * IMPORTANT:
+   *
+   * The old CSS had:
+   *
+   * .header__icon--cart {
+   *     width: 21px;
+   *     height: 21px;
+   * }
+   *
+   * while the SVG was 42px.
+   *
+   * That was incorrect.
+   *
+   * Cart container is the SAME SIZE as search/account.
+   */
+
+  .scentiva-header .header__icon--cart {
+    width: 32px !important;
+    height: 32px !important;
+
+    min-width: 32px !important;
+    min-height: 32px !important;
+
+    flex: 0 0 32px;
+
+    padding: 0 !important;
+    margin: 0 !important;
+
+    display: inline-flex !important;
+
+    align-items: center;
+    justify-content: center;
+  }
+
+  .scentiva-header .header__icon--cart .svg-wrapper {
+    width: 21px !important;
+    height: 21px !important;
+
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+  }
+
+  .scentiva-header .header__icon--cart svg {
+    width: 21px !important;
+    height: 21px !important;
+
+    display: block;
+  }
+
+
+  /* =======================================================
+     CART COUNT
+     ======================================================= */
+
+  .scentiva-header .cart-count-bubble {
+    min-width: 16px;
+    min-height: 16px;
+
+    width: auto;
+    height: auto;
+
+    font-size: 9px;
+  }
+
+
+  /* =======================================================
+     REMOVE UNNECESSARY SEARCH / ICON TRANSFORMS
+     ======================================================= */
+
+  .scentiva-header .header__icons > * {
+    margin: 0 !important;
+  }
+
 }
 
+
+/* =========================================================
+   MOBILE / TABLET
+   ========================================================= */
+
 @media screen and (max-width: 989px) {
-  .scentiva-header .header__heading-link {
-    min-width: 120px;
-    min-height: 62px;
+
+  /*
+   * Our Story is desktop-only.
+   */
+  .scentiva-header .scentiva-right-menu {
+    display: none !important;
   }
 
-  .scentiva-header .header__heading-logo {
-    max-width: 125px;
-    max-height: 58px;
+  /*
+   * Do NOT apply desktop grid/logo positioning on mobile.
+   * Shopify/Dawn's native mobile header remains in control.
+   */
+  .scentiva-header .header__heading .h2 {
+    font-family: var(--font-heading-family), Georgia, serif;
+
+    font-size: 23px;
+    font-weight: 400;
+
+    letter-spacing: 0.08em;
+
+    text-transform: uppercase;
   }
 
+  /*
+   * Keep mobile search from showing the close X beside
+   * the magnifying glass.
+   */
+  .scentiva-header .header__icon--search .icon-close {
+    display: none !important;
+  }
+
+  .scentiva-header .header__icon--search .icon-search {
+    display: block !important;
+  }
+
+  /*
+   * Keep mobile cart at the same visual size.
+   */
   .scentiva-header .header__icon--cart .svg-wrapper,
   .scentiva-header .header__icon--cart svg {
-    width: 23px;
-    height: 23px;
+    width: 21px;
+    height: 21px;
   }
 }
