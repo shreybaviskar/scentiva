@@ -80,3 +80,40 @@ body { background:var(--scentiva-paper); color:var(--scentiva-ink); letter-spaci
 @media (max-width: 989px) {
   .scentiva-right-menu { display:none; }
 }
+@media (min-width:750px) {
+  .utility-bar__grid { position:relative; }
+  .utility-bar__grid::after {
+    content:"INDIA  |  INR";
+    position:absolute;
+    right:0;
+    top:50%;
+    transform:translateY(-50%);
+    color:#fff;
+    font-family:Georgia,"Times New Roman",serif;
+    text-transform:uppercase;
+    letter-spacing:.16em;
+    font-size:9px;
+  }
+}
+.scentiva-hero .banner__heading strong,
+.scentiva-hero .banner__heading em { font-weight:400; }
+.scentiva-featured .title {
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:22px;
+}
+.scentiva-featured .title::before,
+.scentiva-featured .title::after {
+  content:"";
+  display:block;
+  width:74px;
+  height:1px;
+  background:var(--scentiva-gold);
+  flex:0 0 74px;
+}
+@media(max-width:749px){
+ .scentiva-featured .title { gap:10px; }
+ .scentiva-featured .title::before,.scentiva-featured .title::after { width:36px; flex-basis:36px; }
+ .utility-bar__grid::after { display:none; }
+}
