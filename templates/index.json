@@ -112,10 +112,13 @@
         "featured_collection_AWgLtp",
         "featured_collection_ej4cwp"
       ],
+      "custom_css": [
+        ".collection-list__title {margin: 0 !important; font: 400 18px / 1.2 Georgia, \"Times New Roman\", serif !important; letter-spacing: 0.38em !important; text-transform: uppercase !important;}"
+      ],
       "name": "t:sections.collection-list.presets.name",
       "settings": {
-        "title": "FRAGRANCE SERIES",
-        "heading_size": "h1",
+        "title": "FRAGRANCE COLLECTIONS",
+        "heading_size": "h2",
         "image_ratio": "square",
         "columns_desktop": 4,
         "color_scheme": "",
