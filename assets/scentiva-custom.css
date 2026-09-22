@@ -7,6 +7,13 @@
    ========================================================= */
 @media screen and (min-width: 990px) {
 
+    /* Hide the mobile hamburger menu on desktop.
+     Desktop uses the inline navigation instead. */
+  .scentiva-header header-drawer {
+    display: none !important;
+  }
+
+
   /* -------------------------------------------------------
      HEADER BASE
      ------------------------------------------------------- */
@@ -135,9 +142,10 @@
     display: none;
   }
 
-  /* =======================================================
+  /* /* =======================================================
    OUR STORY
    ======================================================= */
+/*
   .scentiva-header .scentiva-right-menu {
     position: absolute;
     top: 0;
@@ -145,6 +153,7 @@
    * Leave enough room for:
    * OUR STORY → SEARCH → ACCOUNT → CART
    */
+/*
     right: 220px;
     height: 100%;
     display: flex !important;
@@ -174,12 +183,12 @@
   .scentiva-header .scentiva-right-menu a:hover {
     opacity: 0.65;
   }
-
+*/
   /* Journal is not part of Scentiva navigation. */
+  /*
   .scentiva-header .scentiva-right-menu a:nth-child(2) {
     display: none !important;
-  }
-
+  } */
   /* =======================================================
    SEARCH / ACCOUNT / CART
    ======================================================= */
@@ -862,6 +871,8 @@
   /*
    * Our Story is desktop-only.
    */
+  /*
+
   .scentiva-header .scentiva-right-menu {
     display: none !important;
   }
@@ -869,6 +880,7 @@
   /*
    * Keep Dawn's native mobile header layout.
    */
+/*
   .scentiva-header .header__heading .h2 {
     font-family: var(--font-heading-family), Georgia, serif;
     font-size: 23px;

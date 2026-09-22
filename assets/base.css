@@ -13,6 +13,24 @@ collection-component {
   --focused-base-box-shadow: 0 0 0 0.3rem rgb(var(--color-background)), 0 0 0.5rem 0.4rem rgba(var(--color-foreground), 0.3);
 }
 
+/* Remove bullet/dot markers from desktop and mobile menus */
+.header__inline-menu ul,
+.header__inline-menu li,
+.menu-drawer ul,
+.menu-drawer li {
+  list-style: none !important;
+  list-style-type: none !important;
+}
+
+/* Remove any default marker/pseudo-element */
+.header__inline-menu li::before,
+.header__inline-menu li::marker,
+.menu-drawer li::before,
+.menu-drawer li::marker {
+  content: none !important;
+  display: none !important;
+}
+
 .product-card-wrapper .card,
 .contains-card--product {
   --border-radius: var(--product-card-corner-radius);

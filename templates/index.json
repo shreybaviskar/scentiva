@@ -12,8 +12,6 @@
     "hero": {
       "type": "scentiva-hero",
       "settings": {
-        "image": "",
-        "mobile_image": "",
         "heading": "MORE THAN\nA SCENT.\nA STORY.",
         "eyebrow": "THE ART OF OLFACTION",
         "button_label": "EXPLORE COLLECTION",
@@ -28,7 +26,6 @@
           "type": "collection",
           "settings": {
             "collection": "fresh",
-            "image": "",
             "title": "FRESH"
           }
         },
@@ -36,7 +33,6 @@
           "type": "collection",
           "settings": {
             "collection": "woody",
-            "image": "",
             "title": "WOODY"
           }
         },
@@ -44,7 +40,6 @@
           "type": "collection",
           "settings": {
             "collection": "amber",
-            "image": "",
             "title": "AMBER"
           }
         },
@@ -52,7 +47,6 @@
           "type": "collection",
           "settings": {
             "collection": "floral",
-            "image": "",
             "title": "FLORAL"
           }
         },
@@ -60,12 +54,17 @@
           "type": "collection",
           "settings": {
             "collection": "gourmand",
-            "image": "",
             "title": "GOURMAND"
           }
         }
       },
-      "block_order": ["fresh", "woody", "amber", "floral", "gourmand"],
+      "block_order": [
+        "fresh",
+        "woody",
+        "amber",
+        "floral",
+        "gourmand"
+      ],
       "settings": {
         "heading": "DISCOVER YOUR SCENT"
       }
@@ -79,10 +78,57 @@
         "show_quick_add": true
       }
     },
+    "collection_list_zAnHia": {
+      "type": "collection-list",
+      "blocks": {
+        "featured_collection_b3gGaD": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "essentials"
+          }
+        },
+        "featured_collection_mmWhg8": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "signature"
+          }
+        },
+        "featured_collection_AWgLtp": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "maison"
+          }
+        },
+        "featured_collection_ej4cwp": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "divine-series"
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_b3gGaD",
+        "featured_collection_mmWhg8",
+        "featured_collection_AWgLtp",
+        "featured_collection_ej4cwp"
+      ],
+      "name": "t:sections.collection-list.presets.name",
+      "settings": {
+        "title": "FRAGRANCE SERIES",
+        "heading_size": "h1",
+        "image_ratio": "square",
+        "columns_desktop": 4,
+        "color_scheme": "",
+        "show_view_all": false,
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
     "story": {
       "type": "scentiva-story",
       "settings": {
-        "image": "",
         "heading": "A SCENT\nFOR EVERY MOMENT",
         "text": "<p>Crafted for places, people and possibilities that shape your story.</p>",
         "button_label": "OUR STORY",
@@ -90,5 +136,11 @@
       }
     }
   },
-  "order": ["hero", "scent_collections", "featured_fragrances", "story"]
+  "order": [
+    "hero",
+    "scent_collections",
+    "featured_fragrances",
+    "collection_list_zAnHia",
+    "story"
+  ]
 }
