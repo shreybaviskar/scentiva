@@ -3,7 +3,6 @@
     {%- if section.settings.heading != blank -%}
       <div class="scentiva-heading"><span></span><h2>{{ section.settings.heading }}</h2><span></span></div>
     {%- endif -%}
-
     {%- assign collection = section.settings.collection -%}
     {%- if collection != blank -%}
       <div class="scentiva-products-grid">
@@ -23,9 +22,7 @@
                 <form method="post" action="{{ routes.cart_add_url }}" class="scentiva-quick-add">
                   <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
                   <input type="hidden" name="quantity" value="1">
-                  <button type="submit" {% unless product.available %}disabled{% endunless %}>
-                    {%- if product.available -%}ADD TO CART{%- else -%}SOLD OUT{%- endif -%}
-                  </button>
+                  <button type="submit" {% unless product.available %}disabled{% endunless %}>{% if product.available %}ADD TO CART{% else %}SOLD OUT{% endif %}</button>
                 </form>
               {%- endif -%}
             </div>
@@ -39,36 +36,12 @@
 </section>
 
 <style>
-  .scentiva-featured-{{ section.id }} { background:#fbf8f1; padding:42px 0 58px; }
-  .scentiva-featured-{{ section.id }} .scentiva-heading { display:flex; align-items:center; justify-content:center; gap:18px; margin-bottom:28px; }
-  .scentiva-featured-{{ section.id }} .scentiva-heading span { width:76px; height:1px; background:#a88645; flex:0 0 76px; }
-  .scentiva-featured-{{ section.id }} .scentiva-heading h2 { margin:0; font:400 18px/1.2 Georgia,'Times New Roman',serif; letter-spacing:.38em; text-transform:uppercase; }
-  .scentiva-featured-{{ section.id }} .scentiva-products-grid { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:16px; }
-  .scentiva-featured-{{ section.id }} .scentiva-product-card { background:#f3ede3; padding:10px 12px 18px; text-align:center; }
-  .scentiva-featured-{{ section.id }} .scentiva-product-card__image { display:block; aspect-ratio:1/1.05; overflow:hidden; background:#eee7dc; }
-  .scentiva-featured-{{ section.id }} .scentiva-product-card__image img,.scentiva-featured-{{ section.id }} .scentiva-product-card__image svg { width:100%; height:100%; object-fit:contain; display:block; }
-  .scentiva-featured-{{ section.id }} .scentiva-product-card__info { padding-top:12px; }
-  .scentiva-featured-{{ section.id }} h3 { margin:0 0 8px; font:400 14px/1.3 Georgia,'Times New Roman',serif; letter-spacing:.22em; text-transform:uppercase; }
-  .scentiva-featured-{{ section.id }} h3 a { color:#171411; text-decoration:none; }
-  .scentiva-featured-{{ section.id }} .scentiva-product-card__price { font:400 13px/1.2 Georgia,'Times New Roman',serif; letter-spacing:.1em; }
-  .scentiva-featured-{{ section.id }} .scentiva-quick-add { margin-top:14px; }
-  .scentiva-featured-{{ section.id }} .scentiva-quick-add button { min-width:124px; min-height:38px; padding:9px 15px; border:1px solid #8a7960; background:transparent; color:#171411; font-size:9px; letter-spacing:.2em; text-transform:uppercase; cursor:pointer; }
-  .scentiva-featured-{{ section.id }} .scentiva-quick-add button:hover { background:#171411; color:#fff; }
-  .scentiva-featured-{{ section.id }} .scentiva-quick-add button:disabled { opacity:.55; cursor:not-allowed; }
-  .scentiva-featured-{{ section.id }} .scentiva-products-empty { padding:60px 20px; text-align:center; }
-  @media(max-width:749px){
-    .scentiva-featured-{{ section.id }} { padding:36px 0 46px; }
-    .scentiva-featured-{{ section.id }} .scentiva-heading { gap:10px; margin-bottom:22px; }
-    .scentiva-featured-{{ section.id }} .scentiva-heading span { width:36px; flex-basis:36px; }
-    .scentiva-featured-{{ section.id }} .scentiva-heading h2 { font-size:15px; letter-spacing:.25em; }
-    .scentiva-featured-{{ section.id }} .scentiva-products-grid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; }
-    .scentiva-featured-{{ section.id }} .scentiva-product-card { padding:7px 8px 14px; }
-  }
+  .scentiva-featured-{{ section.id }}{background:#fbf8f1;padding:42px 0 58px}.scentiva-featured-{{ section.id }} .scentiva-heading{display:flex;align-items:center;justify-content:center;gap:18px;margin-bottom:28px}.scentiva-featured-{{ section.id }} .scentiva-heading span{width:76px;height:1px;background:#a88645;flex:0 0 76px}.scentiva-featured-{{ section.id }} .scentiva-heading h2{margin:0;font:400 18px/1.2 Georgia,'Times New Roman',serif;letter-spacing:.38em;text-transform:uppercase}.scentiva-featured-{{ section.id }} .scentiva-products-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}.scentiva-featured-{{ section.id }} .scentiva-product-card{background:#f3ede3;padding:10px 12px 18px;text-align:center}.scentiva-featured-{{ section.id }} .scentiva-product-card__image{display:block;aspect-ratio:1/1.05;overflow:hidden;background:#eee7dc}.scentiva-featured-{{ section.id }} .scentiva-product-card__image img,.scentiva-featured-{{ section.id }} .scentiva-product-card__image svg{width:100%;height:100%;object-fit:contain;display:block}.scentiva-featured-{{ section.id }} .scentiva-product-card__info{padding-top:12px}.scentiva-featured-{{ section.id }} h3{margin:0 0 8px;font:400 14px/1.3 Georgia,'Times New Roman',serif;letter-spacing:.22em;text-transform:uppercase}.scentiva-featured-{{ section.id }} h3 a{color:#171411;text-decoration:none}.scentiva-featured-{{ section.id }} .scentiva-product-card__price{font:400 13px/1.2 Georgia,'Times New Roman',serif;letter-spacing:.1em}.scentiva-featured-{{ section.id }} .scentiva-quick-add{margin-top:14px}.scentiva-featured-{{ section.id }} .scentiva-quick-add button{min-width:124px;min-height:38px;padding:9px 15px;border:1px solid #8a7960;background:transparent;color:#171411;font-size:9px;letter-spacing:.2em;text-transform:uppercase;cursor:pointer}.scentiva-featured-{{ section.id }} .scentiva-quick-add button:hover{background:#171411;color:#fff}.scentiva-featured-{{ section.id }} .scentiva-quick-add button:disabled{opacity:.55;cursor:not-allowed}.scentiva-featured-{{ section.id }} .scentiva-products-empty{padding:60px 20px;text-align:center}@media(max-width:749px){.scentiva-featured-{{ section.id }}{padding:36px 0 46px}.scentiva-featured-{{ section.id }} .scentiva-heading{gap:10px;margin-bottom:22px}.scentiva-featured-{{ section.id }} .scentiva-heading span{width:36px;flex-basis:36px}.scentiva-featured-{{ section.id }} .scentiva-heading h2{font-size:15px;letter-spacing:.25em}.scentiva-featured-{{ section.id }} .scentiva-products-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.scentiva-featured-{{ section.id }} .scentiva-product-card{padding:7px 8px 14px}}
 </style>
 
 {% schema %}
 {
-  "name": "Scentiva — Featured fragrances",
+  "name": "Featured fragrances",
   "tag": "section",
   "class": "scentiva-featured-fragrances-wrapper",
   "settings": [
@@ -77,6 +50,6 @@
     { "type": "range", "id": "products_to_show", "label": "Products to show", "min": 2, "max": 8, "step": 1, "default": 4 },
     { "type": "checkbox", "id": "show_quick_add", "label": "Show Add to Cart", "default": true }
   ],
-  "presets": [{ "name": "Scentiva — Featured fragrances" }]
+  "presets": [{ "name": "Featured fragrances" }]
 }
 {% endschema %}
