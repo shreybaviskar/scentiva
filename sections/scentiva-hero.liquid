@@ -1,0 +1,99 @@
+{%- liquid
+  assign desktop_image = section.settings.image
+  assign mobile_image = section.settings.mobile_image | default: desktop_image
+-%}
+
+<section class="scentiva-hero-section scentiva-hero-{{ section.id }}">
+  <div class="scentiva-hero__media">
+    {%- if desktop_image != blank -%}
+      <picture>
+        {%- if mobile_image != blank -%}
+          <source media="(max-width: 749px)" srcset="{{ mobile_image | image_url: width: 1200 }}">
+        {%- endif -%}
+        <img
+          src="{{ desktop_image | image_url: width: 2400 }}"
+          srcset="{{ desktop_image | image_url: width: 1200 }} 1200w, {{ desktop_image | image_url: width: 1800 }} 1800w, {{ desktop_image | image_url: width: 2400 }} 2400w"
+          sizes="100vw"
+          alt="{{ desktop_image.alt | default: shop.name | escape }}"
+          loading="eager"
+          fetchpriority="high"
+          width="{{ desktop_image.width }}"
+          height="{{ desktop_image.height }}"
+        >
+      </picture>
+    {%- else -%}
+      <div class="scentiva-hero__placeholder">
+        {{ 'lifestyle-1' | placeholder_svg_tag: 'scentiva-placeholder-svg' }}
+      </div>
+    {%- endif -%}
+    <div class="scentiva-hero__overlay"></div>
+  </div>
+
+  <div class="scentiva-hero__content scentiva-hero__content--{{ section.settings.content_position }}">
+    <div class="scentiva-hero__copy">
+      {%- if section.settings.heading != blank -%}
+        <h1>{{ section.settings.heading | newline_to_br }}</h1>
+      {%- endif -%}
+
+      {%- if section.settings.eyebrow != blank -%}
+        <p class="scentiva-hero__eyebrow">{{ section.settings.eyebrow }}</p>
+      {%- endif -%}
+
+      {%- if section.settings.button_label != blank -%}
+        <a class="scentiva-hero__button" href="{{ section.settings.button_link | default: routes.all_products_collection_url }}">
+          {{ section.settings.button_label }}
+        </a>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+<style>
+  .scentiva-hero-{{ section.id }} { position:relative; width:100%; min-height:clamp(520px, 45vw, 720px); overflow:hidden; background:#d8cdbc; color:#171411; }
+  .scentiva-hero-{{ section.id }} .scentiva-hero__media,
+  .scentiva-hero-{{ section.id }} .scentiva-hero__media picture,
+  .scentiva-hero-{{ section.id }} .scentiva-hero__media img { position:absolute; inset:0; width:100%; height:100%; }
+  .scentiva-hero-{{ section.id }} .scentiva-hero__media img { object-fit:cover; object-position:center; }
+  .scentiva-hero-{{ section.id }} .scentiva-hero__overlay { position:absolute; inset:0; background:linear-gradient(90deg, rgba(244,238,226,.72) 0%, rgba(244,238,226,.38) 43%, rgba(244,238,226,0) 72%); }
+  .scentiva-hero-{{ section.id }} .scentiva-hero__placeholder { position:absolute; inset:0; display:grid; place-items:center; background:#d8cdbc; }
+  .scentiva-hero-{{ section.id }} .scentiva-placeholder-svg { width:100%; height:100%; opacity:.35; }
+  .scentiva-hero-{{ section.id }} .scentiva-hero__content { position:relative; z-index:2; min-height:clamp(520px, 45vw, 720px); max-width:var(--page-width, 1200px); margin:0 auto; padding:60px 5%; display:flex; align-items:center; }
+  .scentiva-hero-{{ section.id }} .scentiva-hero__content--center { justify-content:center; text-align:center; }
+  .scentiva-hero-{{ section.id }} .scentiva-hero__content--left { justify-content:flex-start; text-align:left; }
+  .scentiva-hero-{{ section.id }} .scentiva-hero__content--right { justify-content:flex-end; text-align:right; }
+  .scentiva-hero-{{ section.id }} .scentiva-hero__copy { max-width:590px; }
+  .scentiva-hero-{{ section.id }} h1 { margin:0 0 24px; font-family:Georgia,'Times New Roman',serif; font-size:clamp(40px,4.1vw,72px); line-height:1.05; font-weight:400; letter-spacing:.045em; text-transform:uppercase; }
+  .scentiva-hero-{{ section.id }} .scentiva-hero__eyebrow { margin:0 0 30px; font-family:Georgia,'Times New Roman',serif; font-size:clamp(12px,1vw,15px); letter-spacing:.42em; text-transform:uppercase; }
+  .scentiva-hero-{{ section.id }} .scentiva-hero__button { display:inline-flex; align-items:center; justify-content:center; min-width:230px; min-height:48px; padding:13px 28px; border:1px solid #a88645; background:#171411; color:#fff; text-decoration:none; font-size:11px; letter-spacing:.24em; text-transform:uppercase; transition:background .2s ease,color .2s ease; }
+  .scentiva-hero-{{ section.id }} .scentiva-hero__button:hover { background:#a88645; color:#fff; }
+  @media(max-width:749px){
+    .scentiva-hero-{{ section.id }} { min-height:620px; }
+    .scentiva-hero-{{ section.id }} .scentiva-hero__content { min-height:620px; padding:42px 24px; align-items:flex-end; }
+    .scentiva-hero-{{ section.id }} .scentiva-hero__overlay { background:linear-gradient(180deg,rgba(244,238,226,.08) 20%,rgba(244,238,226,.72) 70%,rgba(244,238,226,.92) 100%); }
+    .scentiva-hero-{{ section.id }} .scentiva-hero__copy { max-width:100%; }
+    .scentiva-hero-{{ section.id }} h1 { font-size:40px; }
+    .scentiva-hero-{{ section.id }} .scentiva-hero__eyebrow { letter-spacing:.28em; }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Scentiva — Hero",
+  "tag": "section",
+  "class": "scentiva-hero-section-wrapper",
+  "settings": [
+    { "type": "image_picker", "id": "image", "label": "Desktop hero image" },
+    { "type": "image_picker", "id": "mobile_image", "label": "Mobile hero image", "info": "Optional. Uses the desktop image if empty." },
+    { "type": "textarea", "id": "heading", "label": "Heading", "default": "MORE THAN\nA SCENT.\nA STORY." },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "THE ART OF OLFACTION" },
+    { "type": "text", "id": "button_label", "label": "Button label", "default": "EXPLORE COLLECTION" },
+    { "type": "url", "id": "button_link", "label": "Button link" },
+    { "type": "select", "id": "content_position", "label": "Content position", "default": "left", "options": [
+      { "value": "left", "label": "Left" },
+      { "value": "center", "label": "Center" },
+      { "value": "right", "label": "Right" }
+    ] }
+  ],
+  "presets": [{ "name": "Scentiva — Hero" }]
+}
+{% endschema %}
