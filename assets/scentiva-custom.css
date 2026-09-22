@@ -1,0 +1,57 @@
+/* SCENTIVA LUXURY OVERRIDES */
+:root {
+  --scentiva-ivory: #f5f1e8;
+  --scentiva-paper: #fbf8f1;
+  --scentiva-ink: #171411;
+  --scentiva-gold: #a88645;
+  --scentiva-brown: #4a3526;
+}
+body { background:var(--scentiva-paper); color:var(--scentiva-ink); letter-spacing:.08em; }
+.header-wrapper,.section-header .header { background:var(--scentiva-paper)!important; }
+.header-wrapper { border:0!important; }
+.header { min-height:105px; }
+.header__heading-logo-wrapper img,.header__heading-logo { max-height:92px; object-fit:contain; }
+.header__menu-item,.list-menu__item--link { font-family:Georgia,"Times New Roman",serif; text-transform:uppercase; letter-spacing:.2em; font-size:12px; }
+.header__icons .svg-wrapper svg,.header__icon svg { stroke-width:1.25; }
+.utility-bar { background:#15120f!important; color:#fff!important; min-height:30px; }
+.announcement-bar__message { text-transform:uppercase; letter-spacing:.2em; font-size:10px; }
+.scentiva-section-heading { text-align:center; font-family:Georgia,"Times New Roman",serif; text-transform:uppercase; letter-spacing:.35em; font-weight:400; font-size:clamp(17px,1.5vw,22px); margin:0 auto 26px; display:flex; align-items:center; justify-content:center; gap:20px; }
+.scentiva-section-heading:before,.scentiva-section-heading:after { content:""; width:76px; height:1px; background:var(--scentiva-gold); display:block; }
+.scentiva-note-grid .multicolumn-card,.scentiva-note-grid .multicolumn-list__item { background:transparent; }
+.scentiva-note-grid .multicolumn-card__image-wrapper { margin:0!important; }
+.scentiva-note-grid .multicolumn-card__info { position:relative; margin-top:-72px; z-index:2; color:#fff; padding:20px; text-shadow:0 2px 14px rgba(0,0,0,.55); }
+.scentiva-note-grid .multicolumn-card__info h3 { text-transform:uppercase; letter-spacing:.23em; font-family:Georgia,"Times New Roman",serif; font-weight:400; text-align:center; }
+.scentiva-featured .collection__title { text-align:center; }
+.scentiva-featured .title { font-family:Georgia,"Times New Roman",serif; text-transform:uppercase; letter-spacing:.35em; font-weight:400; }
+.scentiva-featured .card-wrapper { background:#f4efe6; padding:10px 12px 18px; }
+.scentiva-featured .card__inner,.scentiva-featured .card__media { background:#f4efe6; }
+.scentiva-featured .card__information { text-align:center; }
+.scentiva-featured .card__heading { font-family:Georgia,"Times New Roman",serif; text-transform:uppercase; letter-spacing:.22em; font-weight:400; }
+.scentiva-featured .price { justify-content:center; font-family:Georgia,"Times New Roman",serif; letter-spacing:.1em; }
+.scentiva-featured .quick-add__submit { margin-top:14px; min-height:40px; border-color:#8a7960; background:transparent; color:var(--scentiva-ink); text-transform:uppercase; letter-spacing:.2em; font-size:10px; }
+.scentiva-featured .quick-add__submit:hover { background:#1b1713; color:#fff; }
+.scentiva-story .image-with-text__content { padding:clamp(38px,6vw,90px); }
+.scentiva-story .image-with-text__heading { font-family:Georgia,"Times New Roman",serif; text-transform:uppercase; letter-spacing:.18em; font-weight:400; }
+.scentiva-story .image-with-text__text { letter-spacing:.08em; max-width:520px; }
+.scentiva-story .button { border-color:var(--scentiva-gold); background:transparent; text-transform:uppercase; letter-spacing:.22em; font-size:11px; }
+.scentiva-story .button:hover { background:var(--scentiva-gold); color:#fff; }
+.scentiva-hero .banner__box { max-width:620px!important; }
+.scentiva-hero .banner__heading { font-family:Georgia,"Times New Roman",serif; font-weight:400; letter-spacing:.08em; line-height:1.15; }
+.scentiva-hero .banner__text { font-family:Georgia,"Times New Roman",serif; text-transform:uppercase; letter-spacing:.32em; }
+.scentiva-hero .button { background:#17130f; border:1px solid var(--scentiva-gold); color:#fff; text-transform:uppercase; letter-spacing:.2em; font-size:11px; padding:14px 38px; }
+.scentiva-header .header { grid-template-columns:1fr auto 1fr; }
+.scentiva-header .header__heading { grid-column:2; }
+.scentiva-header .header__inline-menu { grid-column:1; grid-row:1; }
+.scentiva-header .header__icons { grid-column:3; grid-row:1; justify-content:flex-end; }
+@media(max-width:989px){
+ .scentiva-header .header { grid-template-columns:auto 1fr auto; }
+ .scentiva-header .header__heading { grid-column:2; }
+ .scentiva-header .header__inline-menu { grid-column:1; }
+ .scentiva-header .header__icons { grid-column:3; }
+}
+@media(max-width:749px){
+ .scentiva-note-grid .multicolumn-list { gap:10px; }
+ .scentiva-note-grid .multicolumn-card__info { margin-top:-66px; }
+ .scentiva-section-heading { letter-spacing:.22em; gap:10px; }
+ .scentiva-section-heading:before,.scentiva-section-heading:after { width:42px; }
+}
