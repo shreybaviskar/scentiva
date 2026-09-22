@@ -117,3 +117,27 @@ body { background:var(--scentiva-paper); color:var(--scentiva-ink); letter-spaci
  .scentiva-featured .title::before,.scentiva-featured .title::after { width:36px; flex-basis:36px; }
  .utility-bar__grid::after { display:none; }
 }
+.scentiva-note-grid .multicolumn__title .title {
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:20px;
+  font-family:Georgia,"Times New Roman",serif;
+  text-transform:uppercase;
+  letter-spacing:.35em;
+  font-weight:400;
+  text-align:center;
+}
+.scentiva-note-grid .multicolumn__title .title::before,
+.scentiva-note-grid .multicolumn__title .title::after {
+  content:"";
+  width:76px;
+  height:1px;
+  background:var(--scentiva-gold);
+  flex:0 0 76px;
+}
+@media(max-width:749px){
+  .scentiva-note-grid .multicolumn__title .title { gap:10px; }
+  .scentiva-note-grid .multicolumn__title .title::before,
+  .scentiva-note-grid .multicolumn__title .title::after { width:36px; flex-basis:36px; }
+}
