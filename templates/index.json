@@ -1,210 +1,85 @@
 {
   "sections": {
     "hero": {
-      "type": "image-banner",
-      "blocks": {
-        "hero_heading": {
-          "type": "heading",
-          "settings": {
-            "heading": "MORE THAN<br>A SCENT.<br>A STORY.",
-            "heading_size": "h0"
-          }
-        },
-        "hero_text": {
-          "type": "text",
-          "settings": {
-            "text": "THE ART OF OLFACTION",
-            "text_style": "caption-with-letter-spacing"
-          }
-        },
-        "hero_button": {
-          "type": "buttons",
-          "settings": {
-            "button_label_1": "EXPLORE COLLECTION",
-            "button_link_1": "shopify://collections/all",
-            "button_style_secondary_1": false,
-            "button_label_2": "",
-            "button_link_2": "",
-            "button_style_secondary_2": false
-          }
-        }
-      },
-      "block_order": [
-        "hero_heading",
-        "hero_text",
-        "hero_button"
-      ],
+      "type": "scentiva-hero",
       "settings": {
-        "image_overlay_opacity": 8,
-        "image_height": "large",
-        "desktop_content_position": "middle-left",
-        "show_text_box": false,
-        "image_behavior": "none",
-        "desktop_content_alignment": "left",
-        "color_scheme": "scheme-1",
-        "mobile_content_alignment": "left",
-        "stack_images_on_mobile": false,
-        "show_text_below": false
+        "image": "",
+        "mobile_image": "",
+        "heading": "MORE THAN\nA SCENT.\nA STORY.",
+        "eyebrow": "THE ART OF OLFACTION",
+        "button_label": "EXPLORE COLLECTION",
+        "button_link": "",
+        "content_position": "left"
       }
     },
-    "scent_discovery": {
-      "type": "multicolumn",
+    "scent_collections": {
+      "type": "scentiva-scent-collections",
       "blocks": {
         "fresh": {
-          "type": "column",
+          "type": "collection",
           "settings": {
+            "collection": "fresh",
             "image": "",
-            "title": "FRESH",
-            "text": "<p></p>",
-            "link_label": "",
-            "link": "shopify://collections/fresh"
+            "title": "FRESH"
           }
         },
         "woody": {
-          "type": "column",
+          "type": "collection",
           "settings": {
+            "collection": "woody",
             "image": "",
-            "title": "WOODY",
-            "text": "<p></p>",
-            "link_label": "",
-            "link": "shopify://collections/woody"
+            "title": "WOODY"
           }
         },
         "amber": {
-          "type": "column",
+          "type": "collection",
           "settings": {
+            "collection": "amber",
             "image": "",
-            "title": "AMBER",
-            "text": "<p></p>",
-            "link_label": "",
-            "link": "shopify://collections/amber"
+            "title": "AMBER"
           }
         },
         "floral": {
-          "type": "column",
+          "type": "collection",
           "settings": {
+            "collection": "floral",
             "image": "",
-            "title": "FLORAL",
-            "text": "<p></p>",
-            "link_label": "",
-            "link": "shopify://collections/floral"
+            "title": "FLORAL"
           }
         },
         "gourmand": {
-          "type": "column",
+          "type": "collection",
           "settings": {
+            "collection": "gourmand",
             "image": "",
-            "title": "GOURMAND",
-            "text": "<p></p>",
-            "link_label": "",
-            "link": "shopify://collections/gourmand"
+            "title": "GOURMAND"
           }
         }
       },
-      "block_order": [
-        "fresh",
-        "woody",
-        "amber",
-        "floral",
-        "gourmand"
-      ],
+      "block_order": ["fresh", "woody", "amber", "floral", "gourmand"],
       "settings": {
-        "title": "DISCOVER YOUR SCENT",
-        "heading_size": "h2",
-        "image_width": "full",
-        "image_ratio": "square",
-        "button_label": "",
-        "button_link": "",
-        "columns_desktop": 5,
-        "column_alignment": "center",
-        "background_style": "none",
-        "color_scheme": "scheme-1",
-        "columns_mobile": "2",
-        "swipe_on_mobile": false,
-        "padding_top": 48,
-        "padding_bottom": 48
+        "heading": "DISCOVER YOUR SCENT"
       }
     },
-    "featured_collection": {
-      "type": "featured-collection",
+    "featured_fragrances": {
+      "type": "scentiva-featured-fragrances",
       "settings": {
+        "heading": "FEATURED FRAGRANCES",
         "collection": "all",
         "products_to_show": 4,
-        "title": "FEATURED FRAGRANCES",
-        "heading_size": "h2",
-        "description": "",
-        "show_description": false,
-        "description_style": "body",
-        "columns_desktop": 4,
-        "enable_desktop_slider": false,
-        "full_width": false,
-        "show_view_all": false,
-        "view_all_style": "link",
-        "color_scheme": "scheme-1",
-        "image_ratio": "adapt",
-        "image_shape": "default",
-        "show_secondary_image": false,
-        "show_vendor": false,
-        "show_rating": false,
-        "quick_add": "standard",
-        "columns_mobile": "2",
-        "swipe_on_mobile": false,
-        "padding_top": 42,
-        "padding_bottom": 58
+        "show_quick_add": true
       }
     },
     "story": {
-      "type": "image-with-text",
-      "blocks": {
-        "story_heading": {
-          "type": "heading",
-          "settings": {
-            "heading": "A SCENT<br>FOR EVERY MOMENT",
-            "heading_size": "h1"
-          }
-        },
-        "story_text": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Crafted for places, people and possibilities that shape your story.</p>",
-            "text_style": "body"
-          }
-        },
-        "story_button": {
-          "type": "button",
-          "settings": {
-            "button_label": "OUR STORY",
-            "button_link": "shopify://pages/our-story",
-            "button_style_secondary": true
-          }
-        }
-      },
-      "block_order": [
-        "story_heading",
-        "story_text",
-        "story_button"
-      ],
+      "type": "scentiva-story",
       "settings": {
         "image": "",
-        "height": "medium",
-        "desktop_image_width": "medium",
-        "layout": "image_first",
-        "image_behavior": "none",
-        "content_layout": "no-overlap",
-        "desktop_content_position": "middle",
-        "desktop_content_alignment": "left",
-        "mobile_content_alignment": "left",
-        "section_color_scheme": "scheme-4",
-        "color_scheme": "scheme-4",
-        "padding_top": 0,
-        "padding_bottom": 0
+        "heading": "A SCENT\nFOR EVERY MOMENT",
+        "text": "<p>Crafted for places, people and possibilities that shape your story.</p>",
+        "button_label": "OUR STORY",
+        "button_link": ""
       }
     }
   },
-  "order": [
-    "hero",
-    "scent_discovery",
-    "featured_collection",
-    "story"
-  ]
+  "order": ["hero", "scent_collections", "featured_fragrances", "story"]
 }
