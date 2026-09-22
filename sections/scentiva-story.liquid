@@ -1,0 +1,51 @@
+<section class="scentiva-story-section scentiva-story-{{ section.id }}">
+  <div class="scentiva-story__media">
+    {%- if section.settings.image != blank -%}
+      <img src="{{ section.settings.image | image_url: width: 2200 }}" srcset="{{ section.settings.image | image_url: width: 1100 }} 1100w, {{ section.settings.image | image_url: width: 1600 }} 1600w, {{ section.settings.image | image_url: width: 2200 }} 2200w" sizes="100vw" alt="{{ section.settings.image.alt | default: 'Scentiva story' | escape }}" loading="lazy" width="{{ section.settings.image.width }}" height="{{ section.settings.image.height }}">
+    {%- else -%}
+      {{ 'lifestyle-2' | placeholder_svg_tag: 'scentiva-placeholder-svg' }}
+    {%- endif -%}
+  </div>
+  <div class="scentiva-story__overlay"></div>
+  <div class="scentiva-story__content page-width">
+    <div class="scentiva-story__copy">
+      {%- if section.settings.heading != blank -%}<h2>{{ section.settings.heading | newline_to_br }}</h2>{%- endif -%}
+      {%- if section.settings.text != blank -%}<div class="scentiva-story__text">{{ section.settings.text }}</div>{%- endif -%}
+      {%- if section.settings.button_label != blank -%}<a class="scentiva-story__button" href="{{ section.settings.button_link | default: routes.root_url }}">{{ section.settings.button_label }}</a>{%- endif -%}
+    </div>
+  </div>
+</section>
+
+<style>
+  .scentiva-story-{{ section.id }} { position:relative; min-height:430px; overflow:hidden; background:#1b130d; color:#fff; }
+  .scentiva-story-{{ section.id }} .scentiva-story__media,.scentiva-story-{{ section.id }} .scentiva-story__media img,.scentiva-story-{{ section.id }} .scentiva-placeholder-svg { position:absolute; inset:0; width:100%; height:100%; }
+  .scentiva-story-{{ section.id }} .scentiva-story__media img,.scentiva-story-{{ section.id }} .scentiva-placeholder-svg { object-fit:cover; }
+  .scentiva-story-{{ section.id }} .scentiva-story__overlay { position:absolute; inset:0; background:linear-gradient(90deg,rgba(14,10,7,.92) 0%,rgba(14,10,7,.76) 40%,rgba(14,10,7,.25) 78%,rgba(14,10,7,.08) 100%); }
+  .scentiva-story-{{ section.id }} .scentiva-story__content { position:relative; z-index:2; min-height:430px; display:flex; align-items:center; padding-top:55px; padding-bottom:55px; }
+  .scentiva-story-{{ section.id }} .scentiva-story__copy { max-width:480px; }
+  .scentiva-story-{{ section.id }} h2 { margin:0 0 20px; color:#fff; font:400 clamp(32px,3.4vw,54px)/1.1 Georgia,'Times New Roman',serif; letter-spacing:.12em; text-transform:uppercase; }
+  .scentiva-story-{{ section.id }} .scentiva-story__text { max-width:450px; margin-bottom:28px; color:rgba(255,255,255,.88); font-size:14px; line-height:1.8; letter-spacing:.08em; }
+  .scentiva-story-{{ section.id }} .scentiva-story__button { display:inline-flex; min-width:170px; min-height:46px; align-items:center; justify-content:center; border:1px solid #c6a45d; color:#fff; background:transparent; text-decoration:none; font-size:10px; letter-spacing:.23em; text-transform:uppercase; }
+  .scentiva-story-{{ section.id }} .scentiva-story__button:hover { background:#a88645; border-color:#a88645; }
+  @media(max-width:749px){
+    .scentiva-story-{{ section.id }},.scentiva-story-{{ section.id }} .scentiva-story__content { min-height:500px; }
+    .scentiva-story-{{ section.id }} .scentiva-story__overlay { background:linear-gradient(180deg,rgba(14,10,7,.2) 15%,rgba(14,10,7,.86) 75%,rgba(14,10,7,.96) 100%); }
+    .scentiva-story-{{ section.id }} .scentiva-story__content { align-items:flex-end; padding:38px 24px; }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Scentiva — Our story",
+  "tag": "section",
+  "class": "scentiva-story-wrapper",
+  "settings": [
+    { "type": "image_picker", "id": "image", "label": "Story image" },
+    { "type": "textarea", "id": "heading", "label": "Heading", "default": "A SCENT\nFOR EVERY MOMENT" },
+    { "type": "richtext", "id": "text", "label": "Text", "default": "<p>Crafted for places, people and possibilities that shape your story.</p>" },
+    { "type": "text", "id": "button_label", "label": "Button label", "default": "OUR STORY" },
+    { "type": "url", "id": "button_link", "label": "Button link" }
+  ],
+  "presets": [{ "name": "Scentiva — Our story" }]
+}
+{% endschema %}
