@@ -1,13 +1,8 @@
 <section class="scentiva-collections-section scentiva-collections-{{ section.id }}">
   <div class="scentiva-collections__inner page-width">
     {%- if section.settings.heading != blank -%}
-      <div class="scentiva-heading">
-        <span></span>
-        <h2>{{ section.settings.heading }}</h2>
-        <span></span>
-      </div>
+      <div class="scentiva-heading"><span></span><h2>{{ section.settings.heading }}</h2><span></span></div>
     {%- endif -%}
-
     <div class="scentiva-collections__grid">
       {%- for block in section.blocks -%}
         {%- assign collection = block.settings.collection -%}
@@ -15,15 +10,7 @@
         <a class="scentiva-collection-card" href="{{ collection.url | default: routes.collections_url }}" {{ block.shopify_attributes }}>
           <div class="scentiva-collection-card__media">
             {%- if image != blank -%}
-              <img
-                src="{{ image | image_url: width: 900 }}"
-                srcset="{{ image | image_url: width: 450 }} 450w, {{ image | image_url: width: 700 }} 700w, {{ image | image_url: width: 900 }} 900w"
-                sizes="(min-width: 990px) 20vw, 50vw"
-                alt="{{ image.alt | default: block.settings.title | default: collection.title | escape }}"
-                loading="lazy"
-                width="{{ image.width }}"
-                height="{{ image.height }}"
-              >
+              <img src="{{ image | image_url: width: 900 }}" srcset="{{ image | image_url: width: 450 }} 450w, {{ image | image_url: width: 700 }} 700w, {{ image | image_url: width: 900 }} 900w" sizes="(min-width: 990px) 20vw, 50vw" alt="{{ image.alt | default: block.settings.title | default: collection.title | escape }}" loading="lazy" width="{{ image.width }}" height="{{ image.height }}">
             {%- else -%}
               {{ 'collection-1' | placeholder_svg_tag: 'scentiva-placeholder-svg' }}
             {%- endif -%}
@@ -37,32 +24,12 @@
 </section>
 
 <style>
-  .scentiva-collections-{{ section.id }} { background:#fbf8f1; padding:44px 0 54px; }
-  .scentiva-collections-{{ section.id }} .scentiva-collections__inner { max-width:1400px; }
-  .scentiva-collections-{{ section.id }} .scentiva-heading { display:flex; align-items:center; justify-content:center; gap:18px; margin:0 0 28px; }
-  .scentiva-collections-{{ section.id }} .scentiva-heading span { display:block; width:76px; height:1px; background:#a88645; flex:0 0 76px; }
-  .scentiva-collections-{{ section.id }} .scentiva-heading h2 { margin:0; font-family:Georgia,'Times New Roman',serif; font-size:18px; line-height:1.2; font-weight:400; letter-spacing:.38em; text-transform:uppercase; color:#171411; }
-  .scentiva-collections-{{ section.id }} .scentiva-collections__grid { display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:16px; }
-  .scentiva-collections-{{ section.id }} .scentiva-collection-card { display:block; color:inherit; text-decoration:none; }
-  .scentiva-collections-{{ section.id }} .scentiva-collection-card__media { position:relative; aspect-ratio:1/1; overflow:hidden; background:#2b241d; }
-  .scentiva-collections-{{ section.id }} .scentiva-collection-card img,.scentiva-collections-{{ section.id }} .scentiva-placeholder-svg { width:100%; height:100%; display:block; object-fit:cover; transition:transform .45s ease; }
-  .scentiva-collections-{{ section.id }} .scentiva-collection-card:hover img { transform:scale(1.035); }
-  .scentiva-collections-{{ section.id }} .scentiva-collection-card__shade { position:absolute; inset:0; background:linear-gradient(180deg,rgba(0,0,0,0) 35%,rgba(0,0,0,.62) 100%); }
-  .scentiva-collections-{{ section.id }} .scentiva-collection-card__title { position:absolute; left:0; right:0; bottom:26px; padding:0 12px; text-align:center; color:#fff; font-family:Georgia,'Times New Roman',serif; font-size:14px; font-weight:400; letter-spacing:.25em; text-transform:uppercase; text-shadow:0 2px 12px rgba(0,0,0,.5); }
-  @media(max-width:989px){ .scentiva-collections-{{ section.id }} .scentiva-collections__grid { grid-template-columns:repeat(3,minmax(0,1fr)); } }
-  @media(max-width:749px){
-    .scentiva-collections-{{ section.id }} { padding:36px 0 42px; }
-    .scentiva-collections-{{ section.id }} .scentiva-heading { gap:10px; margin-bottom:22px; }
-    .scentiva-collections-{{ section.id }} .scentiva-heading span { width:38px; flex-basis:38px; }
-    .scentiva-collections-{{ section.id }} .scentiva-heading h2 { font-size:15px; letter-spacing:.25em; }
-    .scentiva-collections-{{ section.id }} .scentiva-collections__grid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; }
-    .scentiva-collections-{{ section.id }} .scentiva-collection-card__title { bottom:18px; font-size:12px; letter-spacing:.18em; }
-  }
+  .scentiva-collections-{{ section.id }}{background:#fbf8f1;padding:44px 0 54px}.scentiva-collections-{{ section.id }} .scentiva-collections__inner{max-width:1400px}.scentiva-collections-{{ section.id }} .scentiva-heading{display:flex;align-items:center;justify-content:center;gap:18px;margin:0 0 28px}.scentiva-collections-{{ section.id }} .scentiva-heading span{display:block;width:76px;height:1px;background:#a88645;flex:0 0 76px}.scentiva-collections-{{ section.id }} .scentiva-heading h2{margin:0;font:400 18px/1.2 Georgia,'Times New Roman',serif;letter-spacing:.38em;text-transform:uppercase;color:#171411}.scentiva-collections-{{ section.id }} .scentiva-collections__grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:16px}.scentiva-collections-{{ section.id }} .scentiva-collection-card{display:block;color:inherit;text-decoration:none}.scentiva-collections-{{ section.id }} .scentiva-collection-card__media{position:relative;aspect-ratio:1/1;overflow:hidden;background:#2b241d}.scentiva-collections-{{ section.id }} .scentiva-collection-card img,.scentiva-collections-{{ section.id }} .scentiva-placeholder-svg{width:100%;height:100%;display:block;object-fit:cover;transition:transform .45s ease}.scentiva-collections-{{ section.id }} .scentiva-collection-card:hover img{transform:scale(1.035)}.scentiva-collections-{{ section.id }} .scentiva-collection-card__shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0) 35%,rgba(0,0,0,.62) 100%)}.scentiva-collections-{{ section.id }} .scentiva-collection-card__title{position:absolute;left:0;right:0;bottom:26px;padding:0 12px;text-align:center;color:#fff;font:400 14px/1.2 Georgia,'Times New Roman',serif;letter-spacing:.25em;text-transform:uppercase;text-shadow:0 2px 12px rgba(0,0,0,.5)}@media(max-width:989px){.scentiva-collections-{{ section.id }} .scentiva-collections__grid{grid-template-columns:repeat(3,minmax(0,1fr))}}@media(max-width:749px){.scentiva-collections-{{ section.id }}{padding:36px 0 42px}.scentiva-collections-{{ section.id }} .scentiva-heading{gap:10px;margin-bottom:22px}.scentiva-collections-{{ section.id }} .scentiva-heading span{width:38px;flex-basis:38px}.scentiva-collections-{{ section.id }} .scentiva-heading h2{font-size:15px;letter-spacing:.25em}.scentiva-collections-{{ section.id }} .scentiva-collections__grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.scentiva-collections-{{ section.id }} .scentiva-collection-card__title{bottom:18px;font-size:12px;letter-spacing:.18em}}
 </style>
 
 {% schema %}
 {
-  "name": "Scentiva — Scent collections",
+  "name": "Scent collections",
   "tag": "section",
   "class": "scentiva-scent-collections-wrapper",
   "max_blocks": 5,
@@ -82,7 +49,7 @@
   ],
   "presets": [
     {
-      "name": "Scentiva — Scent collections",
+      "name": "Scent collections",
       "blocks": [
         { "type": "collection", "settings": { "title": "FRESH" } },
         { "type": "collection", "settings": { "title": "WOODY" } },
