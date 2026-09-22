@@ -1,38 +1,24 @@
 /* =========================================================
-   SCENTIVA — LUXURY HEADER
-   Clean desktop layout
-   ========================================================= */
-
-
+   SCENTIVA — CUSTOM HEADER
+   Desktop luxury layout
+   ========================================================= */
 /* =========================================================
-   DESKTOP
-   ========================================================= */
-
+   DESKTOP
+   ========================================================= */
 @media screen and (min-width: 990px) {
 
   /* -------------------------------------------------------
-     HEADER BASE
-     ------------------------------------------------------- */
-
+     HEADER BASE
+     ------------------------------------------------------- */
   .scentiva-header {
     position: relative;
-
     min-height: 118px;
-
     display: grid !important;
-
-    /*
-     * Left navigation | Logo | Right navigation
-     */
     grid-template-columns: minmax(300px, 1fr) auto minmax(300px, 1fr);
-
     align-items: center;
-
     column-gap: 40px;
-
-    padding-left: 34px !important;
-    padding-right: 34px !important;
-
+    padding-left: 28px !important;
+    padding-right: 28px !important;
     overflow: visible;
   }
 
@@ -40,133 +26,108 @@
     max-width: none;
   }
 
-
   /* =======================================================
-     CENTER LOGO
-     ======================================================= */
-
+     CENTER LOGO
+     ======================================================= */
   .scentiva-header .header__heading {
     grid-column: 2;
     grid-row: 1;
-
     justify-self: center;
     align-self: stretch;
-
     display: flex;
     align-items: center;
     justify-content: center;
-
     margin: 0;
-
     z-index: 10;
   }
 
   .scentiva-header .header__heading-link {
     display: flex;
-
-    align-items: center;
+    align-items: stretch;
     justify-content: center;
-
     width: 220px;
     min-width: 220px;
-
     height: 118px;
     min-height: 118px;
-
     margin: 0;
     padding: 0;
-
     text-decoration: none;
   }
 
   .scentiva-header .header__heading-logo-wrapper {
     display: flex;
-
     align-items: center;
     justify-content: center;
-
     width: 220px;
     height: 118px;
-
     overflow: hidden;
   }
 
   .scentiva-header .header__heading-logo {
     display: block;
-
     width: 220px;
     height: 118px;
-
     max-width: none;
     max-height: none;
-
     object-fit: contain;
-
     /*
-     * Removes the obvious white/light rectangle around
-     * the logo and lets it visually blend into the header.
-     */
+     * Blends the light logo background into the
+     * header background.
+     */
     mix-blend-mode: multiply;
   }
 
-  /*
-   * Text logo fallback.
-   */
   .scentiva-header .header__heading .h2 {
     font-family: var(--font-heading-family), Georgia, serif;
-
     font-size: 31px;
     font-weight: 400;
-
     letter-spacing: 0.08em;
     line-height: 1;
-
     text-transform: uppercase;
-
     white-space: nowrap;
   }
 
-
   /* =======================================================
-     LEFT NAVIGATION
-     ======================================================= */
-
+   LEFT NAVIGATION
+   ======================================================= */
   .scentiva-header .header__inline-menu {
     grid-column: 1;
     grid-row: 1;
-
     justify-self: start;
     align-self: center;
-
-    margin: 0;
-
+    margin: 0 !important;
+    padding: 0 !important;
     z-index: 20;
+    /*
+   * Keep the entire menu inside the left grid column.
+   */
+    min-width: 0;
+    max-width: 100%;
   }
 
   .scentiva-header .header__inline-menu .list-menu--inline {
     display: flex;
-
     align-items: center;
-
     gap: 34px;
-
     flex-wrap: nowrap;
+    margin: 0;
+    padding: 0;
+    white-space: nowrap;
+  }
+
+  .scentiva-header .header__inline-menu .list-menu__item {
+    flex: 0 0 auto;
   }
 
   .scentiva-header .header__inline-menu .list-menu__item--link,
   .scentiva-header .header__inline-menu summary {
     font-family: var(--font-body-family), Arial, sans-serif;
-
     font-size: 11px;
     font-weight: 400;
-
     letter-spacing: 0.20em;
     line-height: 1;
-
     text-transform: uppercase;
-
     white-space: nowrap;
-
     padding: 8px 0;
   }
 
@@ -174,74 +135,181 @@
     display: none;
   }
 
-
   /* =======================================================
-     RIGHT SIDE — OUR STORY
-     ======================================================= */
-
+   OUR STORY
+   ======================================================= */
   .scentiva-header .scentiva-right-menu {
-    grid-column: 3;
-    grid-row: 1;
-
-    justify-self: end;
-    align-self: center;
-
-    display: flex !important;
-
-    align-items: center;
-
+    position: absolute;
+    top: 0;
     /*
-     * IMPORTANT:
-     * Do not use the old 180px margin.
-     * The icon group is positioned separately.
-     */
-    margin: 0;
-    padding: 0;
-
-    z-index: 20;
+   * Leave enough room for:
+   * OUR STORY → SEARCH → ACCOUNT → CART
+   */
+    right: 220px;
+    height: 100%;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    margin: 0 !important;
+    padding: 0 !important;
+    z-index: 25;
   }
 
   .scentiva-header .scentiva-right-menu a {
     display: inline-flex;
-
     align-items: center;
-
     color: rgb(var(--color-foreground));
-
     font-family: var(--font-body-family), Arial, sans-serif;
-
     font-size: 11px;
     font-weight: 400;
-
     letter-spacing: 0.20em;
     line-height: 1;
-
     text-decoration: none;
     text-transform: uppercase;
-
     white-space: nowrap;
-
-    /*
-     * Creates actual breathing room before search.
-     */
-    margin-right: 30px;
+    margin: 0;
+    padding: 0;
   }
 
   .scentiva-header .scentiva-right-menu a:hover {
     opacity: 0.65;
   }
 
-  /*
-   * Journal should not appear.
-   */
+  /* Journal is not part of Scentiva navigation. */
   .scentiva-header .scentiva-right-menu a:nth-child(2) {
     display: none !important;
   }
 
+  /* =======================================================
+   SEARCH / ACCOUNT / CART
+   ======================================================= */
+  .scentiva-header .header__icons {
+    position: absolute;
+    top: 0;
+    right: 27px;
+    height: 100%;
+    display: flex !important;
+    align-items: center;
+    justify-content: flex-end;
+    /*
+   * Consistent physical spacing between icons.
+   */
+    gap: 10px;
+    margin: 0 !important;
+    padding: 0 !important;
+    z-index: 30;
+  }
+
+  .scentiva-header .header__icons .desktop-localization-wrapper {
+    display: none !important;
+  }
 
   /* =======================================================
-     SEARCH / ACCOUNT / CART GROUP
-     ======================================================= */
+   ICON CONTAINERS
+   ======================================================= */
+  .scentiva-header .header__icon {
+    width: 32px !important;
+    height: 32px !important;
+    min-width: 32px !important;
+    min-height: 32px !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 32px;
+  }
+
+  *=======================================================SEARCH Production-ready Dawn-compatible search=======================================================*/
+  /* -------------------------------------------------------
+   SEARCH ICON
+   ------------------------------------------------------- */
+
+  .scentiva-header .header__icon--search {
+    position: static !important;
+
+    width: 32px !important;
+    height: 32px !important;
+
+    min-width: 32px !important;
+    min-height: 32px !important;
+
+    padding: 0 !important;
+    margin: 0 !important;
+
+    display: inline-flex !important;
+
+    align-items: center;
+    justify-content: center;
+
+    flex: 0 0 32px;
+  }
+
+
+  /*
+ * Keep the magnifying glass visible.
+ */
+
+  .scentiva-header .header__icon--search .modal__toggle-open {
+    display: flex !important;
+
+    width: 21px !important;
+    height: 21px !important;
+
+    align-items: center;
+    justify-content: center;
+  }
+
+
+  /*
+ * NEVER show Dawn's X when the search is open.
+ *
+ * This is the X that was appearing beside
+ * the magnifying glass.
+ */
+
+  .scentiva-header .header__icon--search .modal__toggle-close,
+  .scentiva-header .header__icon--search .modal__toggle-close.icon-close,
+  .scentiva-header .header__icon--search .icon-close {
+    display: none !important;
+
+    width: 0 !important;
+    height: 0 !important;
+
+    opacity: 0 !important;
+    visibility: hidden !important;
+  }
+
+
+  /*
+ * Search icon SVG.
+ */
+
+  .scentiva-header .header__icon--search .icon-search,
+  .scentiva-header .header__icon--search .modal__toggle-open svg,
+  .scentiva-header .header__icon--search .modal__toggle-open .svg-wrapper {
+    width: 21px !important;
+    height: 21px !important;
+
+    display: block !important;
+  }
+
+
+  /* -------------------------------------------------------
+   SEARCH MODAL CONTAINER
+   ------------------------------------------------------- */
+
+  /*
+ * IMPORTANT:
+ *
+ * Do NOT turn .search-modal into the small panel.
+ *
+ * Dawn uses .search-modal as the modal layer.
+ * The actual visual panel is .search-modal__content.
+ *
+ * Keeping this relationship prevents horizontal
+ * page movement and preserves Dawn's modal behavior.
+ */
 
   .scentiva-header .header__icons {
     position: absolute;
@@ -251,45 +319,291 @@
 
     height: 100%;
 
+    overflow: visible !important;
+  }
+
+
+  /*
+ * Search modal is positioned relative to the
+ * header icon group instead of the search icon.
+ *
+ * This makes the panel consistently align to the
+ * right side of the header.
+ */
+
+  .scentiva-header .header__icons .header__search {
+    position: static !important;
+  }
+
+
+  /*
+ * The modal itself occupies the available header
+ * modal area. Do not give it a fixed 360px width.
+ */
+
+  .scentiva-header .search-modal {
+  position: absolute !important;
+
+  top: 100% !important;
+  bottom: auto !important;
+  left: auto !important;
+  right: 0 !important;
+
+  width: min(390px, calc(100vw - 24px)) !important;
+  max-width: calc(100vw - 24px) !important;
+
+  height: auto !important;
+  min-height: 0 !important;
+
+  padding: 0 !important;
+  box-sizing: border-box !important;
+
+  transform: none !important;
+
+  background: transparent !important;
+
+    border: 0 !important;
+
+    box-shadow: none !important;
+
+    overflow: visible !important;
+
+    z-index: 100 !important;
+  }
+
+
+  /* -------------------------------------------------------
+   SEARCH PANEL
+   ------------------------------------------------------- */
+
+  .scentiva-header .search-modal__content {
+    position: relative !important;
+
+    width: 100% !important;
+    max-width: none !important;
+
+    height: auto !important;
+    min-height: 0 !important;
+
+    margin: 0 !important;
+    padding: 18px 20px 20px !important;
+
+    display: block !important;
+
+    box-sizing: border-box !important;
+
+    background: rgb(var(--color-background)) !important;
+
+    border: 1px solid rgba(var(--color-foreground), 0.12) !important;
+
+    border-top: 0 !important;
+
+    box-shadow:
+      0 14px 35px rgba(0, 0, 0, 0.10) !important;
+
+    overflow: visible !important;
+  }
+
+
+  /* -------------------------------------------------------
+   SEARCH FORM
+   ------------------------------------------------------- */
+
+  .scentiva-header .search-modal__content form,
+  .scentiva-header .search-modal__form {
+    width: 100% !important;
+
+    max-width: none !important;
+
+    margin: 0 !important;
+  }
+
+
+  /* -------------------------------------------------------
+   SEARCH FIELD
+   ------------------------------------------------------- */
+
+  .scentiva-header .search-modal .field {
+    position: relative !important;
+
+    width: 100% !important;
+
+    min-height: 46px !important;
+    height: 46px !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
     display: flex !important;
 
     align-items: center;
-    justify-content: flex-end;
 
-    /*
-     * THIS controls the spacing between:
-     * Search → Account → Cart
-     */
-    gap: 16px;
+    box-sizing: border-box !important;
 
-    margin: 0;
-    padding: 0;
+    background: transparent !important;
 
-    z-index: 30;
+    border: 1px solid rgba(var(--color-foreground), 0.28) !important;
+
+    border-radius: 0 !important;
+
+    box-shadow: none !important;
+
+    overflow: hidden !important;
   }
+
 
   /*
-   * Hide country/language controls because they aren't
-   * part of the Scentiva header.
-   */
-  .scentiva-header .header__icons .desktop-localization-wrapper {
-    display: none !important;
+ * Elegant focus state.
+ */
+
+  .scentiva-header .search-modal .field:focus-within {
+    border-color: rgba(var(--color-foreground), 0.75) !important;
+
+    box-shadow:
+      0 0 0 1px rgba(var(--color-foreground), 0.08) !important;
   }
 
 
-  /* =======================================================
-     ICON CONTAINERS
-     ======================================================= */
+  /* -------------------------------------------------------
+   SEARCH INPUT
+   ------------------------------------------------------- */
 
-  .scentiva-header .header__icon {
-    width: 32px;
-    height: 32px;
+  .scentiva-header .search-modal .field__input,
+  .scentiva-header .search-modal .search__input {
+    flex: 1 1 auto !important;
 
-    min-width: 32px;
-    min-height: 32px;
+    width: 100% !important;
+    min-width: 0 !important;
+
+    height: 46px !important;
+
+    margin: 0 !important;
+
+    padding: 0 14px !important;
+
+    box-sizing: border-box !important;
+
+    border: 0 !important;
+    outline: none !important;
+
+    background: transparent !important;
+
+    box-shadow: none !important;
+
+    color: rgb(var(--color-foreground));
+
+    font-family: var(--font-body-family), Arial, sans-serif;
+
+    font-size: 12px;
+
+    font-weight: 400;
+
+    letter-spacing: 0.08em;
+
+    line-height: 1.2;
+  }
+
+
+  /*
+ * Placeholder.
+ */
+
+  .scentiva-header .search-modal .field__input::placeholder {
+    color: rgb(var(--color-foreground));
+
+    opacity: 0.55;
+
+    font-family: var(--font-body-family), Arial, sans-serif;
+
+    font-size: 11px;
+
+    font-weight: 400;
+
+    letter-spacing: 0.14em;
+
+    text-transform: uppercase;
+  }
+
+
+  /* -------------------------------------------------------
+   REMOVE SEARCH FIELD X
+   ------------------------------------------------------- */
+
+  /*
+ * THIS is the X appearing inside the search field.
+ *
+ * It is the reset button, NOT the modal close button.
+ */
+
+  .scentiva-header .search-modal .reset__button,
+  .scentiva-header .search-modal .field .reset__button,
+  .scentiva-header .search-modal button.reset__button {
+    display: none !important;
+
+    width: 0 !important;
+    min-width: 0 !important;
+
+    height: 0 !important;
 
     padding: 0 !important;
+    margin: 0 !important;
 
+    opacity: 0 !important;
+    visibility: hidden !important;
+
+    pointer-events: none !important;
+  }
+
+
+  /* -------------------------------------------------------
+   REMOVE SEARCH MODAL CLOSE X
+   ------------------------------------------------------- */
+
+  /*
+ * We are using the search icon itself as the toggle.
+ * Therefore the separate modal close button is unnecessary
+ * for this Scentiva header.
+ */
+
+  .scentiva-header .search-modal .search-modal__close-button,
+  .scentiva-header .search-modal .modal__close-button {
+    display: none !important;
+
+    width: 0 !important;
+    min-width: 0 !important;
+
+    height: 0 !important;
+
+    padding: 0 !important;
+    margin: 0 !important;
+
+    opacity: 0 !important;
+    visibility: hidden !important;
+
+    pointer-events: none !important;
+  }
+
+
+  /* -------------------------------------------------------
+   SEARCH SUBMIT BUTTON
+   ------------------------------------------------------- */
+
+  /*
+ * Keep the submit button functional but visually minimal.
+ */
+
+  .scentiva-header .search-modal .search__button {
+    position: absolute !important;
+
+    top: 0;
+    right: 0;
+
+    width: 44px !important;
+    height: 46px !important;
+
+    min-width: 44px !important;
+
+    padding: 0 !important;
     margin: 0 !important;
 
     display: inline-flex !important;
@@ -297,223 +611,303 @@
     align-items: center;
     justify-content: center;
 
-    flex: 0 0 32px;
-  }
+    border: 0 !important;
 
-  /*
-   * Normal icon size.
-   */
-  .scentiva-header .header__icon .svg-wrapper {
-    width: 21px;
-    height: 21px;
+    background: transparent !important;
 
-    display: inline-flex;
+    color: rgb(var(--color-foreground));
 
-    align-items: center;
-    justify-content: center;
-  }
+    cursor: pointer;
 
-  .scentiva-header .header__icon svg {
-    width: 21px;
-    height: 21px;
-
-    display: block;
+    z-index: 2;
   }
 
 
-  /* =======================================================
-     SEARCH ICON — FIX THE EXTRA X
-     ======================================================= */
+  .scentiva-header .search-modal .search__button .svg-wrapper,
+  .scentiva-header .search-modal .search__button svg,
+  .scentiva-header .search-modal .search__button .icon-search {
+    width: 17px !important;
+    height: 17px !important;
 
-  /*
-   * Dawn's search button contains both:
-   *
-   *   .icon-search
-   *   .icon-close
-   *
-   * Your previous broad SVG rules allowed the close icon
-   * to appear alongside the search icon.
-   *
-   * Keep ONLY the magnifying glass visible.
-   */
-
-  .scentiva-header .header__icon--search .icon-search {
-    display: block !important;
-
-    width: 21px;
-    height: 21px;
-  }
-
-  .scentiva-header .header__icon--search .icon-close {
-    display: none !important;
-
-    width: 0;
-    height: 0;
-  }
-
-  /*
-   * Also protect against Shopify/Dawn's details-open
-   * state changing the icon.
-   */
-  .scentiva-header .header__icon--search details[open] .icon-search,
-  .scentiva-header .header__icon--search[open] .icon-search {
     display: block !important;
   }
 
-  .scentiva-header .header__icon--search details[open] .icon-close,
-  .scentiva-header .header__icon--search[open] .icon-close {
-    display: none !important;
-  }
 
+  /* -------------------------------------------------------
+   PREDICTIVE SEARCH
+   ------------------------------------------------------- */
 
-  /* =======================================================
-     ACCOUNT ICON
-     ======================================================= */
+  .scentiva-header .search-modal .predictive-search {
+    position: relative !important;
 
-  .scentiva-header .header__icon--account {
-    width: 32px;
-    height: 32px;
+    width: 100% !important;
 
-    min-width: 32px;
-    min-height: 32px;
-  }
-
-  .scentiva-header .header__icon--account .svg-wrapper,
-  .scentiva-header .header__icon--account svg {
-    width: 21px;
-    height: 21px;
-  }
-
-
-  /* =======================================================
-     CART ICON
-     ======================================================= */
-
-  /*
-   * IMPORTANT:
-   *
-   * The old CSS had:
-   *
-   * .header__icon--cart {
-   *     width: 21px;
-   *     height: 21px;
-   * }
-   *
-   * while the SVG was 42px.
-   *
-   * That was incorrect.
-   *
-   * Cart container is the SAME SIZE as search/account.
-   */
-
-  .scentiva-header .header__icon--cart {
-    width: 32px !important;
-    height: 32px !important;
-
-    min-width: 32px !important;
-    min-height: 32px !important;
-
-    flex: 0 0 32px;
+    margin: 12px 0 0 !important;
 
     padding: 0 !important;
-    margin: 0 !important;
 
-    display: inline-flex !important;
+    border: 0 !important;
 
-    align-items: center;
-    justify-content: center;
-  }
+    border-radius: 0 !important;
 
-  .scentiva-header .header__icon--cart .svg-wrapper {
-    width: 21px !important;
-    height: 21px !important;
+    box-shadow: none !important;
 
-    display: inline-flex;
+    background: rgb(var(--color-background)) !important;
 
-    align-items: center;
-    justify-content: center;
-  }
-
-  .scentiva-header .header__icon--cart svg {
-    width: 21px !important;
-    height: 21px !important;
-
-    display: block;
+    overflow: hidden;
   }
 
 
-  /* =======================================================
-     CART COUNT
-     ======================================================= */
+  /*
+ * Keep predictive results visually connected
+ * to the search field.
+ */
 
-  .scentiva-header .cart-count-bubble {
-    min-width: 16px;
-    min-height: 16px;
-
-    width: auto;
-    height: auto;
-
-    font-size: 9px;
-  }
-
-
-  /* =======================================================
-     REMOVE UNNECESSARY SEARCH / ICON TRANSFORMS
-     ======================================================= */
-
-  .scentiva-header .header__icons > * {
+  .scentiva-header .search-modal .predictive-search__results-groups-wrapper {
     margin: 0 !important;
   }
 
+
+  /* -------------------------------------------------------
+   SEARCH OVERLAY
+   ------------------------------------------------------- */
+
+  /*
+ * Keep the native overlay behavior.
+ *
+ * Do not let it create horizontal overflow.
+ */
+
+  .scentiva-header .search-modal .modal-overlay {
+    position: fixed !important;
+
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+
+    width: 100vw !important;
+    height: 100vh !important;
+
+    overflow: hidden !important;
+
+    pointer-events: none !important;
+
+    z-index: -1 !important;
+  }
+
+
+  /*
+ * The overlay should not create an extra horizontal
+ * scrollbar.
+ */
+
+  .scentiva-header .search-modal .modal-overlay::after {
+    box-sizing: border-box !important;
+
+    max-width: 100vw !important;
+
+    overflow: hidden !important;
+  }
+
+
+  /* -------------------------------------------------------
+   PREVENT HORIZONTAL PAGE MOVEMENT
+   ------------------------------------------------------- */
+
+  /*
+ * Search must never increase document width.
+ */
+
+  html,
+  body {
+    max-width: 100%;
+
+    overflow-x: clip;
+  }
+
+
+  @supports not (overflow-x: clip) {
+
+    html,
+    body {
+      overflow-x: hidden;
+    }
+  }
+
+
+  /* -------------------------------------------------------
+   MOBILE SEARCH
+   ------------------------------------------------------- */
+
+  @media screen and (max-width: 989px) {
+
+    .scentiva-header .search-modal {
+      width: min(390px, calc(100vw - 20px)) !important;
+
+      max-width: calc(100vw - 20px) !important;
+
+      right: 10px !important;
+    }
+
+
+    .scentiva-header .search-modal__content {
+      padding: 14px 14px 16px !important;
+    }
+
+
+    .scentiva-header .search-modal .field {
+      height: 44px !important;
+
+      min-height: 44px !important;
+    }
+
+
+    .scentiva-header .search-modal .field__input {
+      height: 44px !important;
+
+      padding: 0 12px !important;
+    }
+
+
+    .scentiva-header .search-modal .search__button {
+      width: 42px !important;
+
+      min-width: 42px !important;
+
+      height: 44px !important;
+    }
+
+
+    .scentiva-header .search-modal .search__button svg,
+    .scentiva-header .search-modal .search__button .svg-wrapper,
+    .scentiva-header .search-modal .search__button .icon-search {
+      width: 17px !important;
+      height: 17px !important;
+    }
+  }
 }
 
+/* =======================================================
+   ACCOUNT
+   ======================================================= */
+.scentiva-header .header__icon--account {
+  width: 32px !important;
+  height: 32px !important;
+  min-width: 32px !important;
+  min-height: 32px !important;
+  flex: 0 0 32px;
+}
+
+.scentiva-header .header__icon--account .svg-wrapper,
+.scentiva-header .header__icon--account svg {
+  width: 21px;
+  height: 21px;
+}
+
+/* =======================================================
+   CART
+   ======================================================= */
+.scentiva-header .header__icon--cart {
+  width: 32px !important;
+  height: 32px !important;
+  min-width: 32px !important;
+  min-height: 32px !important;
+  flex: 0 0 32px;
+  padding: 0 !important;
+  margin: 0 !important;
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+}
+
+.scentiva-header .header__icon--cart .svg-wrapper {
+  width: 42px !important;
+  height: 42px !important;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.scentiva-header .header__icon--cart svg {
+  width: 42px !important;
+  height: 42px !important;
+  display: block;
+}
+
+/* =======================================================
+     CART COUNT
+     ======================================================= */
+.scentiva-header .cart-count-bubble {
+  min-width: 16px;
+  min-height: 16px;
+  width: auto;
+  height: auto;
+  font-size: 9px;
+}
+
+/* =======================================================
+     REMOVE DAWN DEFAULT ICON MARGINS
+     ======================================================= */
+.scentiva-header .header__icons>* {
+  margin: 0 !important;
+}
+}
 
 /* =========================================================
-   MOBILE / TABLET
-   ========================================================= */
-
+   MOBILE / TABLET
+   ========================================================= */
 @media screen and (max-width: 989px) {
 
   /*
-   * Our Story is desktop-only.
-   */
+   * Our Story is desktop-only.
+   */
   .scentiva-header .scentiva-right-menu {
     display: none !important;
   }
 
   /*
-   * Do NOT apply desktop grid/logo positioning on mobile.
-   * Shopify/Dawn's native mobile header remains in control.
-   */
+   * Keep Dawn's native mobile header layout.
+   */
   .scentiva-header .header__heading .h2 {
     font-family: var(--font-heading-family), Georgia, serif;
-
     font-size: 23px;
     font-weight: 400;
-
     letter-spacing: 0.08em;
-
     text-transform: uppercase;
   }
 
   /*
-   * Keep mobile search from showing the close X beside
-   * the magnifying glass.
-   */
-  .scentiva-header .header__icon--search .icon-close {
+   * Hide ONLY the search close icon.
+   *
+   * Correct class:
+   * .header__icon-close
+   */
+  .scentiva-header .header__icon--search .header__icon-close {
     display: none !important;
   }
 
-  .scentiva-header .header__icon--search .icon-search {
-    display: block !important;
+  .scentiva-header .header__icon--search .header__icon-close svg {
+    display: none !important;
   }
 
   /*
-   * Keep mobile cart at the same visual size.
-   */
+   * Keep mobile search icon visible.
+   */
+  .scentiva-header .header__icon--search .svg-wrapper:first-child {
+    display: inline-flex !important;
+    width: 21px;
+    height: 21px;
+  }
+
+  /*
+   * Keep mobile cart visually consistent.
+   */
   .scentiva-header .header__icon--cart .svg-wrapper,
   .scentiva-header .header__icon--cart svg {
     width: 21px;
     height: 21px;
   }
 }
+
+/
