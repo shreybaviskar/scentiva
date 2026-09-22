@@ -1,30 +1,28 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
-    "image_banner": {
+    "hero": {
       "type": "image-banner",
       "blocks": {
-        "heading": {
+        "hero_heading": {
           "type": "heading",
           "settings": {
-            "heading": "Browse our latest products",
+            "heading": "MORE THAN<br>A SCENT.<br>A STORY.",
             "heading_size": "h0"
           }
         },
-        "button": {
+        "hero_text": {
+          "type": "text",
+          "settings": {
+            "text": "THE ART OF OLFACTION",
+            "text_style": "caption-with-letter-spacing"
+          }
+        },
+        "hero_button": {
           "type": "buttons",
           "settings": {
-            "button_label_1": "Shop all",
+            "button_label_1": "EXPLORE COLLECTION",
             "button_link_1": "shopify://collections/all",
-            "button_style_secondary_1": true,
+            "button_style_secondary_1": false,
             "button_label_2": "",
             "button_link_2": "",
             "button_style_secondary_2": false
@@ -32,53 +30,181 @@
         }
       },
       "block_order": [
-        "heading",
-        "button"
+        "hero_heading",
+        "hero_text",
+        "hero_button"
       ],
       "settings": {
-        "image_overlay_opacity": 40,
+        "image_overlay_opacity": 8,
         "image_height": "large",
-        "desktop_content_position": "bottom-center",
+        "desktop_content_position": "middle-left",
         "show_text_box": false,
         "image_behavior": "none",
-        "desktop_content_alignment": "center",
-        "color_scheme": "scheme-3",
-        "mobile_content_alignment": "center",
+        "desktop_content_alignment": "left",
+        "color_scheme": "scheme-1",
+        "mobile_content_alignment": "left",
         "stack_images_on_mobile": false,
         "show_text_below": false
+      }
+    },
+    "scent_discovery": {
+      "type": "multicolumn",
+      "blocks": {
+        "fresh": {
+          "type": "column",
+          "settings": {
+            "image": "",
+            "title": "FRESH",
+            "text": "<p></p>",
+            "link_label": "",
+            "link": "shopify://collections/fresh"
+          }
+        },
+        "woody": {
+          "type": "column",
+          "settings": {
+            "image": "",
+            "title": "WOODY",
+            "text": "<p></p>",
+            "link_label": "",
+            "link": "shopify://collections/woody"
+          }
+        },
+        "amber": {
+          "type": "column",
+          "settings": {
+            "image": "",
+            "title": "AMBER",
+            "text": "<p></p>",
+            "link_label": "",
+            "link": "shopify://collections/amber"
+          }
+        },
+        "floral": {
+          "type": "column",
+          "settings": {
+            "image": "",
+            "title": "FLORAL",
+            "text": "<p></p>",
+            "link_label": "",
+            "link": "shopify://collections/floral"
+          }
+        },
+        "gourmand": {
+          "type": "column",
+          "settings": {
+            "image": "",
+            "title": "GOURMAND",
+            "text": "<p></p>",
+            "link_label": "",
+            "link": "shopify://collections/gourmand"
+          }
+        }
+      },
+      "block_order": [
+        "fresh",
+        "woody",
+        "amber",
+        "floral",
+        "gourmand"
+      ],
+      "settings": {
+        "title": "DISCOVER YOUR SCENT",
+        "heading_size": "h2",
+        "image_width": "full",
+        "image_ratio": "square",
+        "button_label": "",
+        "button_link": "",
+        "columns_desktop": 5,
+        "column_alignment": "center",
+        "background_style": "none",
+        "color_scheme": "scheme-1",
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 48,
+        "padding_bottom": 48
       }
     },
     "featured_collection": {
       "type": "featured-collection",
       "settings": {
-        "title": "Featured products",
+        "collection": "all",
+        "products_to_show": 4,
+        "title": "FEATURED FRAGRANCES",
         "heading_size": "h2",
         "description": "",
         "show_description": false,
         "description_style": "body",
-        "collection": "all",
-        "products_to_show": 8,
         "columns_desktop": 4,
-        "color_scheme": "scheme-1",
-        "full_width": false,
-        "show_view_all": true,
-        "view_all_style": "solid",
         "enable_desktop_slider": false,
-        "swipe_on_mobile": false,
+        "full_width": false,
+        "show_view_all": false,
+        "view_all_style": "link",
+        "color_scheme": "scheme-1",
         "image_ratio": "adapt",
         "image_shape": "default",
-        "show_secondary_image": true,
+        "show_secondary_image": false,
         "show_vendor": false,
         "show_rating": false,
-        "quick_add": "none",
+        "quick_add": "standard",
         "columns_mobile": "2",
-        "padding_top": 44,
-        "padding_bottom": 36
+        "swipe_on_mobile": false,
+        "padding_top": 42,
+        "padding_bottom": 58
+      }
+    },
+    "story": {
+      "type": "image-with-text",
+      "blocks": {
+        "story_heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "A SCENT<br>FOR EVERY MOMENT",
+            "heading_size": "h1"
+          }
+        },
+        "story_text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Crafted for places, people and possibilities that shape your story.</p>",
+            "text_style": "body"
+          }
+        },
+        "story_button": {
+          "type": "button",
+          "settings": {
+            "button_label": "OUR STORY",
+            "button_link": "shopify://pages/our-story",
+            "button_style_secondary": true
+          }
+        }
+      },
+      "block_order": [
+        "story_heading",
+        "story_text",
+        "story_button"
+      ],
+      "settings": {
+        "image": "",
+        "height": "medium",
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "image_behavior": "none",
+        "content_layout": "no-overlap",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "mobile_content_alignment": "left",
+        "section_color_scheme": "scheme-4",
+        "color_scheme": "scheme-4",
+        "padding_top": 0,
+        "padding_bottom": 0
       }
     }
   },
   "order": [
-    "image_banner",
-    "featured_collection"
+    "hero",
+    "scent_discovery",
+    "featured_collection",
+    "story"
   ]
 }
