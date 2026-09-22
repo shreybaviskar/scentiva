@@ -80,7 +80,7 @@
     display: flex !important;
     align-items: center;
     gap: 30px;
-    margin-right: 122px;
+    margin-right: 165px;
     z-index: 4;
   }
 
@@ -100,9 +100,10 @@
 
   .scentiva-header .header__icons {
     position: absolute;
-    top: 50%;
+    top: 0;
     right: 27px;
-    transform: translateY(-50%);
+    height: 100%;
+    transform: none;
     display: flex;
     align-items: center;
     gap: 5px;
