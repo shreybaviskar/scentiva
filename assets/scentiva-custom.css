@@ -135,3 +135,87 @@
     text-transform: uppercase;
   }
 }
+
+/* Global header refinements */
+@media screen and (min-width: 990px) {
+  /* On non-home pages Dawn does not wrap the logo link in the homepage <h1>.
+     Target the link itself so the center logo remains centered everywhere. */
+  .scentiva-header .header__heading-link {
+    grid-column: 2;
+    grid-row: 1;
+    justify-self: center;
+    align-self: center;
+    margin: 0;
+    z-index: 3;
+    min-width: 170px;
+    min-height: 96px;
+  }
+
+  .scentiva-header .header__heading {
+    grid-column: 2;
+    grid-row: 1;
+    justify-self: center;
+    align-self: center;
+    margin: 0;
+    z-index: 3;
+  }
+
+  .scentiva-header .header__heading-logo-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .scentiva-header .header__heading-logo {
+    max-width: 170px;
+    max-height: 92px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+  }
+
+  .scentiva-header .header__heading-link .h2 {
+    font-family: var(--font-heading-family), Georgia, serif;
+    font-size: 31px;
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    line-height: 1;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  /* Cart icon was visually undersized compared with search/account. */
+  .scentiva-header .header__icon--cart {
+    width: 44px;
+    height: 44px;
+  }
+
+  .scentiva-header .header__icon--cart .svg-wrapper,
+  .scentiva-header .header__icon--cart svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  /* Journal is not part of the Scentiva navigation. */
+  .scentiva-header .scentiva-right-menu a:nth-child(2) {
+    display: none !important;
+  }
+}
+
+@media screen and (max-width: 989px) {
+  .scentiva-header .header__heading-link {
+    min-width: 120px;
+    min-height: 62px;
+  }
+
+  .scentiva-header .header__heading-logo {
+    max-width: 125px;
+    max-height: 58px;
+  }
+
+  .scentiva-header .header__icon--cart .svg-wrapper,
+  .scentiva-header .header__icon--cart svg {
+    width: 23px;
+    height: 23px;
+  }
+}
