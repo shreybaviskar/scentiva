@@ -1,6 +1,136 @@
-/*
-  Scentiva custom stylesheet intentionally kept minimal.
-  Homepage sections contain their own scoped styles so the Shopify base theme
-  remains untouched and Theme Editor sections do not conflict with each other.
-*/
-.scentiva-right-menu { display:none !important; }
+/* Scentiva luxury header */
+@media screen and (min-width: 990px) {
+  .scentiva-header {
+    position: relative;
+    min-height: 118px;
+    display: grid !important;
+    grid-template-columns: minmax(300px, 1fr) auto minmax(300px, 1fr);
+    align-items: center;
+    column-gap: 40px;
+    padding-left: 34px !important;
+    padding-right: 34px !important;
+  }
+
+  .scentiva-header.page-width { max-width: none; }
+
+  .scentiva-header .header__heading {
+    grid-column: 2;
+    grid-row: 1;
+    justify-self: center;
+    margin: 0;
+    z-index: 3;
+  }
+
+  .scentiva-header .header__heading-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .scentiva-header .header__heading-logo {
+    display: block;
+    max-height: 92px;
+    width: auto;
+    object-fit: contain;
+  }
+
+  .scentiva-header .header__heading .h2 {
+    font-family: var(--font-heading-family), Georgia, serif;
+    font-size: 31px;
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    line-height: 1;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  .scentiva-header .header__inline-menu {
+    grid-column: 1;
+    grid-row: 1;
+    justify-self: start;
+    margin: 0;
+    z-index: 4;
+  }
+
+  .scentiva-header .header__inline-menu .list-menu--inline {
+    display: flex;
+    align-items: center;
+    gap: 34px;
+    flex-wrap: nowrap;
+  }
+
+  .scentiva-header .header__inline-menu .list-menu__item--link,
+  .scentiva-header .header__inline-menu summary {
+    font-family: var(--font-body-family), Arial, sans-serif;
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 0.20em;
+    line-height: 1;
+    text-transform: uppercase;
+    white-space: nowrap;
+    padding: 8px 0;
+  }
+
+  .scentiva-header .header__inline-menu .icon-caret { display: none; }
+
+  .scentiva-header .scentiva-right-menu {
+    grid-column: 3;
+    grid-row: 1;
+    justify-self: end;
+    display: flex !important;
+    align-items: center;
+    gap: 30px;
+    margin-right: 122px;
+    z-index: 4;
+  }
+
+  .scentiva-header .scentiva-right-menu a {
+    color: rgb(var(--color-foreground));
+    font-family: var(--font-body-family), Arial, sans-serif;
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 0.20em;
+    line-height: 1;
+    text-decoration: none;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  .scentiva-header .scentiva-right-menu a:hover { opacity: 0.65; }
+
+  .scentiva-header .header__icons {
+    position: absolute;
+    top: 50%;
+    right: 27px;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    z-index: 5;
+  }
+
+  .scentiva-header .header__icons .desktop-localization-wrapper { display: none; }
+
+  .scentiva-header .header__icon {
+    width: 42px;
+    height: 42px;
+  }
+
+  .scentiva-header .header__icon .svg-wrapper,
+  .scentiva-header .header__icon svg {
+    width: 21px;
+    height: 21px;
+  }
+}
+
+@media screen and (max-width: 989px) {
+  .scentiva-header .scentiva-right-menu { display: none !important; }
+
+  .scentiva-header .header__heading .h2 {
+    font-family: var(--font-heading-family), Georgia, serif;
+    font-size: 23px;
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+}
