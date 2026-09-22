@@ -256,6 +256,10 @@
       {%- endif -%}
     {%- endif -%}
 
+    <nav class="scentiva-right-menu" aria-label="Secondary navigation">
+      <a href="{{ routes.root_url }}pages/our-story">Our Story</a>
+      <a href="{{ routes.root_url }}blogs/journal">Journal</a>
+    </nav>
     <div class="header__icons{% if section.settings.enable_country_selector or section.settings.enable_language_selector %} header__icons--localization header-localization{% endif %}">
       <div class="desktop-localization-wrapper">
         {%- if section.settings.enable_country_selector and localization.available_countries.size > 1 -%}
