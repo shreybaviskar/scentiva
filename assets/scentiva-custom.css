@@ -55,3 +55,28 @@ body { background:var(--scentiva-paper); color:var(--scentiva-ink); letter-spaci
  .scentiva-section-heading { letter-spacing:.22em; gap:10px; }
  .scentiva-section-heading:before,.scentiva-section-heading:after { width:42px; }
 }
+@media (min-width: 990px) {
+  .scentiva-header { position:relative; }
+  .scentiva-right-menu {
+    position:absolute;
+    right:112px;
+    top:50%;
+    transform:translateY(-50%);
+    display:flex;
+    gap:34px;
+    z-index:3;
+  }
+  .scentiva-right-menu a {
+    color:inherit;
+    text-decoration:none;
+    font-family:Georgia,"Times New Roman",serif;
+    text-transform:uppercase;
+    letter-spacing:.2em;
+    font-size:12px;
+    white-space:nowrap;
+  }
+  .scentiva-right-menu a:hover { text-decoration:underline; text-underline-offset:6px; }
+}
+@media (max-width: 989px) {
+  .scentiva-right-menu { display:none; }
+}
