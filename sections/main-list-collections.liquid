@@ -1,10 +1,63 @@
 {{ 'component-card.css' | asset_url | stylesheet_tag }}
 {{ 'section-collection-list.css' | asset_url | stylesheet_tag }}
 
+<style>
+  .scentiva-heading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+    width: 100%;
+    margin: 0 0 28px;
+  }
+
+  .scentiva-heading > span {
+    display: block;
+    width: 76px;
+    height: 1px;
+    flex: 0 0 76px;
+    background: #a88645;
+  }
+
+  .scentiva-heading__title {
+    margin: 0;
+    padding: 0;
+    font: 400 18px/1.2 Georgia, 'Times New Roman', serif;
+    letter-spacing: .38em;
+    text-transform: uppercase;
+    color: #171411;
+    text-align: center;
+  }
+
+  @media screen and (max-width: 749px) {
+    .scentiva-heading {
+      gap: 10px;
+      margin-bottom: 22px;
+    }
+
+    .scentiva-heading > span {
+      width: 38px;
+      flex-basis: 38px;
+    }
+
+    .scentiva-heading__title {
+      font-size: 15px;
+      letter-spacing: .25em;
+    }
+  }
+</style>
+
 <div class="page-width">
-  <h1 class="title title--primary inline-richtext{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
-    {{ section.settings.title }}
-  </h1>
+
+  <div class="scentiva-heading">
+    <span></span>
+
+    <h1 class="scentiva-heading__title">
+      {{ section.settings.title }}
+    </h1>
+
+    <span></span>
+  </div>
   {%- liquid
     case section.settings.sort
       when 'products_high', 'products_low'

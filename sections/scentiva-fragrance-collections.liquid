@@ -1,0 +1,187 @@
+<section class="scentiva-fragrance-collections-{{ section.id }}">
+  <div class="page-width">
+
+    {%- if section.settings.title != blank -%}
+      <div class="scentiva-heading">
+        <span></span>
+        <h2>{{ section.settings.title }}</h2>
+        <span></span>
+      </div>
+    {%- endif -%}
+
+    <div class="scentiva-fragrance-collections__grid">
+      {%- for block in section.blocks -%}
+        {%- assign collection = block.settings.collection -%}
+
+        <a
+          href="{{ collection.url | default: routes.collections_url }}"
+          class="scentiva-fragrance-collection-card"
+          {{ block.shopify_attributes }}
+        >
+          <div class="scentiva-fragrance-collection-card__media">
+
+            {%- if collection.image != blank -%}
+              <img
+                src="{{ collection.image | image_url: width: 900 }}"
+                srcset="
+                  {{ collection.image | image_url: width: 450 }} 450w,
+                  {{ collection.image | image_url: width: 700 }} 700w,
+                  {{ collection.image | image_url: width: 900 }} 900w
+                "
+                sizes="(min-width: 990px) 25vw, 80vw"
+                alt="{{ collection.image.alt | default: collection.title | escape }}"
+                loading="lazy"
+                width="{{ collection.image.width }}"
+                height="{{ collection.image.height }}"
+              >
+            {%- else -%}
+              {{ 'collection-1' | placeholder_svg_tag: 'scentiva-placeholder-svg' }}
+            {%- endif -%}
+
+          </div>
+
+          <div class="scentiva-fragrance-collection-card__title">
+            {{ collection.title | escape }}
+          </div>
+        </a>
+      {%- endfor -%}
+    </div>
+
+  </div>
+</section>
+
+<style>
+  /* =========================================================
+     SCENTIVA — FRAGRANCE COLLECTIONS
+     ========================================================= */
+
+  .scentiva-fragrance-collections-{{ section.id }} {
+    background: #fbf8f1;
+    padding: 44px 0 54px;
+  }
+
+  /* =========================================================
+     HEADING — SAME AS DISCOVER YOUR SCENT
+     ========================================================= */
+
+  .scentiva-fragrance-collections-{{ section.id }} .scentiva-heading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+    margin: 0 0 28px;
+  }
+
+  .scentiva-fragrance-collections-{{ section.id }} .scentiva-heading span {
+    display: block;
+    width: 76px;
+    height: 1px;
+    background: #a88645;
+    flex: 0 0 76px;
+  }
+
+  .scentiva-fragrance-collections-{{ section.id }} .scentiva-heading h2 {
+    margin: 0;
+    font: 400 18px/1.2 Georgia, 'Times New Roman', serif;
+    letter-spacing: .38em;
+    text-transform: uppercase;
+    color: #171411;
+  }
+
+  /* =========================================================
+     COLLECTION GRID
+     ========================================================= */
+
+  .scentiva-fragrance-collections-{{ section.id }}__grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 16px;
+  }
+
+  .scentiva-fragrance-collection-card {
+    display: block;
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .scentiva-fragrance-collection-card__media {
+    position: relative;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    background: #2b241d;
+  }
+
+  .scentiva-fragrance-collection-card__media img,
+  .scentiva-fragrance-collection-card__media .scentiva-placeholder-svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    transition: transform .45s ease;
+  }
+
+  .scentiva-fragrance-collection-card:hover
+  .scentiva-fragrance-collection-card__media img {
+    transform: scale(1.035);
+  }
+
+  .scentiva-fragrance-collection-card__title {
+    margin-top: 16px;
+    text-align: center;
+    color: #171411;
+    font: 400 14px/1.2 Georgia, 'Times New Roman', serif;
+    letter-spacing: .25em;
+    text-transform: uppercase;
+  }
+
+  /* =========================================================
+     TABLET
+     ========================================================= */
+
+  @media (max-width: 989px) {
+
+    .scentiva-fragrance-collections-{{ section.id }}__grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+  }
+
+  /* =========================================================
+     MOBILE
+     ========================================================= */
+
+  @media (max-width: 749px) {
+
+    .scentiva-fragrance-collections-{{ section.id }} {
+      padding: 36px 0 42px;
+    }
+
+    .scentiva-fragrance-collections-{{ section.id }} .scentiva-heading {
+      gap: 10px;
+      margin-bottom: 22px;
+    }
+
+    .scentiva-fragrance-collections-{{ section.id }} .scentiva-heading span {
+      width: 38px;
+      flex-basis: 38px;
+    }
+
+    .scentiva-fragrance-collections-{{ section.id }} .scentiva-heading h2 {
+      font-size: 15px;
+      letter-spacing: .25em;
+      white-space: nowrap;
+    }
+
+    .scentiva-fragrance-collections-{{ section.id }}__grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .scentiva-fragrance-collection-card__title {
+      margin-top: 12px;
+      font-size: 12px;
+      letter-spacing: .18em;
+    }
+
+  }
+</style>

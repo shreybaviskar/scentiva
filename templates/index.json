@@ -11,7 +11,10 @@
   "sections": {
     "hero": {
       "type": "scentiva-hero",
+      "custom_css": [],
       "settings": {
+        "image": "shopify://shop_images/hero_banner.png",
+        "mobile_image": "shopify://shop_images/hero_banner.png",
         "heading": "MORE THAN\nA SCENT.\nA STORY.",
         "eyebrow": "THE ART OF OLFACTION",
         "button_label": "EXPLORE COLLECTION",
@@ -113,7 +116,7 @@
         "featured_collection_ej4cwp"
       ],
       "custom_css": [
-        ".collection-list__title {margin: 0 !important; font: 400 18px / 1.2 Georgia, \"Times New Roman\", serif !important; letter-spacing: 0.38em !important; text-transform: uppercase !important;}"
+       ".collection-list-title { margin: 0 !important; width: 100%; text-align: center; font: 400 18px / 1.2 Georgia, 'Times New Roman', serif !important; letter-spacing: .38em !important; text-transform: uppercase !important; }"
       ],
       "name": "t:sections.collection-list.presets.name",
       "settings": {

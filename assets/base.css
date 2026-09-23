@@ -3653,3 +3653,26 @@ details-disclosure > details {
     transform: translateX(100%) scaleX(0);
   }
 }
+.collection-list-title {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 18px !important;
+  margin: 0 !important;
+
+  font: 400 18px / 1.2 Georgia, "Times New Roman", serif !important;
+  letter-spacing: 0.38em !important;
+  text-transform: uppercase !important;
+  text-align: center !important;
+  color: #171411 !important;
+}
+
+.collection-list-title::before,
+.collection-list-title::after {
+  content: "" !important;
+  display: block !important;
+  width: 76px !important;
+  height: 1px !important;
+  flex: 0 0 76px !important;
+  background: #a88645 !important;
+}
