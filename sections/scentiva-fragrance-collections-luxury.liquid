@@ -129,12 +129,12 @@
      ========================= */
   #{{ section_id }} .scentiva-luxury-collections__intro {
     position: relative;
-    min-height: 198px;
+    min-height: 172px;
     display: grid;
     grid-template-columns: minmax(150px, 1fr) minmax(520px, 2fr) minmax(150px, 1fr);
     align-items: center;
     gap: 28px;
-    padding: 34px 54px 28px;
+    padding: 28px 54px 22px;
     background:
       radial-gradient(circle at 50% 35%, rgba(255,255,255,.72), transparent 43%),
       linear-gradient(110deg, #eee5d8 0%, #faf6ef 48%, #eee2d1 100%);
@@ -163,17 +163,17 @@
   #{{ section_id }} .scentiva-luxury-collections__eyebrow {
     margin: 0 0 10px;
     color: var(--slc-muted);
-    font-size: 10px;
+    font-size: 9px;
     font-weight: 500;
-    line-height: 1.4;
-    letter-spacing: .52em;
+    line-height: 1.35;
+    letter-spacing: .46em;
     text-transform: uppercase;
   }
 
   #{{ section_id }} .scentiva-luxury-collections__heading {
     margin: 0;
     color: var(--slc-ink) !important;
-    font-size: clamp(43px, 4.2vw, 67px);
+    font-size: clamp(40px, 3.7vw, 58px);
     font-weight: 400 !important;
     line-height: .98;
     letter-spacing: -.025em;
@@ -185,12 +185,12 @@
     align-items: center;
     justify-content: center;
     gap: 17px;
-    margin: 14px auto 11px;
+    margin: 10px auto 8px;
   }
 
   #{{ section_id }} .scentiva-luxury-collections__ornament span {
     display: block;
-    width: 118px;
+    width: 92px;
     height: 1px;
     background: linear-gradient(90deg, transparent, var(--slc-gold));
   }
@@ -202,7 +202,7 @@
   #{{ section_id }} .scentiva-luxury-collections__ornament b {
     color: var(--slc-gold);
     font-family: Georgia, serif;
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 400;
     line-height: 1;
   }
@@ -210,10 +210,10 @@
   #{{ section_id }} .scentiva-luxury-collections__subheading {
     margin: 0;
     color: var(--slc-muted);
-    font-size: 9px;
+    font-size: 8px;
     font-weight: 500;
-    line-height: 1.5;
-    letter-spacing: .46em;
+    line-height: 1.4;
+    letter-spacing: .36em;
     text-transform: uppercase;
   }
 
@@ -250,7 +250,7 @@
   #{{ section_id }} .scentiva-luxury-card {
     position: relative;
     min-width: 0;
-    min-height: 690px;
+    min-height: 610px;
     display: flex;
     flex-direction: column;
     overflow: hidden;
@@ -266,7 +266,7 @@
   #{{ section_id }} .scentiva-luxury-card__media {
     position: relative;
     display: block;
-    aspect-ratio: 1 / .91;
+    aspect-ratio: 1 / .94;
     overflow: hidden;
     background: #e7ded1;
     text-decoration: none !important;
@@ -307,15 +307,15 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    min-height: 365px;
-    padding: 30px 27px 24px;
+    min-height: 315px;
+    padding: 24px 24px 20px;
     text-align: center;
   }
 
   #{{ section_id }} .scentiva-luxury-card__title {
-    margin: 0 0 9px;
+    margin: 0 0 7px;
     color: inherit !important;
-    font-size: clamp(27px, 2.15vw, 36px);
+    font-size: clamp(25px, 1.85vw, 31px);
     font-weight: 400 !important;
     line-height: 1.05;
     letter-spacing: .018em;
@@ -323,7 +323,7 @@
   }
 
   #{{ section_id }} .scentiva-luxury-card__subtitle {
-    margin: 0 0 18px;
+    margin: 0 0 13px;
     color: inherit !important;
     font-size: 8px;
     font-weight: 500;
@@ -336,9 +336,9 @@
     width: min(100%, var(--slc-max-copy));
     margin: 0 auto;
     color: inherit !important;
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 400;
-    line-height: 1.58;
+    line-height: 1.52;
     letter-spacing: .005em;
   }
 
@@ -358,10 +358,10 @@
     align-items: center;
     justify-content: center;
     gap: 15px;
-    min-width: 205px;
+    min-width: 190px;
     min-height: 43px;
-    margin-top: 23px;
-    padding: 11px 17px;
+    margin-top: 18px;
+    padding: 10px 16px;
     overflow: hidden;
     border: 1px solid var(--button-border);
     background: var(--button-bg) !important;
@@ -369,7 +369,7 @@
     font-size: 8px;
     font-weight: 500;
     line-height: 1;
-    letter-spacing: .22em;
+    letter-spacing: .19em;
     text-decoration: none !important;
     text-transform: uppercase;
     transition: color .32s ease, border-color .32s ease, transform .32s ease;
@@ -398,6 +398,13 @@
     font-size: 15px;
     line-height: 0;
     letter-spacing: 0;
+  }
+
+  /* FINAL HOVER SAFETY */
+  #{{ section_id }} .scentiva-luxury-card__button:hover,
+  #{{ section_id }} .scentiva-luxury-card__button:hover .scentiva-luxury-card__button-label,
+  #{{ section_id }} .scentiva-luxury-card__button:hover .scentiva-luxury-card__arrow {
+    color: var(--button-hover-text) !important;
   }
 
   #{{ section_id }} .scentiva-luxury-card__button:hover,
@@ -476,12 +483,12 @@
 
   #{{ section_id }} .scentiva-luxury-card__bottom {
     margin: auto 0 0;
-    padding-top: 27px;
+    padding-top: 19px;
     color: inherit !important;
     font-size: 7px;
     font-weight: 500;
     line-height: 1.4;
-    letter-spacing: .34em;
+    letter-spacing: .27em;
     text-transform: uppercase;
   }
 
@@ -493,7 +500,7 @@
     align-items: center;
     justify-content: center;
     gap: 15px;
-    padding: 24px 18px 28px;
+    padding: 19px 18px 23px;
     background: #f8f3eb;
   }
 
@@ -508,9 +515,9 @@
     margin: 0;
     color: #8a7352;
     font-family: var(--font-heading-family), Georgia, serif;
-    font-size: 9px;
+    font-size: 8px;
     font-style: italic;
-    letter-spacing: .34em;
+    letter-spacing: .28em;
     text-transform: uppercase;
   }
 
@@ -519,10 +526,10 @@
      ========================= */
   @media screen and (max-width: 989px) {
     #{{ section_id }} .scentiva-luxury-collections__intro {
-      min-height: 170px;
+      min-height: 150px;
       grid-template-columns: 1fr;
       gap: 0;
-      padding: 32px 24px 27px;
+      padding: 27px 24px 22px;
     }
 
     #{{ section_id }} .scentiva-luxury-collections__side {
@@ -546,15 +553,15 @@
     }
 
     #{{ section_id }} .scentiva-luxury-card__content {
-      min-height: 350px;
-      padding: 27px 22px 24px;
+      min-height: 300px;
+      padding: 23px 20px 20px;
     }
   }
 
   @media screen and (max-width: 749px) {
     #{{ section_id }} .scentiva-luxury-collections__intro {
-      min-height: 155px;
-      padding: 29px 18px 24px;
+      min-height: 140px;
+      padding: 25px 18px 20px;
     }
 
     #{{ section_id }} .scentiva-luxury-collections__heading {
@@ -586,8 +593,8 @@
     }
 
     #{{ section_id }} .scentiva-luxury-card__content {
-      min-height: 345px;
-      padding: 24px 14px 22px;
+      min-height: 300px;
+      padding: 22px 14px 19px;
     }
 
     #{{ section_id }} .scentiva-luxury-card__title {
@@ -644,6 +651,288 @@
       transition: none !important;
     }
   }
+  /* =========================================================
+   SCENTIVA — COMPACT LUXURY COLLECTIONS REFINEMENT
+   25–30% tighter layout + improved typography/readability
+   ========================================================= */
+
+/* ---------- SECTION INTRO ---------- */
+
+#{{ section_id }} .scentiva-luxury-collections__intro {
+  min-height: 140px;
+  padding: 20px 48px 17px;
+  gap: 20px;
+}
+
+#{{ section_id }} .scentiva-luxury-collections__eyebrow {
+  margin-bottom: 7px;
+  font-size: 10px;
+  line-height: 1.3;
+  letter-spacing: .40em;
+}
+
+#{{ section_id }} .scentiva-luxury-collections__heading {
+  font-size: clamp(42px, 3.35vw, 54px);
+  line-height: .96;
+  letter-spacing: -.025em;
+}
+
+#{{ section_id }} .scentiva-luxury-collections__ornament {
+  gap: 14px;
+  margin: 8px auto 7px;
+}
+
+#{{ section_id }} .scentiva-luxury-collections__ornament span {
+  width: 82px;
+}
+
+#{{ section_id }} .scentiva-luxury-collections__ornament b {
+  font-size: 15px;
+}
+
+#{{ section_id }} .scentiva-luxury-collections__subheading {
+  font-size: 9px;
+  line-height: 1.3;
+  letter-spacing: .30em;
+}
+
+#{{ section_id }} .scentiva-luxury-collections__side {
+  font-size: 11px;
+  line-height: 1.55;
+  letter-spacing: .16em;
+}
+
+
+/* ---------- FOUR COLLECTION CARDS ---------- */
+
+#{{ section_id }} .scentiva-luxury-card {
+  min-height: 485px;
+}
+
+/* Make the image area noticeably shorter */
+#{{ section_id }} .scentiva-luxury-card__media {
+  aspect-ratio: 1 / .78;
+}
+
+
+/* ---------- CARD CONTENT ---------- */
+
+#{{ section_id }} .scentiva-luxury-card__content {
+  min-height: 245px;
+  padding: 18px 18px 15px;
+  justify-content: flex-start;
+}
+
+#{{ section_id }} .scentiva-luxury-card__title {
+  margin-bottom: 6px;
+  font-size: clamp(27px, 1.7vw, 30px);
+  line-height: 1.02;
+  letter-spacing: .012em;
+}
+
+/* Slightly larger + much easier to read */
+#{{ section_id }} .scentiva-luxury-card__subtitle {
+  margin-bottom: 10px;
+  font-size: 9px;
+  line-height: 1.35;
+  letter-spacing: .30em;
+}
+
+/*
+   IMPORTANT:
+   Description uses the body font rather than the decorative
+   heading font. This makes the copy significantly easier to read.
+*/
+#{{ section_id }} .scentiva-luxury-card__description {
+  width: min(100%, 330px);
+  font-family: var(--font-body-family), Arial, sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.42;
+  letter-spacing: 0;
+}
+
+
+/* ---------- BUTTON ---------- */
+
+#{{ section_id }} .scentiva-luxury-card__button {
+  min-width: 185px;
+  min-height: 42px;
+  margin-top: 14px;
+  padding: 9px 15px;
+  gap: 13px;
+  font-size: 9px;
+  line-height: 1;
+  letter-spacing: .16em;
+}
+
+#{{ section_id }} .scentiva-luxury-card__arrow {
+  font-size: 15px;
+}
+
+
+/* ---------- BOTTOM CARD LABEL ---------- */
+
+#{{ section_id }} .scentiva-luxury-card__bottom {
+  padding-top: 12px;
+  font-size: 8px;
+  line-height: 1.3;
+  letter-spacing: .22em;
+}
+
+
+/* ---------- FOOTER QUOTE ---------- */
+
+#{{ section_id }} .scentiva-luxury-collections__footer {
+  padding: 14px 18px 17px;
+}
+
+#{{ section_id }} .scentiva-luxury-collections__footer p {
+  font-size: 9px;
+  letter-spacing: .24em;
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media screen and (max-width: 989px) {
+
+  #{{ section_id }} .scentiva-luxury-collections__intro {
+    min-height: 125px;
+    padding: 19px 24px 16px;
+  }
+
+  #{{ section_id }} .scentiva-luxury-collections__heading {
+    font-size: clamp(38px, 5vw, 48px);
+  }
+
+  #{{ section_id }} .scentiva-luxury-card {
+    min-height: 450px;
+  }
+
+  #{{ section_id }} .scentiva-luxury-card__media {
+    aspect-ratio: 1 / .78;
+  }
+
+  #{{ section_id }} .scentiva-luxury-card__content {
+    min-height: 225px;
+    padding: 17px 16px 14px;
+  }
+
+  #{{ section_id }} .scentiva-luxury-card__title {
+    font-size: clamp(25px, 3vw, 29px);
+  }
+
+  #{{ section_id }} .scentiva-luxury-card__subtitle {
+    font-size: 8px;
+  }
+
+  #{{ section_id }} .scentiva-luxury-card__description {
+    font-size: 14px;
+    line-height: 1.4;
+  }
+
+  #{{ section_id }} .scentiva-luxury-card__button {
+    min-height: 41px;
+    margin-top: 13px;
+    font-size: 8px;
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media screen and (max-width: 749px) {
+
+  #{{ section_id }} .scentiva-luxury-collections__intro {
+    min-height: 118px;
+    padding: 18px 16px 15px;
+  }
+
+  #{{ section_id }} .scentiva-luxury-collections__eyebrow {
+    margin-bottom: 6px;
+    font-size: 8px;
+    letter-spacing: .32em;
+  }
+
+  #{{ section_id }} .scentiva-luxury-collections__heading {
+    font-size: clamp(32px, 9vw, 44px);
+    line-height: .98;
+  }
+
+  #{{ section_id }} .scentiva-luxury-collections__ornament {
+    margin: 7px auto 6px;
+    gap: 8px;
+  }
+
+  #{{ section_id }} .scentiva-luxury-collections__ornament span {
+    width: 58px;
+  }
+
+  #{{ section_id }} .scentiva-luxury-collections__subheading {
+    font-size: 7px;
+    letter-spacing: .25em;
+  }
+
+  #{{ section_id }} .scentiva-luxury-card {
+    min-height: 390px;
+  }
+
+  #{{ section_id }} .scentiva-luxury-card__media {
+    aspect-ratio: 1 / .78;
+  }
+
+  #{{ section_id }} .scentiva-luxury-card__content {
+    min-height: 215px;
+    padding: 16px 12px 13px;
+  }
+
+  #{{ section_id }} .scentiva-luxury-card__title {
+    font-size: clamp(22px, 5.8vw, 27px);
+    margin-bottom: 5px;
+  }
+
+  #{{ section_id }} .scentiva-luxury-card__subtitle {
+    margin-bottom: 9px;
+    font-size: 7px;
+    letter-spacing: .22em;
+  }
+
+  #{{ section_id }} .scentiva-luxury-card__description {
+    font-size: 13px;
+    line-height: 1.4;
+  }
+
+  #{{ section_id }} .scentiva-luxury-card__button {
+    width: auto;
+    min-width: 0;
+    max-width: 175px;
+    min-height: 39px;
+    margin-top: 12px;
+    padding: 8px 12px;
+    font-size: 7px;
+    letter-spacing: .13em;
+  }
+
+  #{{ section_id }} .scentiva-luxury-card__bottom {
+    padding-top: 9px;
+    font-size: 6px;
+    letter-spacing: .18em;
+  }
+
+  #{{ section_id }} .scentiva-luxury-collections__footer {
+    padding: 13px 10px 16px;
+  }
+
+  #{{ section_id }} .scentiva-luxury-collections__footer p {
+    font-size: 7px;
+    letter-spacing: .16em;
+  }
+}
 </style>
 
 {% schema %}
