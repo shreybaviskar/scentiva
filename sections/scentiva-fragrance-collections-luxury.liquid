@@ -545,6 +545,78 @@
       letter-spacing: .2em;
     }
   }
+  /* =========================================================
+   SCENTIVA LUXURY COLLECTIONS — TEXT CONTRAST FIX
+   ========================================================= */
+
+/* Force every card element to inherit its card tone.
+   This prevents Dawn's global heading/link styles from
+   overriding the luxury card colors. */
+#{{ section_id }} .scentiva-luxury-card__title,
+#{{ section_id }} .scentiva-luxury-card__subtitle,
+#{{ section_id }} .scentiva-luxury-card__description,
+#{{ section_id }} .scentiva-luxury-card__button,
+#{{ section_id }} .scentiva-luxury-card__button span,
+#{{ section_id }} .scentiva-luxury-card__arrow,
+#{{ section_id }} .scentiva-luxury-card__bottom {
+  color: inherit !important;
+}
+
+/* ESSENTIALS */
+#{{ section_id }} .scentiva-luxury-card--light {
+  color: #171411;
+}
+
+#{{ section_id }} .scentiva-luxury-card--light .scentiva-luxury-card__title,
+#{{ section_id }} .scentiva-luxury-card--light .scentiva-luxury-card__description,
+#{{ section_id }} .scentiva-luxury-card--light .scentiva-luxury-card__button {
+  color: #171411 !important;
+}
+
+/* SIGNATURE */
+#{{ section_id }} .scentiva-luxury-card--warm {
+  color: #f5ecdf;
+}
+
+#{{ section_id }} .scentiva-luxury-card--warm .scentiva-luxury-card__title,
+#{{ section_id }} .scentiva-luxury-card--warm .scentiva-luxury-card__description,
+#{{ section_id }} .scentiva-luxury-card--warm .scentiva-luxury-card__button,
+#{{ section_id }} .scentiva-luxury-card--warm .scentiva-luxury-card__button span,
+#{{ section_id }} .scentiva-luxury-card--warm .scentiva-luxury-card__arrow {
+  color: #f5ecdf !important;
+}
+
+/* MAISON */
+#{{ section_id }} .scentiva-luxury-card--stone {
+  color: #171411;
+}
+
+#{{ section_id }} .scentiva-luxury-card--stone .scentiva-luxury-card__title,
+#{{ section_id }} .scentiva-luxury-card--stone .scentiva-luxury-card__description,
+#{{ section_id }} .scentiva-luxury-card--stone .scentiva-luxury-card__button,
+#{{ section_id }} .scentiva-luxury-card--stone .scentiva-luxury-card__button span,
+#{{ section_id }} .scentiva-luxury-card--stone .scentiva-luxury-card__arrow {
+  color: #171411 !important;
+}
+
+/* DIVINE SERIES */
+#{{ section_id }} .scentiva-luxury-card--black {
+  color: #f6efe4;
+}
+
+#{{ section_id }} .scentiva-luxury-card--black .scentiva-luxury-card__title,
+#{{ section_id }} .scentiva-luxury-card--black .scentiva-luxury-card__description,
+#{{ section_id }} .scentiva-luxury-card--black .scentiva-luxury-card__button,
+#{{ section_id }} .scentiva-luxury-card--black .scentiva-luxury-card__button span,
+#{{ section_id }} .scentiva-luxury-card--black .scentiva-luxury-card__arrow {
+  color: #f6efe4 !important;
+}
+
+/* Divine's gold metadata */
+#{{ section_id }} .scentiva-luxury-card--black .scentiva-luxury-card__subtitle,
+#{{ section_id }} .scentiva-luxury-card--black .scentiva-luxury-card__bottom {
+  color: #c6aa76 !important;
+}
 </style>
 
 {% schema %}
