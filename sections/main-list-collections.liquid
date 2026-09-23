@@ -1,192 +1,283 @@
 {{ 'component-card.css' | asset_url | stylesheet_tag }}
 {{ 'section-collection-list.css' | asset_url | stylesheet_tag }}
 
+<section class="scentiva-collection-list-{{ section.id }}">
+  <div class="page-width">
+
+    <div class="scentiva-collection-heading">
+      <span class="scentiva-collection-line"></span>
+
+      <h2>{{ section.settings.title }}</h2>
+
+      <span class="scentiva-collection-line"></span>
+    </div>
+
+    {%- liquid
+      assign collection_list = collections
+
+      case section.settings.sort
+        when 'products_high'
+          assign collection_list = collections | sort: 'all_products_count'
+          assign collection_list = collection_list | reverse
+        when 'products_low'
+          assign collection_list = collections | sort: 'all_products_count'
+        when 'date'
+          assign collection_list = collections | sort: 'published_at'
+        when 'date_reversed'
+          assign collection_list = collections | sort: 'published_at'
+          assign collection_list = collection_list | reverse
+        when 'alphabetical_reversed'
+          assign collection_list = collections | reverse
+      endcase
+
+      assign modulo_result = 28 | modulo: section.settings.columns_desktop
+      assign paginate_by = 30
+
+      if modulo_result == 0
+        assign paginate_by = 28
+      endif
+    -%}
+
+    {%- paginate collection_list by paginate_by -%}
+
+      <ul
+        class="scentiva-collection-grid grid grid--{{ section.settings.columns_desktop }}-col-desktop grid--{{ section.settings.columns_mobile }}-col-tablet-down"
+        role="list"
+      >
+
+        {%- for collection in collection_list -%}
+
+          <li class="scentiva-collection-item grid__item">
+
+            {% render 'card-collection',
+              card_collection: collection,
+              media_aspect_ratio: section.settings.image_ratio,
+              columns: section.settings.columns_desktop
+            %}
+
+          </li>
+
+        {%- endfor -%}
+
+      </ul>
+
+      {% render 'pagination', paginate: paginate %}
+
+    {%- endpaginate -%}
+
+  </div>
+</section>
+
 <style>
-  .scentiva-heading {
+
+  /* ================================
+     SCENTIVA COLLECTION LIST
+     ================================ */
+
+  #shopify-section-{{ section.id }} .scentiva-collection-heading {
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 18px;
-    width: 100%;
     margin: 0 0 28px;
-  }
-
-  .scentiva-heading > span {
-    display: block;
-    width: 76px;
-    height: 1px;
-    flex: 0 0 76px;
-    background: #a88645;
-  }
-
-  .scentiva-heading__title {
-    margin: 0;
     padding: 0;
-    font: 400 18px/1.2 Georgia, 'Times New Roman', serif;
-    letter-spacing: .38em;
-    text-transform: uppercase;
-    color: #171411;
-    text-align: center;
+    box-sizing: border-box;
   }
+
+  #shopify-section-{{ section.id }} .scentiva-collection-heading h2 {
+    margin: 0 !important;
+    padding: 0 !important;
+
+    font-family: Georgia, 'Times New Roman', serif !important;
+    font-size: 18px !important;
+    line-height: 1.2 !important;
+    font-weight: 400 !important;
+
+    letter-spacing: .38em !important;
+    text-transform: uppercase !important;
+    text-align: center !important;
+
+    color: #171411 !important;
+
+    white-space: nowrap !important;
+    word-break: normal !important;
+    overflow: visible !important;
+
+    flex: 0 0 auto !important;
+  }
+
+  #shopify-section-{{ section.id }} .scentiva-collection-line {
+    display: block !important;
+
+    width: 76px !important;
+    min-width: 76px !important;
+    height: 1px !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    background: #a88645 !important;
+
+    flex: 0 0 76px !important;
+  }
+
+
+  /* ================================
+     COLLECTION GRID
+     ================================ */
+
+  #shopify-section-{{ section.id }} .scentiva-collection-grid {
+    margin-top: 0;
+  }
+
+  #shopify-section-{{ section.id }} .scentiva-collection-item {
+    min-width: 0;
+  }
+
+
+  /* ================================
+     MOBILE
+     ================================ */
 
   @media screen and (max-width: 749px) {
-    .scentiva-heading {
-      gap: 10px;
-      margin-bottom: 22px;
+
+    #shopify-section-{{ section.id }} .scentiva-collection-heading {
+      width: 100%;
+      gap: 8px;
+
+      margin: 0 0 22px;
+      padding: 0 8px;
+
+      overflow: visible;
     }
 
-    .scentiva-heading > span {
-      width: 38px;
-      flex-basis: 38px;
+    #shopify-section-{{ section.id }} .scentiva-collection-heading h2 {
+      display: block !important;
+
+      width: auto !important;
+      max-width: none !important;
+      min-width: 0 !important;
+
+      margin: 0 !important;
+      padding: 0 !important;
+
+      font-size: 14px !important;
+      line-height: 1.2 !important;
+      letter-spacing: .13em !important;
+
+      white-space: nowrap !important;
+      word-break: normal !important;
+
+      flex: 0 1 auto !important;
+      text-align: center !important;
     }
 
-    .scentiva-heading__title {
-      font-size: 15px;
-      letter-spacing: .25em;
+    #shopify-section-{{ section.id }} .scentiva-collection-line {
+      width: 32px !important;
+      min-width: 32px !important;
+
+      flex: 0 1 32px !important;
     }
+
+    #shopify-section-{{ section.id }} .scentiva-collection-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+      column-gap: 8px !important;
+      row-gap: 8px !important;
+    }
+
   }
+
 </style>
 
-<div class="page-width">
-
-  <div class="scentiva-heading">
-    <span></span>
-
-    <h1 class="scentiva-heading__title">
-      {{ section.settings.title }}
-    </h1>
-
-    <span></span>
-  </div>
-  {%- liquid
-    case section.settings.sort
-      when 'products_high', 'products_low'
-        assign collections = collections | sort: 'all_products_count'
-      when 'date', 'date_reversed'
-        assign collections = collections | sort: 'published_at'
-    endcase
-
-    if section.settings.sort == 'products_high' or section.settings.sort == 'date_reversed' or section.settings.sort == 'alphabetical_reversed'
-      assign collections = collections | reverse
-    endif
-
-    assign moduloResult = 28 | modulo: section.settings.columns_desktop
-    assign paginate_by = 30
-    if moduloResult == 0
-      assign paginate_by = 28
-    endif
-  -%}
-  {%- paginate collections by paginate_by -%}
-    <ul
-      class="collection-list grid grid--{{ section.settings.columns_desktop }}-col-desktop grid--{{ section.settings.columns_mobile }}-col-tablet-down"
-      role="list"
-    >
-      {%- for collection in collections -%}
-        <li
-          class="collection-list__item grid__item{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
-          {% if settings.animations_reveal_on_scroll %}
-            data-cascade
-            style="--animation-order: {{ forloop.index }};"
-          {% endif %}
-        >
-          {% render 'card-collection',
-            card_collection: collection,
-            media_aspect_ratio: section.settings.image_ratio,
-            columns: 3
-          %}
-        </li>
-      {%- endfor -%}
-    </ul>
-    {% render 'pagination', paginate: paginate %}
-  {%- endpaginate -%}
-</div>
 {% schema %}
 {
-  "name": "t:sections.main-list-collections.name",
-  "class": "section",
+  "name": "Scentiva Collection List",
+  "tag": "section",
+  "class": "scentiva-collection-list-wrapper",
   "settings": [
     {
       "type": "inline_richtext",
       "id": "title",
-      "label": "t:sections.main-list-collections.settings.title.label",
-      "default": "t:sections.main-list-collections.settings.title.default"
+      "label": "Heading",
+      "default": "FRAGRANCE COLLECTIONS"
     },
     {
       "type": "select",
       "id": "sort",
+      "label": "Sort collections",
       "options": [
         {
           "value": "alphabetical",
-          "label": "t:sections.main-list-collections.settings.sort.options__1.label"
+          "label": "Alphabetical"
         },
         {
           "value": "alphabetical_reversed",
-          "label": "t:sections.main-list-collections.settings.sort.options__2.label"
+          "label": "Alphabetical, reversed"
         },
         {
           "value": "date_reversed",
-          "label": "t:sections.main-list-collections.settings.sort.options__3.label"
+          "label": "Date, newest first"
         },
         {
           "value": "date",
-          "label": "t:sections.main-list-collections.settings.sort.options__4.label"
+          "label": "Date, oldest first"
         },
         {
           "value": "products_high",
-          "label": "t:sections.main-list-collections.settings.sort.options__5.label"
+          "label": "Products, high to low"
         },
         {
           "value": "products_low",
-          "label": "t:sections.main-list-collections.settings.sort.options__6.label"
+          "label": "Products, low to high"
         }
       ],
-      "default": "alphabetical",
-      "label": "t:sections.main-list-collections.settings.sort.label"
+      "default": "alphabetical"
     },
     {
       "type": "select",
       "id": "image_ratio",
+      "label": "Image ratio",
       "options": [
         {
           "value": "adapt",
-          "label": "t:sections.main-list-collections.settings.image_ratio.options__1.label"
+          "label": "Adapt to image"
         },
         {
           "value": "portrait",
-          "label": "t:sections.main-list-collections.settings.image_ratio.options__2.label"
+          "label": "Portrait"
         },
         {
           "value": "square",
-          "label": "t:sections.main-list-collections.settings.image_ratio.options__3.label"
+          "label": "Square"
         }
       ],
-      "default": "adapt",
-      "label": "t:sections.main-list-collections.settings.image_ratio.label"
+      "default": "adapt"
     },
     {
       "type": "range",
       "id": "columns_desktop",
+      "label": "Desktop columns",
       "min": 1,
       "max": 6,
       "step": 1,
-      "default": 3,
-      "label": "t:sections.main-list-collections.settings.columns_desktop.label"
+      "default": 3
     },
     {
       "type": "select",
       "id": "columns_mobile",
+      "label": "Mobile columns",
       "options": [
         {
           "value": "1",
-          "label": "t:sections.main-list-collections.settings.columns_mobile.options__1.label"
+          "label": "1 column"
         },
         {
           "value": "2",
-          "label": "t:sections.main-list-collections.settings.columns_mobile.options__2.label"
+          "label": "2 columns"
         }
       ],
-      "default": "2",
-      "label": "t:sections.main-list-collections.settings.columns_mobile.label"
+      "default": "2"
     }
   ]
 }

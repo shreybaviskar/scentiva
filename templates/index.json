@@ -29,35 +29,40 @@
           "type": "collection",
           "settings": {
             "collection": "fresh",
-            "title": "FRESH"
+            "image": "shopify://shop_images/IMG_6741.jpg",
+            "title": ""
           }
         },
         "woody": {
           "type": "collection",
           "settings": {
             "collection": "woody",
-            "title": "WOODY"
+            "image": "shopify://shop_images/IMG_6736.jpg",
+            "title": ""
           }
         },
         "amber": {
           "type": "collection",
           "settings": {
             "collection": "amber",
-            "title": "AMBER"
+            "image": "shopify://shop_images/IMG_6744.jpg",
+            "title": ""
           }
         },
         "floral": {
           "type": "collection",
           "settings": {
             "collection": "floral",
-            "title": "FLORAL"
+            "image": "shopify://shop_images/IMG_6742.jpg",
+            "title": ""
           }
         },
         "gourmand": {
           "type": "collection",
           "settings": {
             "collection": "gourmand",
-            "title": "GOURMAND"
+            "image": "shopify://shop_images/IMG_6740.jpg",
+            "title": ""
           }
         }
       },
@@ -115,9 +120,7 @@
         "featured_collection_AWgLtp",
         "featured_collection_ej4cwp"
       ],
-      "custom_css": [
-       ".collection-list-title { margin: 0 !important; width: 100%; text-align: center; font: 400 18px / 1.2 Georgia, 'Times New Roman', serif !important; letter-spacing: .38em !important; text-transform: uppercase !important; }"
-      ],
+      "custom_css": [],
       "name": "t:sections.collection-list.presets.name",
       "settings": {
         "title": "FRAGRANCE COLLECTIONS",
@@ -126,7 +129,7 @@
         "columns_desktop": 4,
         "color_scheme": "",
         "show_view_all": false,
-        "columns_mobile": "1",
+        "columns_mobile": "2",
         "swipe_on_mobile": false,
         "padding_top": 36,
         "padding_bottom": 36
