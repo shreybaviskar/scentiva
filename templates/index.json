@@ -86,53 +86,75 @@
         "show_quick_add": true
       }
     },
-    "collection_list_zAnHia": {
-      "type": "collection-list",
+    "fragrance_collections_luxury": {
+      "type": "scentiva-fragrance-collections-luxury",
       "blocks": {
-        "featured_collection_b3gGaD": {
-          "type": "featured_collection",
+        "essentials": {
+          "type": "collection",
           "settings": {
-            "collection": "essentials"
+            "collection": "essentials",
+            "image": "",
+            "title": "",
+            "subtitle": "EVERYDAY ELEGANCE",
+            "description": "Versatile, affordable and effortlessly appealing. Designed for your daily moments.",
+            "button_label": "EXPLORE ESSENTIALS",
+            "bottom_text": "FRESH · MODERN · ACCESSIBLE",
+            "card_tone": "light"
           }
         },
-        "featured_collection_mmWhg8": {
-          "type": "featured_collection",
+        "signature": {
+          "type": "collection",
           "settings": {
-            "collection": "signature"
+            "collection": "signature",
+            "image": "",
+            "title": "",
+            "subtitle": "DISTINCTLY YOU",
+            "description": "A refined balance of style and character. Fragrances that leave a lasting impression.",
+            "button_label": "EXPLORE SIGNATURE",
+            "bottom_text": "VERSATILE · REFINED · MEMORABLE",
+            "card_tone": "warm"
           }
         },
-        "featured_collection_AWgLtp": {
-          "type": "featured_collection",
+        "maison": {
+          "type": "collection",
           "settings": {
-            "collection": "maison"
+            "collection": "maison",
+            "image": "",
+            "title": "",
+            "subtitle": "INSPIRED BY ICONS",
+            "description": "Timeless compositions crafted with the finest ingredients. A tribute to iconic perfumery.",
+            "button_label": "EXPLORE MAISON",
+            "bottom_text": "CLASSIC · LUXURIOUS · SOPHISTICATED",
+            "card_tone": "stone"
           }
         },
-        "featured_collection_ej4cwp": {
-          "type": "featured_collection",
+        "divine_series": {
+          "type": "collection",
           "settings": {
-            "collection": "divine-series"
+            "collection": "divine-series",
+            "image": "",
+            "title": "",
+            "subtitle": "BEYOND THE ORDINARY",
+            "description": "Rare. Exquisite. Unforgettable. Our most exclusive creations for true connoisseurs.",
+            "button_label": "EXPLORE DIVINE SERIES",
+            "bottom_text": "RARE · BOLD · EXTRAORDINARY",
+            "card_tone": "black"
           }
         }
       },
       "block_order": [
-        "featured_collection_b3gGaD",
-        "featured_collection_mmWhg8",
-        "featured_collection_AWgLtp",
-        "featured_collection_ej4cwp"
+        "essentials",
+        "signature",
+        "maison",
+        "divine_series"
       ],
-      "custom_css": [],
-      "name": "t:sections.collection-list.presets.name",
       "settings": {
-        "title": "FRAGRANCE COLLECTIONS",
-        "heading_size": "h2",
-        "image_ratio": "square",
-        "columns_desktop": 4,
-        "color_scheme": "",
-        "show_view_all": false,
-        "columns_mobile": "2",
-        "swipe_on_mobile": false,
-        "padding_top": 36,
-        "padding_bottom": 36
+        "eyebrow": "FRAGRANCES FOR EVERY YOU",
+        "heading": "OUR COLLECTIONS",
+        "subheading": "DIFFERENT EXPRESSIONS. A SHARED OBSESSION.",
+        "left_label": "EXPLORE\nOUR WORLDS",
+        "right_label": "A SCENT\nFOR EVERY\nSTORY.",
+        "footer_quote": "NOT JUST FRAGRANCES, BUT WORLDS WITHIN."
       }
     },
     "story": {
@@ -149,7 +171,7 @@
     "hero",
     "scent_collections",
     "featured_fragrances",
-    "collection_list_zAnHia",
+    "fragrance_collections_luxury",
     "story"
   ]
 }
