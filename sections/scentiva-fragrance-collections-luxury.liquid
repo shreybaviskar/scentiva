@@ -19,9 +19,7 @@
       {%- endif -%}
 
       <div class="scentiva-luxury-collections__ornament" aria-hidden="true">
-        <span></span>
-        <b>✦</b>
-        <span></span>
+        <span></span><b>✦</b><span></span>
       </div>
 
       {%- if section.settings.subheading != blank -%}
@@ -38,7 +36,7 @@
     {%- for block in section.blocks -%}
       {%- assign collection = block.settings.collection -%}
       {%- assign card_image = block.settings.image -%}
-      {%- assign card_tone = block.settings.card_tone -%}
+      {%- assign card_tone = block.settings.card_tone | default: 'light' -%}
 
       <article class="scentiva-luxury-card scentiva-luxury-card--{{ card_tone }}" {{ block.shopify_attributes }}>
         <a
@@ -67,7 +65,7 @@
               {{ 'collection-apparel-1' | placeholder_svg_tag }}
             </div>
           {%- endif -%}
-          <span class="scentiva-luxury-card__media-overlay"></span>
+          <span class="scentiva-luxury-card__media-overlay" aria-hidden="true"></span>
         </a>
 
         <div class="scentiva-luxury-card__content">
@@ -86,7 +84,7 @@
 
           {%- if block.settings.button_label != blank -%}
             <a class="scentiva-luxury-card__button" href="{% if collection != blank %}{{ collection.url }}{% else %}#{% endif %}">
-              <span>{{ block.settings.button_label }}</span>
+              <span class="scentiva-luxury-card__button-label">{{ block.settings.button_label }}</span>
               <span class="scentiva-luxury-card__arrow" aria-hidden="true">→</span>
             </a>
           {%- endif -%}
@@ -111,15 +109,24 @@
 <style>
   #{{ section_id }} {
     --slc-ink: #171411;
+    --slc-muted: #7e6a4f;
     --slc-gold: #a88645;
-    --slc-cream: #f6f0e7;
-    --slc-soft: #eee3d3;
-    --slc-dark: #17120e;
+    --slc-gold-soft: #c4a46b;
+    --slc-cream: #f7f2e9;
+    --slc-cream-deep: #eee1ce;
+    --slc-warm: #2a1a11;
+    --slc-stone: #e6d7c0;
+    --slc-black: #10100f;
+    --slc-light-text: #f6eee3;
+    --slc-max-copy: 310px;
     background: var(--slc-cream);
     color: var(--slc-ink);
     overflow: hidden;
   }
 
+  /* =========================
+     EDITORIAL INTRO
+     ========================= */
   #{{ section_id }} .scentiva-luxury-collections__intro {
     position: relative;
     min-height: 198px;
@@ -129,38 +136,45 @@
     gap: 28px;
     padding: 34px 54px 28px;
     background:
-      radial-gradient(circle at 50% 35%, rgba(255,255,255,.48), transparent 42%),
-      linear-gradient(110deg, #eee5d8 0%, #f8f3eb 48%, #eee2d1 100%);
+      radial-gradient(circle at 50% 35%, rgba(255,255,255,.72), transparent 43%),
+      linear-gradient(110deg, #eee5d8 0%, #faf6ef 48%, #eee2d1 100%);
   }
 
   #{{ section_id }} .scentiva-luxury-collections__heading-wrap {
-    text-align: center;
     min-width: 0;
+    text-align: center;
+  }
+
+  #{{ section_id }} .scentiva-luxury-collections__heading,
+  #{{ section_id }} .scentiva-luxury-card__title,
+  #{{ section_id }} .scentiva-luxury-card__description,
+  #{{ section_id }} .scentiva-luxury-collections__side {
+    font-family: var(--font-heading-family), Georgia, 'Times New Roman', serif;
   }
 
   #{{ section_id }} .scentiva-luxury-collections__eyebrow,
   #{{ section_id }} .scentiva-luxury-collections__subheading,
-  #{{ section_id }} .scentiva-luxury-collections__side,
   #{{ section_id }} .scentiva-luxury-card__subtitle,
+  #{{ section_id }} .scentiva-luxury-card__button,
   #{{ section_id }} .scentiva-luxury-card__bottom {
     font-family: var(--font-body-family), Arial, sans-serif;
   }
 
   #{{ section_id }} .scentiva-luxury-collections__eyebrow {
     margin: 0 0 10px;
-    color: #806945;
-    font-size: 12px;
-    line-height: 1.3;
-    letter-spacing: .46em;
+    color: var(--slc-muted);
+    font-size: 10px;
+    font-weight: 500;
+    line-height: 1.4;
+    letter-spacing: .52em;
     text-transform: uppercase;
   }
 
   #{{ section_id }} .scentiva-luxury-collections__heading {
     margin: 0;
-    color: var(--slc-ink);
-    font-family: Georgia, 'Times New Roman', serif;
-    font-size: clamp(42px, 4.2vw, 67px);
-    font-weight: 400;
+    color: var(--slc-ink) !important;
+    font-size: clamp(43px, 4.2vw, 67px);
+    font-weight: 400 !important;
     line-height: .98;
     letter-spacing: -.025em;
     text-transform: uppercase;
@@ -170,42 +184,42 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 18px;
-    margin: 15px auto 12px;
+    gap: 17px;
+    margin: 14px auto 11px;
   }
 
   #{{ section_id }} .scentiva-luxury-collections__ornament span {
     display: block;
     width: 118px;
     height: 1px;
-    background: linear-gradient(to right, transparent, var(--slc-gold));
+    background: linear-gradient(90deg, transparent, var(--slc-gold));
   }
 
   #{{ section_id }} .scentiva-luxury-collections__ornament span:last-child {
-    background: linear-gradient(to left, transparent, var(--slc-gold));
+    background: linear-gradient(90deg, var(--slc-gold), transparent);
   }
 
   #{{ section_id }} .scentiva-luxury-collections__ornament b {
     color: var(--slc-gold);
     font-family: Georgia, serif;
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 400;
     line-height: 1;
   }
 
   #{{ section_id }} .scentiva-luxury-collections__subheading {
     margin: 0;
-    color: #816d51;
-    font-size: 10px;
+    color: var(--slc-muted);
+    font-size: 9px;
+    font-weight: 500;
     line-height: 1.5;
-    letter-spacing: .42em;
+    letter-spacing: .46em;
     text-transform: uppercase;
   }
 
   #{{ section_id }} .scentiva-luxury-collections__side {
     color: #8b775d;
-    font-family: Georgia, 'Times New Roman', serif;
-    font-size: 12px;
+    font-size: 11px;
     font-style: italic;
     line-height: 1.75;
     letter-spacing: .18em;
@@ -221,10 +235,13 @@
     display: block;
     width: 68px;
     height: 1px;
-    margin-top: 18px;
+    margin-top: 17px;
     background: #aa8b5d;
   }
 
+  /* =========================
+     FOUR-CARD GRID
+     ========================= */
   #{{ section_id }} .scentiva-luxury-collections__grid {
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -233,12 +250,13 @@
   #{{ section_id }} .scentiva-luxury-card {
     position: relative;
     min-width: 0;
-    min-height: 700px;
+    min-height: 690px;
     display: flex;
     flex-direction: column;
     overflow: hidden;
     border-right: 2px solid var(--slc-cream);
-    background: var(--slc-soft);
+    color: var(--slc-ink);
+    transition: transform .45s cubic-bezier(.22,.61,.36,1), box-shadow .45s ease;
   }
 
   #{{ section_id }} .scentiva-luxury-card:last-child {
@@ -248,31 +266,27 @@
   #{{ section_id }} .scentiva-luxury-card__media {
     position: relative;
     display: block;
-    aspect-ratio: 1 / .96;
+    aspect-ratio: 1 / .91;
     overflow: hidden;
     background: #e7ded1;
-    text-decoration: none;
+    text-decoration: none !important;
   }
 
   #{{ section_id }} .scentiva-luxury-card__image,
   #{{ section_id }} .scentiva-luxury-card__placeholder,
   #{{ section_id }} .scentiva-luxury-card__placeholder svg {
+    display: block;
     width: 100%;
     height: 100%;
-    display: block;
   }
 
   #{{ section_id }} .scentiva-luxury-card__image {
     object-fit: cover;
-    transition: transform .8s cubic-bezier(.2,.65,.2,1);
+    transition: transform .9s cubic-bezier(.2,.65,.2,1), filter .7s ease;
   }
 
   #{{ section_id }} .scentiva-luxury-card:hover .scentiva-luxury-card__image {
-    transform: scale(1.035);
-  }
-
-  #{{ section_id }} .scentiva-luxury-card__placeholder svg {
-    object-fit: cover;
+    transform: scale(1.025);
   }
 
   #{{ section_id }} .scentiva-luxury-card__media-overlay {
@@ -280,7 +294,12 @@
     inset: 0;
     pointer-events: none;
     background: linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,.08));
-    opacity: .35;
+    opacity: .22;
+    transition: opacity .5s ease;
+  }
+
+  #{{ section_id }} .scentiva-luxury-card:hover .scentiva-luxury-card__media-overlay {
+    opacity: .12;
   }
 
   #{{ section_id }} .scentiva-luxury-card__content {
@@ -288,252 +307,321 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    min-height: 365px;
+    padding: 30px 27px 24px;
     text-align: center;
-    padding: 25px 26px 23px;
   }
 
   #{{ section_id }} .scentiva-luxury-card__title {
     margin: 0 0 9px;
-    font-family: Georgia, 'Times New Roman', serif;
+    color: inherit !important;
     font-size: clamp(27px, 2.15vw, 36px);
-    font-weight: 400;
+    font-weight: 400 !important;
     line-height: 1.05;
-    letter-spacing: .025em;
+    letter-spacing: .018em;
     text-transform: uppercase;
   }
 
   #{{ section_id }} .scentiva-luxury-card__subtitle {
-    margin: 0 0 16px;
-    font-size: 9px;
+    margin: 0 0 18px;
+    color: inherit !important;
+    font-size: 8px;
+    font-weight: 500;
+    line-height: 1.45;
+    letter-spacing: .38em;
+    text-transform: uppercase;
+  }
+
+  #{{ section_id }} .scentiva-luxury-card__description {
+    width: min(100%, var(--slc-max-copy));
+    margin: 0 auto;
+    color: inherit !important;
+    font-size: 14px;
     font-weight: 400;
+    line-height: 1.58;
+    letter-spacing: .005em;
+  }
+
+  /* =========================
+     LUXURY BUTTON — EXPLICIT COLORS
+     ========================= */
+  #{{ section_id }} .scentiva-luxury-card__button {
+    --button-border: currentColor;
+    --button-bg: transparent;
+    --button-text: currentColor;
+    --button-hover-bg: var(--slc-ink);
+    --button-hover-text: #fff;
+
+    position: relative;
+    z-index: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    min-width: 205px;
+    min-height: 43px;
+    margin-top: 23px;
+    padding: 11px 17px;
+    overflow: hidden;
+    border: 1px solid var(--button-border);
+    background: var(--button-bg) !important;
+    color: var(--button-text) !important;
+    font-size: 8px;
+    font-weight: 500;
+    line-height: 1;
+    letter-spacing: .22em;
+    text-decoration: none !important;
+    text-transform: uppercase;
+    transition: color .32s ease, border-color .32s ease, transform .32s ease;
+  }
+
+  #{{ section_id }} .scentiva-luxury-card__button::before {
+    position: absolute;
+    z-index: -1;
+    inset: 0;
+    content: '';
+    background: var(--button-hover-bg);
+    transform: scaleX(0);
+    transform-origin: right center;
+    transition: transform .38s cubic-bezier(.77,0,.18,1);
+  }
+
+  #{{ section_id }} .scentiva-luxury-card__button-label,
+  #{{ section_id }} .scentiva-luxury-card__arrow {
+    position: relative;
+    z-index: 2;
+    color: var(--button-text) !important;
+    transition: color .32s ease, transform .32s ease;
+  }
+
+  #{{ section_id }} .scentiva-luxury-card__arrow {
+    font-size: 15px;
+    line-height: 0;
+    letter-spacing: 0;
+  }
+
+  #{{ section_id }} .scentiva-luxury-card__button:hover,
+  #{{ section_id }} .scentiva-luxury-card__button:focus-visible {
+    background: transparent !important;
+    border-color: var(--button-hover-bg) !important;
+    color: var(--button-hover-text) !important;
+    transform: translateY(-1px);
+  }
+
+  #{{ section_id }} .scentiva-luxury-card__button:hover::before,
+  #{{ section_id }} .scentiva-luxury-card__button:focus-visible::before {
+    transform: scaleX(1);
+  }
+
+  #{{ section_id }} .scentiva-luxury-card__button:hover .scentiva-luxury-card__button-label,
+  #{{ section_id }} .scentiva-luxury-card__button:hover .scentiva-luxury-card__arrow,
+  #{{ section_id }} .scentiva-luxury-card__button:focus-visible .scentiva-luxury-card__button-label,
+  #{{ section_id }} .scentiva-luxury-card__button:focus-visible .scentiva-luxury-card__arrow {
+    color: var(--button-hover-text) !important;
+  }
+
+  #{{ section_id }} .scentiva-luxury-card__button:hover .scentiva-luxury-card__arrow,
+  #{{ section_id }} .scentiva-luxury-card__button:focus-visible .scentiva-luxury-card__arrow {
+    transform: translateX(4px);
+  }
+
+  /* =========================
+     CARD TONES
+     ========================= */
+  #{{ section_id }} .scentiva-luxury-card--light {
+    background: var(--slc-cream-deep);
+    color: var(--slc-ink);
+    --button-border: rgba(23,20,17,.58);
+    --button-text: var(--slc-ink);
+    --button-hover-bg: var(--slc-ink);
+    --button-hover-text: #f6eee3;
+  }
+
+  #{{ section_id }} .scentiva-luxury-card--warm {
+    background: var(--slc-warm);
+    color: var(--slc-light-text);
+    --button-border: rgba(246,238,227,.78);
+    --button-text: var(--slc-light-text);
+    --button-hover-bg: #f2e5d4;
+    --button-hover-text: #25170f;
+  }
+
+  #{{ section_id }} .scentiva-luxury-card--stone {
+    background: var(--slc-stone);
+    color: var(--slc-ink);
+    --button-border: rgba(23,20,17,.58);
+    --button-text: var(--slc-ink);
+    --button-hover-bg: var(--slc-ink);
+    --button-hover-text: #f6eee3;
+  }
+
+  #{{ section_id }} .scentiva-luxury-card--black {
+    background: var(--slc-black);
+    color: var(--slc-light-text);
+    --button-border: rgba(246,238,227,.82);
+    --button-text: var(--slc-light-text);
+    --button-hover-bg: #f1dfc3;
+    --button-hover-text: #15110d;
+  }
+
+  #{{ section_id }} .scentiva-luxury-card--black .scentiva-luxury-card__subtitle,
+  #{{ section_id }} .scentiva-luxury-card--black .scentiva-luxury-card__bottom {
+    color: var(--slc-gold-soft) !important;
+  }
+
+  #{{ section_id }} .scentiva-luxury-card--warm .scentiva-luxury-card__subtitle,
+  #{{ section_id }} .scentiva-luxury-card--warm .scentiva-luxury-card__bottom {
+    color: #d8c2a1 !important;
+  }
+
+  #{{ section_id }} .scentiva-luxury-card__bottom {
+    margin: auto 0 0;
+    padding-top: 27px;
+    color: inherit !important;
+    font-size: 7px;
+    font-weight: 500;
     line-height: 1.4;
     letter-spacing: .34em;
     text-transform: uppercase;
   }
 
-  #{{ section_id }} .scentiva-luxury-card__description {
-    max-width: 285px;
-    min-height: 66px;
-    margin: 0 auto;
-    font-family: Georgia, 'Times New Roman', serif;
-    font-size: 14px;
-    line-height: 1.45;
-  }
-
-  #{{ section_id }} .scentiva-luxury-card__button {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 16px;
-    min-width: 205px;
-    min-height: 41px;
-    margin-top: 20px;
-    padding: 10px 17px;
-    border: 1px solid currentColor;
-    color: inherit;
-    font-family: var(--font-body-family), Arial, sans-serif;
-    font-size: 9px;
-    font-weight: 400;
-    line-height: 1;
-    letter-spacing: .2em;
-    text-decoration: none;
-    text-transform: uppercase;
-    transition: background-color .25s ease, color .25s ease;
-  }
-
-  #{{ section_id }} .scentiva-luxury-card__button:hover {
-    background: currentColor;
-    color: var(--slc-card-hover-text, #fff);
-  }
-
-  #{{ section_id }} .scentiva-luxury-card__arrow {
-    font-size: 16px;
-    line-height: 0;
-    letter-spacing: 0;
-  }
-
-  #{{ section_id }} .scentiva-luxury-card__bottom {
-    margin: auto 0 0;
-    padding-top: 24px;
-    font-size: 8px;
-    line-height: 1.4;
-    letter-spacing: .29em;
-    text-transform: uppercase;
-  }
-
-  #{{ section_id }} .scentiva-luxury-card--light {
-    --slc-card-hover-text: #f6f0e7;
-    background: #eee1ce;
-    color: #171411;
-  }
-
-  #{{ section_id }} .scentiva-luxury-card--light .scentiva-luxury-card__media {
-    background: #e7dac6;
-  }
-
-  #{{ section_id }} .scentiva-luxury-card--warm {
-    --slc-card-hover-text: #f6f0e7;
-    background: #2a1a11;
-    color: #f5ecdf;
-  }
-
-  #{{ section_id }} .scentiva-luxury-card--warm .scentiva-luxury-card__media {
-    background: #301a0c;
-  }
-
-  #{{ section_id }} .scentiva-luxury-card--stone {
-    --slc-card-hover-text: #fff;
-    background: #e6d7c0;
-    color: #171411;
-  }
-
-  #{{ section_id }} .scentiva-luxury-card--stone .scentiva-luxury-card__media {
-    background: #d8c9b2;
-  }
-
-  #{{ section_id }} .scentiva-luxury-card--black {
-    --slc-card-hover-text: #171411;
-    background: #0e0d0b;
-    color: #f6efe4;
-  }
-
-  #{{ section_id }} .scentiva-luxury-card--black .scentiva-luxury-card__media {
-    background: #090908;
-  }
-
-  #{{ section_id }} .scentiva-luxury-card--black .scentiva-luxury-card__subtitle,
-  #{{ section_id }} .scentiva-luxury-card--black .scentiva-luxury-card__bottom {
-    color: #c6aa76;
-  }
-
+  /* =========================
+     FOOTER QUOTE
+     ========================= */
   #{{ section_id }} .scentiva-luxury-collections__footer {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 18px;
-    padding: 25px 20px 30px;
-    background: #f7f2eb;
+    gap: 15px;
+    padding: 24px 18px 28px;
+    background: #f8f3eb;
   }
 
   #{{ section_id }} .scentiva-luxury-collections__footer span {
-    width: 62px;
+    display: block;
+    width: 64px;
     height: 1px;
-    background: #b89c71;
+    background: #bba27c;
   }
 
   #{{ section_id }} .scentiva-luxury-collections__footer p {
     margin: 0;
-    color: #846d4d;
-    font-family: Georgia, 'Times New Roman', serif;
-    font-size: 10px;
+    color: #8a7352;
+    font-family: var(--font-heading-family), Georgia, serif;
+    font-size: 9px;
     font-style: italic;
-    letter-spacing: .3em;
-    text-align: center;
+    letter-spacing: .34em;
     text-transform: uppercase;
   }
 
+  /* =========================
+     RESPONSIVE
+     ========================= */
   @media screen and (max-width: 989px) {
     #{{ section_id }} .scentiva-luxury-collections__intro {
-      min-height: 175px;
+      min-height: 170px;
       grid-template-columns: 1fr;
-      padding: 38px 24px 30px;
+      gap: 0;
+      padding: 32px 24px 27px;
     }
 
     #{{ section_id }} .scentiva-luxury-collections__side {
       display: none;
     }
 
-    #{{ section_id }} .scentiva-luxury-collections__heading {
-      font-size: clamp(37px, 8vw, 54px);
-    }
-
     #{{ section_id }} .scentiva-luxury-collections__grid {
       grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
-    #{{ section_id }} .scentiva-luxury-card {
-      min-height: 640px;
-    }
-
-    #{{ section_id }} .scentiva-luxury-card:nth-child(2) {
-      border-right: 0;
+    #{{ section_id }} .scentiva-luxury-card:nth-child(odd) {
+      border-right: 2px solid var(--slc-cream);
     }
 
     #{{ section_id }} .scentiva-luxury-card:nth-child(-n+2) {
       border-bottom: 2px solid var(--slc-cream);
     }
-  }
 
-  @media screen and (max-width: 640px) {
-    #{{ section_id }} .scentiva-luxury-collections__intro {
-      min-height: 160px;
-      padding: 32px 18px 25px;
+    #{{ section_id }} .scentiva-luxury-card:nth-child(even) {
+      border-right: 0;
     }
 
-    #{{ section_id }} .scentiva-luxury-collections__eyebrow {
-      font-size: 9px;
-      letter-spacing: .34em;
+    #{{ section_id }} .scentiva-luxury-card__content {
+      min-height: 350px;
+      padding: 27px 22px 24px;
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    #{{ section_id }} .scentiva-luxury-collections__intro {
+      min-height: 155px;
+      padding: 29px 18px 24px;
     }
 
     #{{ section_id }} .scentiva-luxury-collections__heading {
-      font-size: clamp(34px, 12vw, 48px);
+      font-size: clamp(34px, 10vw, 48px);
+      letter-spacing: -.02em;
+    }
+
+    #{{ section_id }} .scentiva-luxury-collections__eyebrow {
+      font-size: 8px;
+      letter-spacing: .38em;
     }
 
     #{{ section_id }} .scentiva-luxury-collections__ornament {
       gap: 10px;
-      margin: 12px auto 9px;
+      margin: 11px auto 9px;
     }
 
     #{{ section_id }} .scentiva-luxury-collections__ornament span {
-      width: 62px;
+      width: 70px;
     }
 
     #{{ section_id }} .scentiva-luxury-collections__subheading {
-      font-size: 8px;
-      letter-spacing: .27em;
-    }
-
-    #{{ section_id }} .scentiva-luxury-collections__grid {
-      grid-template-columns: 1fr;
-    }
-
-    #{{ section_id }} .scentiva-luxury-card,
-    #{{ section_id }} .scentiva-luxury-card:nth-child(2),
-    #{{ section_id }} .scentiva-luxury-card:nth-child(-n+2) {
-      min-height: 0;
-      border-right: 0;
-      border-bottom: 2px solid var(--slc-cream);
-    }
-
-    #{{ section_id }} .scentiva-luxury-card:last-child {
-      border-bottom: 0;
+      font-size: 7px;
+      letter-spacing: .3em;
     }
 
     #{{ section_id }} .scentiva-luxury-card__media {
-      aspect-ratio: 1 / .82;
+      aspect-ratio: 1 / .86;
     }
 
     #{{ section_id }} .scentiva-luxury-card__content {
-      padding: 25px 22px 24px;
+      min-height: 345px;
+      padding: 24px 14px 22px;
     }
 
     #{{ section_id }} .scentiva-luxury-card__title {
-      font-size: 32px;
+      font-size: clamp(21px, 6vw, 28px);
+    }
+
+    #{{ section_id }} .scentiva-luxury-card__subtitle {
+      font-size: 7px;
+      letter-spacing: .25em;
+      margin-bottom: 15px;
     }
 
     #{{ section_id }} .scentiva-luxury-card__description {
-      min-height: 0;
-      max-width: 320px;
+      font-size: 12px;
+      line-height: 1.5;
+    }
+
+    #{{ section_id }} .scentiva-luxury-card__button {
+      min-width: 0;
+      width: 100%;
+      max-width: 190px;
+      padding-inline: 11px;
+      font-size: 7px;
+      letter-spacing: .16em;
     }
 
     #{{ section_id }} .scentiva-luxury-card__bottom {
-      margin-top: 23px;
-      padding-top: 0;
+      font-size: 6px;
+      letter-spacing: .22em;
     }
 
     #{{ section_id }} .scentiva-luxury-collections__footer {
-      gap: 10px;
-      padding: 22px 12px 25px;
+      gap: 9px;
+      padding: 20px 12px 23px;
     }
 
     #{{ section_id }} .scentiva-luxury-collections__footer span {
@@ -541,339 +629,21 @@
     }
 
     #{{ section_id }} .scentiva-luxury-collections__footer p {
-      font-size: 8px;
-      letter-spacing: .2em;
+      font-size: 7px;
+      letter-spacing: .18em;
+      text-align: center;
     }
   }
-  /* =========================================================
-   SCENTIVA LUXURY COLLECTIONS — FINAL TYPOGRAPHY + HOVER
-   ========================================================= */
 
-/* ---------- GLOBAL LUXURY TYPOGRAPHY ---------- */
-
-#{{ section_id }} .scentiva-luxury-collections__heading,
-#{{ section_id }} .scentiva-luxury-card__title {
-  font-family: var(--font-heading-family), Georgia, "Times New Roman", serif;
-  font-style: normal;
-  font-weight: 400;
-}
-
-#{{ section_id }} .scentiva-luxury-collections__eyebrow,
-#{{ section_id }} .scentiva-luxury-collections__subheading,
-#{{ section_id }} .scentiva-luxury-collections__side,
-#{{ section_id }} .scentiva-luxury-card__subtitle,
-#{{ section_id }} .scentiva-luxury-card__button,
-#{{ section_id }} .scentiva-luxury-card__bottom {
-  font-family: var(--font-body-family), Arial, sans-serif;
-}
-
-/* Elegant editorial body copy */
-#{{ section_id }} .scentiva-luxury-card__description {
-  font-family: var(--font-body-family), Arial, sans-serif;
-  font-weight: 400;
-  letter-spacing: 0.005em;
-}
-
-/* ---------- PRECISE CARD COLORS ---------- */
-
-/* ESSENTIALS */
-#{{ section_id }} .scentiva-luxury-card--light {
-  color: #171411;
-  --slc-button-border: rgba(23, 20, 17, 0.55);
-  --slc-button-hover-bg: #171411;
-  --slc-button-hover-text: #f6f0e7;
-}
-
-#{{ section_id }} .scentiva-luxury-card--light .scentiva-luxury-card__title,
-#{{ section_id }} .scentiva-luxury-card--light .scentiva-luxury-card__subtitle,
-#{{ section_id }} .scentiva-luxury-card--light .scentiva-luxury-card__description,
-#{{ section_id }} .scentiva-luxury-card--light .scentiva-luxury-card__bottom {
-  color: #171411;
-}
-
-/* SIGNATURE */
-#{{ section_id }} .scentiva-luxury-card--warm {
-  color: #f4eadc;
-  --slc-button-border: rgba(244, 234, 220, 0.65);
-  --slc-button-hover-bg: #f4eadc;
-  --slc-button-hover-text: #291a12;
-}
-
-#{{ section_id }} .scentiva-luxury-card--warm .scentiva-luxury-card__title,
-#{{ section_id }} .scentiva-luxury-card--warm .scentiva-luxury-card__subtitle,
-#{{ section_id }} .scentiva-luxury-card--warm .scentiva-luxury-card__description,
-#{{ section_id }} .scentiva-luxury-card--warm .scentiva-luxury-card__bottom {
-  color: #f4eadc;
-}
-
-/* MAISON */
-#{{ section_id }} .scentiva-luxury-card--stone {
-  color: #171411;
-  --slc-button-border: rgba(23, 20, 17, 0.55);
-  --slc-button-hover-bg: #171411;
-  --slc-button-hover-text: #f4eadc;
-}
-
-#{{ section_id }} .scentiva-luxury-card--stone .scentiva-luxury-card__title,
-#{{ section_id }} .scentiva-luxury-card--stone .scentiva-luxury-card__subtitle,
-#{{ section_id }} .scentiva-luxury-card--stone .scentiva-luxury-card__description,
-#{{ section_id }} .scentiva-luxury-card--stone .scentiva-luxury-card__bottom {
-  color: #171411;
-}
-
-/* DIVINE */
-#{{ section_id }} .scentiva-luxury-card--black {
-  color: #f5ede2;
-  --slc-button-border: rgba(245, 237, 226, 0.72);
-  --slc-button-hover-bg: #f5ede2;
-  --slc-button-hover-text: #11100e;
-}
-
-#{{ section_id }} .scentiva-luxury-card--black .scentiva-luxury-card__title,
-#{{ section_id }} .scentiva-luxury-card--black .scentiva-luxury-card__description {
-  color: #f5ede2;
-}
-
-#{{ section_id }} .scentiva-luxury-card--black .scentiva-luxury-card__subtitle,
-#{{ section_id }} .scentiva-luxury-card--black .scentiva-luxury-card__bottom {
-  color: #c7a96b;
-}
-
-/* ---------- BUTTON SYSTEM ---------- */
-
-#{{ section_id }} .scentiva-luxury-card__button {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 18px;
-
-  min-width: 210px;
-  min-height: 46px;
-
-  padding: 12px 19px;
-
-  border: 1px solid var(--slc-button-border);
-  background: transparent;
-
-  color: inherit !important;
-
-  font-size: 9px;
-  font-weight: 500;
-  line-height: 1;
-  letter-spacing: 0.23em;
-  text-decoration: none;
-  text-transform: uppercase;
-
-  overflow: hidden;
-
-  transition:
-    color 0.35s ease,
-    border-color 0.35s ease,
-    background-color 0.35s ease,
-    transform 0.35s ease;
-}
-
-/* Luxury fill animation */
-#{{ section_id }} .scentiva-luxury-card__button::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-
-  background: var(--slc-button-hover-bg);
-
-  transform: scaleX(0);
-  transform-origin: right center;
-
-  transition: transform 0.4s cubic-bezier(.22,.61,.36,1);
-
-  z-index: 0;
-}
-
-/* Text and arrow must remain above animated background */
-#{{ section_id }} .scentiva-luxury-card__button > span {
-  position: relative;
-  z-index: 1;
-
-  color: inherit;
-  transition: color 0.35s ease;
-}
-
-#{{ section_id }} .scentiva-luxury-card__button .scentiva-luxury-card__arrow {
-  color: inherit;
-  transition:
-    color 0.35s ease,
-    transform 0.35s ease;
-}
-
-/* Hover */
-#{{ section_id }} .scentiva-luxury-card__button:hover {
-  background: transparent;
-  border-color: var(--slc-button-hover-bg);
-
-  color: var(--slc-button-hover-text) !important;
-
-  transform: translateY(-1px);
-}
-
-#{{ section_id }} .scentiva-luxury-card__button:hover::before {
-  transform: scaleX(1);
-  transform-origin: left center;
-}
-
-#{{ section_id }} .scentiva-luxury-card__button:hover > span,
-#{{ section_id }} .scentiva-luxury-card__button:hover .scentiva-luxury-card__arrow {
-  color: var(--slc-button-hover-text) !important;
-}
-
-#{{ section_id }} .scentiva-luxury-card__button:hover .scentiva-luxury-card__arrow {
-  transform: translateX(4px);
-}
-
-/* ---------- CARD MICRO-INTERACTIONS ---------- */
-
-#{{ section_id }} .scentiva-luxury-card {
-  transition:
-    transform 0.5s cubic-bezier(.22,.61,.36,1),
-    box-shadow 0.5s ease;
-}
-
-#{{ section_id }} .scentiva-luxury-card:hover {
-  z-index: 2;
-}
-
-/* Keep image movement extremely subtle */
-#{{ section_id }} .scentiva-luxury-card:hover .scentiva-luxury-card__image {
-  transform: scale(1.025);
-}
-
-/* ---------- BETTER CONTENT RHYTHM ---------- */
-
-#{{ section_id }} .scentiva-luxury-card__content {
-  padding: 29px 28px 25px;
-}
-
-#{{ section_id }} .scentiva-luxury-card__title {
-  margin-bottom: 10px;
-
-  font-size: clamp(25px, 2vw, 34px);
-  line-height: 1.08;
-  letter-spacing: 0.015em;
-}
-
-#{{ section_id }} .scentiva-luxury-card__subtitle {
-  margin-bottom: 18px;
-
-  font-size: 8px;
-  font-weight: 500;
-  letter-spacing: 0.38em;
-}
-
-#{{ section_id }} .scentiva-luxury-card__description {
-  max-width: 285px;
-
-  font-size: 14px;
-  line-height: 1.6;
-  letter-spacing: 0.01em;
-}
-
-#{{ section_id }} .scentiva-luxury-card__bottom {
-  padding-top: 28px;
-
-  font-size: 7px;
-  font-weight: 500;
-  letter-spacing: 0.34em;
-}
-
-/* ---------- INTRO REFINEMENT ---------- */
-
-#{{ section_id }} .scentiva-luxury-collections__eyebrow {
-  font-size: 10px;
-  font-weight: 500;
-  letter-spacing: 0.5em;
-}
-
-#{{ section_id }} .scentiva-luxury-collections__heading {
-  font-size: clamp(43px, 4.1vw, 64px);
-  letter-spacing: 0.005em;
-}
-
-#{{ section_id }} .scentiva-luxury-collections__subheading {
-  font-size: 9px;
-  font-weight: 500;
-  letter-spacing: 0.43em;
-}
-
-/* ---------- RESPONSIVE ---------- */
-
-@media screen and (max-width: 989px) {
-  #{{ section_id }} .scentiva-luxury-collections__intro {
-    grid-template-columns: 1fr;
-    min-height: auto;
-    padding: 50px 28px 42px;
+  @media (prefers-reduced-motion: reduce) {
+    #{{ section_id }} .scentiva-luxury-card__image,
+    #{{ section_id }} .scentiva-luxury-card__button,
+    #{{ section_id }} .scentiva-luxury-card__button::before,
+    #{{ section_id }} .scentiva-luxury-card__button-label,
+    #{{ section_id }} .scentiva-luxury-card__arrow {
+      transition: none !important;
+    }
   }
-
-  #{{ section_id }} .scentiva-luxury-collections__side {
-    display: none;
-  }
-
-  #{{ section_id }} .scentiva-luxury-collections__heading {
-    font-size: clamp(38px, 8vw, 56px);
-  }
-
-  #{{ section_id }} .scentiva-luxury-collections__grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  #{{ section_id }} .scentiva-luxury-card {
-    min-height: 650px;
-  }
-
-  #{{ section_id }} .scentiva-luxury-card:nth-child(2) {
-    border-right: 0;
-  }
-}
-
-@media screen and (max-width: 749px) {
-  #{{ section_id }} .scentiva-luxury-collections__grid {
-    grid-template-columns: 1fr;
-  }
-
-  #{{ section_id }} .scentiva-luxury-card {
-    min-height: auto;
-    border-right: 0;
-    border-bottom: 1px solid rgba(23, 20, 17, 0.12);
-  }
-
-  #{{ section_id }} .scentiva-luxury-card__media {
-    aspect-ratio: 1 / .82;
-  }
-
-  #{{ section_id }} .scentiva-luxury-card__content {
-    min-height: 360px;
-    padding: 30px 24px 27px;
-  }
-
-  #{{ section_id }} .scentiva-luxury-card__description {
-    max-width: 330px;
-    font-size: 14px;
-  }
-
-  #{{ section_id }} .scentiva-luxury-card__button {
-    min-width: 205px;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  #{{ section_id }} .scentiva-luxury-card__image,
-  #{{ section_id }} .scentiva-luxury-card,
-  #{{ section_id }} .scentiva-luxury-card__button,
-  #{{ section_id }} .scentiva-luxury-card__button::before,
-  #{{ section_id }} .scentiva-luxury-card__button > span,
-  #{{ section_id }} .scentiva-luxury-card__button .scentiva-luxury-card__arrow {
-    transition: none;
-  }
-}
 </style>
 
 {% schema %}
@@ -925,65 +695,23 @@
       "type": "collection",
       "name": "Collection card",
       "settings": [
-        {
-          "type": "collection",
-          "id": "collection",
-          "label": "Collection"
-        },
-        {
-          "type": "image_picker",
-          "id": "image",
-          "label": "Collection image",
-          "info": "Use a custom image for the luxury editorial card. If empty, the collection's featured image is used."
-        },
-        {
-          "type": "text",
-          "id": "title",
-          "label": "Fallback title",
-          "info": "Used only when no collection is selected."
-        },
-        {
-          "type": "text",
-          "id": "subtitle",
-          "label": "Subtitle"
-        },
-        {
-          "type": "textarea",
-          "id": "description",
-          "label": "Description"
-        },
-        {
-          "type": "text",
-          "id": "button_label",
-          "label": "Button label"
-        },
-        {
-          "type": "text",
-          "id": "bottom_text",
-          "label": "Bottom descriptor"
-        },
+        { "type": "collection", "id": "collection", "label": "Collection" },
+        { "type": "image_picker", "id": "image", "label": "Collection image", "info": "Use a custom image for the editorial card. If empty, the collection featured image is used." },
+        { "type": "text", "id": "title", "label": "Fallback title", "info": "Used only when no collection is selected." },
+        { "type": "text", "id": "subtitle", "label": "Subtitle" },
+        { "type": "textarea", "id": "description", "label": "Description" },
+        { "type": "text", "id": "button_label", "label": "Button label" },
+        { "type": "text", "id": "bottom_text", "label": "Bottom descriptor" },
         {
           "type": "select",
           "id": "card_tone",
           "label": "Card tone",
           "default": "light",
           "options": [
-            {
-              "value": "light",
-              "label": "Light"
-            },
-            {
-              "value": "warm",
-              "label": "Warm"
-            },
-            {
-              "value": "stone",
-              "label": "Stone"
-            },
-            {
-              "value": "black",
-              "label": "Black"
-            }
+            { "value": "light", "label": "Light" },
+            { "value": "warm", "label": "Warm" },
+            { "value": "stone", "label": "Stone" },
+            { "value": "black", "label": "Black" }
           ]
         }
       ]
