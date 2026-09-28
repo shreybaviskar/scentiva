@@ -17,21 +17,323 @@
 </section>
 
 <style>
-  .scentiva-story-{{ section.id }} { position:relative; min-height:430px; overflow:hidden; background:#1b130d; color:#fff; }
-  .scentiva-story-{{ section.id }} .scentiva-story__media,.scentiva-story-{{ section.id }} .scentiva-story__media img,.scentiva-story-{{ section.id }} .scentiva-placeholder-svg { position:absolute; inset:0; width:100%; height:100%; }
-  .scentiva-story-{{ section.id }} .scentiva-story__media img,.scentiva-story-{{ section.id }} .scentiva-placeholder-svg { object-fit:cover; }
-  .scentiva-story-{{ section.id }} .scentiva-story__overlay { position:absolute; inset:0; background:linear-gradient(90deg,rgba(14,10,7,.92) 0%,rgba(14,10,7,.76) 40%,rgba(14,10,7,.25) 78%,rgba(14,10,7,.08) 100%); }
-  .scentiva-story-{{ section.id }} .scentiva-story__content { position:relative; z-index:2; min-height:430px; display:flex; align-items:center; padding-top:55px; padding-bottom:55px; }
-  .scentiva-story-{{ section.id }} .scentiva-story__copy { max-width:480px; }
-  .scentiva-story-{{ section.id }} h2 { margin:0 0 20px; color:#fff; font:400 clamp(32px,3.4vw,54px)/1.1 Georgia,'Times New Roman',serif; letter-spacing:.12em; text-transform:uppercase; }
-  .scentiva-story-{{ section.id }} .scentiva-story__text { max-width:450px; margin-bottom:28px; color:rgba(255,255,255,.88); font-size:14px; line-height:1.8; letter-spacing:.08em; }
-  .scentiva-story-{{ section.id }} .scentiva-story__button { display:inline-flex; min-width:170px; min-height:46px; align-items:center; justify-content:center; border:1px solid #c6a45d; color:#fff; background:transparent; text-decoration:none; font-size:10px; letter-spacing:.23em; text-transform:uppercase; }
-  .scentiva-story-{{ section.id }} .scentiva-story__button:hover { background:#a88645; border-color:#a88645; }
-  @media(max-width:749px){
-    .scentiva-story-{{ section.id }},.scentiva-story-{{ section.id }} .scentiva-story__content { min-height:500px; }
-    .scentiva-story-{{ section.id }} .scentiva-story__overlay { background:linear-gradient(180deg,rgba(14,10,7,.2) 15%,rgba(14,10,7,.86) 75%,rgba(14,10,7,.96) 100%); }
-    .scentiva-story-{{ section.id }} .scentiva-story__content { align-items:flex-end; padding:38px 24px; }
+  /* =========================================
+     SCENTIVA — OUR STORY
+     ========================================= */
+
+  .scentiva-story-{{ section.id }} {
+    position: relative;
+    width: 100%;
+    min-height: 600px;
+    overflow: hidden;
+    background: #1b130d;
+    color: #fff;
   }
+
+  /* ---------- IMAGE ---------- */
+
+  .scentiva-story-{{ section.id }} .scentiva-story__media,
+  .scentiva-story-{{ section.id }} .scentiva-story__media img,
+  .scentiva-story-{{ section.id }} .scentiva-placeholder-svg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .scentiva-story-{{ section.id }} .scentiva-story__media img,
+  .scentiva-story-{{ section.id }} .scentiva-placeholder-svg {
+    object-fit: cover;
+    object-position: center center;
+  }
+
+  /* ---------- DARK LEFT GRADIENT ---------- */
+
+  .scentiva-story-{{ section.id }} .scentiva-story__overlay {
+    position: absolute;
+    inset: 0;
+
+    background:
+      linear-gradient(
+        90deg,
+        rgba(20, 11, 6, 0.58) 0%,
+        rgba(20, 11, 6, 0.42) 25%,
+        rgba(20, 11, 6, 0.16) 48%,
+        rgba(20, 11, 6, 0.03) 72%,
+        rgba(20, 11, 6, 0.00) 100%
+      );
+  }
+
+  /* ---------- CONTENT ---------- */
+
+  .scentiva-story-{{ section.id }} .scentiva-story__content {
+    position: relative;
+    z-index: 2;
+
+    width: 100%;
+    max-width: none;
+
+    min-height: 600px;
+
+    display: flex;
+    align-items: center;
+
+    /* IMPORTANT:
+       Do NOT use Shopify .page-width spacing here.
+       This creates the correct left alignment. */
+    padding-top: 60px;
+    padding-bottom: 60px;
+    padding-left: 10.5vw;
+    padding-right: 5vw;
+
+    margin: 0;
+    box-sizing: border-box;
+  }
+
+  /* ---------- TEXT BLOCK ---------- */
+
+  .scentiva-story-{{ section.id }} .scentiva-story__copy {
+    width: 100%;
+    max-width: 520px;
+    margin: 0;
+    text-align: left;
+  }
+
+  /* ---------- HEADING ---------- */
+
+  .scentiva-story-{{ section.id }} h2 {
+    margin: 0 0 24px;
+
+    color: #d6ad68;
+
+    font-family:
+      Georgia,
+      "Times New Roman",
+      serif;
+
+    font-size: clamp(42px, 4vw, 62px);
+
+    font-weight: 400;
+
+    line-height: 1.04;
+
+    letter-spacing: 0.015em;
+
+    text-transform: uppercase;
+
+    text-align: left;
+  }
+
+  /* ---------- DESCRIPTION ---------- */
+
+  .scentiva-story-{{ section.id }} .scentiva-story__text {
+    max-width: 490px;
+
+    margin: 0 0 32px;
+
+    color: rgba(255, 250, 241, 0.92);
+
+    font-family:
+      Georgia,
+      "Times New Roman",
+      serif;
+
+    font-size: 16px;
+
+    font-weight: 400;
+
+    line-height: 1.65;
+
+    letter-spacing: 0.015em;
+
+    text-align: left;
+  }
+
+  .scentiva-story-{{ section.id }} .scentiva-story__text p {
+    margin: 0;
+  }
+
+  /* ---------- BUTTON ---------- */
+
+  .scentiva-story-{{ section.id }} .scentiva-story__button {
+    display: inline-flex;
+
+    width: 235px;
+    min-height: 58px;
+
+    align-items: center;
+    justify-content: center;
+
+    box-sizing: border-box;
+
+    border: 1px solid rgba(214, 173, 104, 0.95);
+
+    background: rgba(25, 14, 7, 0.12);
+
+    color: #d6ad68;
+
+    text-decoration: none;
+
+    font-family:
+      Georgia,
+      "Times New Roman",
+      serif;
+
+    font-size: 12px;
+
+    font-weight: 400;
+
+    letter-spacing: 0.28em;
+
+    text-transform: uppercase;
+
+    transition:
+      background 0.3s ease,
+      color 0.3s ease,
+      border-color 0.3s ease;
+  }
+
+  .scentiva-story-{{ section.id }} .scentiva-story__button:hover {
+    background: #d6ad68;
+    border-color: #d6ad68;
+    color: #1b130d;
+  }
+
+
+  /* =========================================
+     LARGE DESKTOP
+     ========================================= */
+
+  @media (min-width: 1400px) {
+
+    .scentiva-story-{{ section.id }} {
+      min-height: 640px;
+    }
+
+    .scentiva-story-{{ section.id }} .scentiva-story__content {
+      min-height: 640px;
+      padding-left: 10.8vw;
+    }
+
+    .scentiva-story-{{ section.id }} .scentiva-story__copy {
+      max-width: 510px;
+    }
+
+    .scentiva-story-{{ section.id }} h2 {
+      font-size: 60px;
+    }
+
+  }
+
+
+  /* =========================================
+     TABLET
+     ========================================= */
+
+  @media (min-width: 750px) and (max-width: 1199px) {
+
+    .scentiva-story-{{ section.id }} {
+      min-height: 540px;
+    }
+
+    .scentiva-story-{{ section.id }} .scentiva-story__content {
+      min-height: 540px;
+      padding-left: 7vw;
+      padding-right: 4vw;
+    }
+
+    .scentiva-story-{{ section.id }} .scentiva-story__copy {
+      max-width: 430px;
+    }
+
+    .scentiva-story-{{ section.id }} h2 {
+      font-size: 48px;
+    }
+
+  }
+
+
+  /* =========================================
+     MOBILE
+     ========================================= */
+
+  @media (max-width: 749px) {
+
+  .scentiva-story-{{ section.id }} {
+    min-height: 680px;
+  }
+
+  .scentiva-story-{{ section.id }} .scentiva-story__media img {
+    object-position: 35% center;
+  }
+
+  .scentiva-story-{{ section.id }} .scentiva-story__overlay {
+    background:
+      linear-gradient(
+        180deg,
+        rgba(20, 11, 6, 0.05) 0%,
+        rgba(20, 11, 6, 0.10) 30%,
+        rgba(20, 11, 6, 0.40) 52%,
+        rgba(20, 11, 6, 0.80) 78%,
+        rgba(20, 11, 6, 0.94) 100%
+      );
+  }
+
+  /* MOVE THE ENTIRE TEXT BLOCK UP */
+  .scentiva-story-{{ section.id }} .scentiva-story__content {
+    min-height: 680px;
+
+    display: flex;
+    align-items: flex-start;
+
+    padding-top: 260px;
+    padding-left: 24px;
+    padding-right: 24px;
+    padding-bottom: 0;
+
+    box-sizing: border-box;
+  }
+
+  .scentiva-story-{{ section.id }} .scentiva-story__copy {
+    width: 100%;
+    max-width: 350px;
+    margin: 0;
+    text-align: left;
+  }
+
+  .scentiva-story-{{ section.id }} h2 {
+    margin: 0 0 20px;
+
+    font-size: clamp(36px, 10vw, 48px);
+    line-height: 1.02;
+    letter-spacing: 0;
+
+    color: #d6ad68;
+
+    text-align: left;
+  }
+
+  .scentiva-story-{{ section.id }} .scentiva-story__text {
+    max-width: 340px;
+
+    margin: 0 0 25px;
+
+    color: rgba(255, 250, 241, 0.95);
+
+    font-size: 14px;
+    line-height: 1.6;
+
+    text-align: left;
+  }
+
+  .scentiva-story-{{ section.id }} .scentiva-story__button {
+    width: 190px;
+    min-height: 50px;
+
+    font-size: 10px;
+    letter-spacing: 0.25em;
+  }
+}
 </style>
 
 {% schema %}

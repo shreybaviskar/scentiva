@@ -93,7 +93,6 @@
           "type": "collection",
           "settings": {
             "collection": "essentials",
-            "image": "",
             "title": "",
             "subtitle": "EVERYDAY ELEGANCE",
             "description": "Versatile, affordable and effortlessly appealing. Designed for your daily moments.",
@@ -106,7 +105,6 @@
           "type": "collection",
           "settings": {
             "collection": "signature",
-            "image": "",
             "title": "",
             "subtitle": "DISTINCTLY YOU",
             "description": "A refined balance of style and character. Fragrances that leave a lasting impression.",
@@ -119,7 +117,6 @@
           "type": "collection",
           "settings": {
             "collection": "maison",
-            "image": "",
             "title": "",
             "subtitle": "INSPIRED BY ICONS",
             "description": "Timeless compositions crafted with the finest ingredients. A tribute to iconic perfumery.",
@@ -132,7 +129,6 @@
           "type": "collection",
           "settings": {
             "collection": "divine-series",
-            "image": "",
             "title": "",
             "subtitle": "BEYOND THE ORDINARY",
             "description": "Rare. Exquisite. Unforgettable. Our most exclusive creations for true connoisseurs.",
@@ -160,6 +156,7 @@
     "story": {
       "type": "scentiva-story",
       "settings": {
+        "image": "shopify://shop_images/our_story_section.png",
         "heading": "A SCENT\nFOR EVERY MOMENT",
         "text": "<p>Crafted for places, people and possibilities that shape your story.</p>",
         "button_label": "OUR STORY",
