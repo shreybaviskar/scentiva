@@ -82,9 +82,20 @@
         "padding_bottom": 12
       }
     },
+    "product_info_BjMzfT": {
+      "type": "product_info",
+      "name": "Day 3 Product Info",
+      "settings": {
+        "heading": "Product Information"
+      }
+    },
     "disclosures": {
       "type": "disclosures",
       "settings": {
+        "heading": "Disclosures",
+        "heading_size": "h2",
+        "open_by_default": false,
+        "color_scheme": "",
         "padding_top": 36,
         "padding_bottom": 0
       }
@@ -110,6 +121,7 @@
   },
   "order": [
     "main",
+    "product_info_BjMzfT",
     "disclosures",
     "related-products"
   ]

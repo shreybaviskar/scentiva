@@ -1,0 +1,400 @@
+{%- liquid
+  assign mf = product.metafields.custom
+  assign current_variant = product.selected_or_first_available_variant
+  assign top_padding = section.settings.padding_top
+  assign bottom_padding = section.settings.padding_bottom
+-%}
+
+<style>
+  .scentiva-details-{{ section.id }} {
+    padding-top: {{ top_padding }}px;
+    padding-bottom: {{ bottom_padding }}px;
+    background-color: #faf7f2;
+    color: #1a1a1a;
+    font-family: inherit;
+  }
+
+  .scentiva-details__inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  .scentiva-details__header {
+    text-align: center;
+    margin-bottom: 50px;
+  }
+
+  .scentiva-details__eyebrow {
+    display: block;
+    font-size: 0.75rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: #9d8354;
+    margin-bottom: 10px;
+    font-weight: 500;
+  }
+
+  .scentiva-details__heading {
+    font-family: serif;
+    font-size: clamp(2rem, 3.5vw, 2.75rem);
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    margin: 0;
+    color: #1a1a1a;
+    text-transform: uppercase;
+  }
+
+  .scentiva-details__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+
+  @media (min-width: 840px) {
+    .scentiva-details__grid {
+      grid-template-columns: 1.1fr 1fr;
+      gap: 60px;
+    }
+  }
+
+  .scentiva-card__title {
+    font-family: serif;
+    font-size: 1.25rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #1a1a1a;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #e2dacd;
+    margin: 0 0 24px 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .scentiva-card__title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, #9d8354, transparent);
+  }
+
+  .scentiva-table {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .scentiva-table__row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 14px 0;
+    border-bottom: 1px solid #ebe5dc;
+    font-size: 0.95rem;
+    transition: opacity 0.2s ease;
+  }
+
+  .scentiva-table__label {
+    color: #6d675e;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    font-weight: 500;
+  }
+
+  .scentiva-table__value {
+    color: #1a1a1a;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    text-align: right;
+  }
+
+  .scentiva-notes {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .scentiva-note-tier {
+    background: #ffffff;
+    border: 1px solid #eae3d8;
+    border-radius: 4px;
+    padding: 20px 24px;
+    position: relative;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.02);
+    transition: transform 0.2s ease, border-color 0.2s ease;
+  }
+
+  .scentiva-note-tier:hover {
+    border-color: #c7b28a;
+    transform: translateY(-2px);
+  }
+
+  .scentiva-note-tier__header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+  }
+
+  .scentiva-note-tier__tag {
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: #9d8354;
+  }
+
+  .scentiva-note-tier__stage {
+    font-size: 0.75rem;
+    color: #a8a096;
+    font-style: italic;
+  }
+
+  .scentiva-note-tier__body {
+    font-family: serif;
+    font-size: 1.15rem;
+    color: #2b2621;
+    letter-spacing: 0.02em;
+    line-height: 1.4;
+  }
+</style>
+
+<div class="scentiva-details-{{ section.id }}">
+  <div class="scentiva-details__inner">
+    
+    <header class="scentiva-details__header">
+      <span class="scentiva-details__eyebrow">The Art of Olfaction</span>
+      <h2 class="scentiva-details__heading">{{ section.settings.heading }}</h2>
+    </header>
+
+    <div class="scentiva-details__grid">
+      
+      <!-- Left Column: Specs Table -->
+      <div class="scentiva-card">
+        <h3 class="scentiva-card__title">Product Information</h3>
+        <div class="scentiva-table">
+          
+          {% comment %}
+          <!-- Dynamic Variant Data -->
+          <div data-day3-variant-info>
+            {% unless product.has_only_default_variant %}
+              <div class="scentiva-table__row">
+                <span class="scentiva-table__label">Selected Size</span>
+                <span class="scentiva-table__value" data-variant-title>{{ current_variant.title }}</span>
+              </div>
+            {% endunless %}
+
+            <div class="scentiva-table__row">
+              <span class="scentiva-table__label">Price</span>
+              <span class="scentiva-table__value" data-variant-price>{{ current_variant.price | money }}</span>
+            </div>
+
+            <div class="scentiva-table__row">
+              <span class="scentiva-table__label">Availability</span>
+              <span class="scentiva-table__value" data-variant-availability>
+                {% if current_variant.available %}Available{% else %}Sold out{% endif %}
+              </span>
+            </div>
+          </div>
+          {% endcomment %}
+          
+          {% if section.settings.show_vendor and product.vendor != blank %}
+            <div class="scentiva-table__row">
+              <span class="scentiva-table__label">House</span>
+              <span class="scentiva-table__value">{{ product.vendor }}</span>
+            </div>
+          {% endif %}
+
+          {% if section.settings.show_product_type and product.type != blank %}
+            <div class="scentiva-table__row">
+              <span class="scentiva-table__label">Category</span>
+              <span class="scentiva-table__value">{{ product.type }}</span>
+            </div>
+          {% endif %}
+
+          {% if mf.fragrance_family != blank %}
+            <div class="scentiva-table__row">
+              <span class="scentiva-table__label">Fragrance Family</span>
+              <span class="scentiva-table__value">{{ mf.fragrance_family }}</span>
+            </div>
+          {% endif %}
+
+          {% if mf.concentration != blank %}
+            <div class="scentiva-table__row">
+              <span class="scentiva-table__label">Concentration</span>
+              <span class="scentiva-table__value">{{ mf.concentration }}</span>
+            </div>
+          {% endif %}
+
+          {% if mf.longevity != blank %}
+            <div class="scentiva-table__row">
+              <span class="scentiva-table__label">Longevity</span>
+              <span class="scentiva-table__value">{{ mf.longevity }}</span>
+            </div>
+          {% endif %}
+
+          {% if mf.best_season != blank %}
+            <div class="scentiva-table__row">
+              <span class="scentiva-table__label">Best Season</span>
+              <span class="scentiva-table__value">{{ mf.best_season }}</span>
+            </div>
+          {% endif %}
+
+          {% if mf.collection_tier != blank %}
+            <div class="scentiva-table__row">
+              <span class="scentiva-table__label">Collection Tier</span>
+              <span class="scentiva-table__value">{{ mf.collection_tier }}</span>
+            </div>
+          {% endif %}
+
+        </div>
+      </div>
+
+      <!-- Right Column: Note Pyramid -->
+      <div class="scentiva-card">
+        <h3 class="scentiva-card__title">Olfactory Notes</h3>
+        
+        <div class="scentiva-notes">
+          
+          {% if mf.top_notes != blank %}
+            <div class="scentiva-note-tier">
+              <div class="scentiva-note-tier__header">
+                <span class="scentiva-note-tier__tag">Top Notes</span>
+                <span class="scentiva-note-tier__stage">— Opening (0–15 mins)</span>
+              </div>
+              <div class="scentiva-note-tier__body">{{ mf.top_notes }}</div>
+            </div>
+          {% endif %}
+
+          {% if mf.heart_notes != blank %}
+            <div class="scentiva-note-tier">
+              <div class="scentiva-note-tier__header">
+                <span class="scentiva-note-tier__tag">Heart Notes</span>
+                <span class="scentiva-note-tier__stage">— Character (2–4 hours)</span>
+              </div>
+              <div class="scentiva-note-tier__body">{{ mf.heart_notes }}</div>
+            </div>
+          {% endif %}
+
+          {% if mf.base_notes != blank %}
+            <div class="scentiva-note-tier">
+              <div class="scentiva-note-tier__header">
+                <span class="scentiva-note-tier__tag">Base Notes</span>
+                <span class="scentiva-note-tier__stage">— Dry-Down (4+ hours)</span>
+              </div>
+              <div class="scentiva-note-tier__body">{{ mf.base_notes }}</div>
+            </div>
+          {% endif %}
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+{% comment %}
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const variantInfo = document.querySelector('[data-day3-variant-info]');
+    if (!variantInfo) return;
+
+    const titleElement = variantInfo.querySelector('[data-variant-title]');
+    const priceElement = variantInfo.querySelector('[data-variant-price]');
+    const availabilityElement = variantInfo.querySelector('[data-variant-availability]');
+
+    // Load all variant data directly from Shopify
+    const variants = {{ product.variants | json }};
+    if (!variants || variants.length === 0) return;
+
+    // Currency Formatter
+    const formatMoney = (cents) => {
+      return new Intl.NumberFormat('{{ localization.language.iso_code }}', {
+        style: 'currency',
+        currency: '{{ cart.currency.iso_code }}'
+      }).format(cents / 100);
+    };
+
+    // Listen for ANY change inside variant pickers anywhere on the page
+    document.addEventListener('change', (event) => {
+      const pickerWrapper = event.target.closest('variant-radios, variant-selects');
+      if (!pickerWrapper) return;
+
+      // 1. Get all actively selected options (works for both buttons and dropdowns)
+      const selectedOptions = Array.from(
+        pickerWrapper.querySelectorAll('input[type="radio"]:checked, select')
+      ).map(input => input.value);
+
+      // 2. Find the exact variant that matches the selected options
+      const matchedVariant = variants.find(variant => {
+        return variant.options.every((option, index) => option === selectedOptions[index]);
+      });
+
+      // 3. Instantly update the UI
+      if (matchedVariant) {
+        if (titleElement) titleElement.textContent = matchedVariant.title;
+        if (priceElement) priceElement.textContent = formatMoney(matchedVariant.price);
+        if (availabilityElement) {
+          availabilityElement.textContent = matchedVariant.available ? 'Available' : 'Sold out';
+        }
+      }
+    });
+  });
+</script>
+{% endcomment %}
+
+{% schema %}
+{
+  "name": "Product Info",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Section heading",
+      "default": "Fragrance Details"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_vendor",
+      "label": "Show house/vendor",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_product_type",
+      "label": "Show product type",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Section Spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Top padding",
+      "default": 64
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom padding",
+      "default": 64
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product Info"
+    }
+  ]
+}
+{% endschema %}
