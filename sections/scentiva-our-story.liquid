@@ -1,0 +1,1176 @@
+{% comment %}
+  Scentiva — Our Story
+  Full-page luxury brand story section.
+  All imagery is controlled through the Shopify Theme Editor.
+{% endcomment %}
+
+<section id="ScentivaOurStory-{{ section.id }}" class="scentiva-our-story">
+  <div class="scentiva-story-hero">
+    <div class="scentiva-story-hero__media">
+      {% if section.settings.hero_image != blank %}
+        {{
+          section.settings.hero_image
+          | image_url: width: 2600
+          | image_tag:
+            widths: '900, 1200, 1600, 2000, 2600',
+            sizes: '100vw',
+            loading: 'eager',
+            fetchpriority: 'high',
+            class: 'scentiva-story-image',
+            alt: section.settings.hero_image.alt | default: section.settings.hero_eyebrow
+        }}
+      {% else %}
+        {{ 'lifestyle-2' | placeholder_svg_tag: 'scentiva-story-placeholder' }}
+      {% endif %}
+    </div>
+
+    <div class="scentiva-story-hero__veil"></div>
+
+    <div class="scentiva-story-container scentiva-story-hero__inner">
+      <div class="scentiva-story-hero__copy">
+        {% if section.settings.hero_eyebrow != blank %}
+          <p class="scentiva-story-eyebrow">{{ section.settings.hero_eyebrow }}</p>
+        {% endif %}
+
+        {% if section.settings.hero_heading != blank %}
+          <h1>{{ section.settings.hero_heading | newline_to_br }}</h1>
+        {% endif %}
+
+        {% if section.settings.hero_subheading != blank %}
+          <p class="scentiva-story-hero__subheading">{{ section.settings.hero_subheading }}</p>
+        {% endif %}
+
+        {% if section.settings.hero_text != blank %}
+          <div class="scentiva-story-hero__text">{{ section.settings.hero_text }}</div>
+        {% endif %}
+
+        {% if section.settings.hero_button_label != blank %}
+          <a class="scentiva-story-button" href="{{ section.settings.hero_button_link | default: '#scentiva-values-' | append: section.id }}">
+            <span>{{ section.settings.hero_button_label }}</span>
+            <span aria-hidden="true">→</span>
+          </a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+
+  <section class="scentiva-story-philosophy">
+    <div class="scentiva-story-container scentiva-story-split">
+      <div class="scentiva-story-split__media">
+        {% if section.settings.philosophy_image != blank %}
+          {{
+            section.settings.philosophy_image
+            | image_url: width: 1800
+            | image_tag:
+              widths: '700, 1000, 1400, 1800',
+              sizes: '(min-width: 990px) 50vw, 100vw',
+              loading: 'lazy',
+              class: 'scentiva-story-image',
+              alt: section.settings.philosophy_image.alt | default: section.settings.philosophy_heading
+          }}
+        {% else %}
+          {{ 'lifestyle-1' | placeholder_svg_tag: 'scentiva-story-placeholder' }}
+        {% endif %}
+      </div>
+
+      <div class="scentiva-story-split__copy">
+        {% if section.settings.philosophy_eyebrow != blank %}
+          <p class="scentiva-story-eyebrow scentiva-story-eyebrow--dark">{{ section.settings.philosophy_eyebrow }}</p>
+        {% endif %}
+
+        {% if section.settings.philosophy_heading != blank %}
+          <h2>{{ section.settings.philosophy_heading | newline_to_br }}</h2>
+        {% endif %}
+
+        {% if section.settings.philosophy_text != blank %}
+          <div class="scentiva-story-richtext">{{ section.settings.philosophy_text }}</div>
+        {% endif %}
+      </div>
+    </div>
+  </section>
+
+  <section class="scentiva-story-aspiration">
+    <div class="scentiva-story-aspiration__media">
+      {% if section.settings.aspiration_image != blank %}
+        {{
+          section.settings.aspiration_image
+          | image_url: width: 2400
+          | image_tag:
+            widths: '900, 1200, 1600, 2000, 2400',
+            sizes: '100vw',
+            loading: 'lazy',
+            class: 'scentiva-story-image',
+            alt: section.settings.aspiration_image.alt | default: section.settings.aspiration_heading
+        }}
+      {% else %}
+        {{ 'lifestyle-2' | placeholder_svg_tag: 'scentiva-story-placeholder' }}
+      {% endif %}
+    </div>
+
+    <div class="scentiva-story-aspiration__veil"></div>
+
+    <div class="scentiva-story-container scentiva-story-aspiration__inner">
+      <div class="scentiva-story-aspiration__copy">
+        {% if section.settings.aspiration_eyebrow != blank %}
+          <p class="scentiva-story-eyebrow">{{ section.settings.aspiration_eyebrow }}</p>
+        {% endif %}
+
+        {% if section.settings.aspiration_heading != blank %}
+          <h2>{{ section.settings.aspiration_heading | newline_to_br }}</h2>
+        {% endif %}
+
+        {% if section.settings.aspiration_text != blank %}
+          <div class="scentiva-story-richtext">{{ section.settings.aspiration_text }}</div>
+        {% endif %}
+      </div>
+    </div>
+  </section>
+
+  <section id="scentiva-values-{{ section.id }}" class="scentiva-story-values">
+    <div class="scentiva-story-container">
+      <div class="scentiva-story-section-heading">
+        {% if section.settings.values_eyebrow != blank %}
+          <p class="scentiva-story-eyebrow scentiva-story-eyebrow--dark">{{ section.settings.values_eyebrow }}</p>
+        {% endif %}
+        {% if section.settings.values_heading != blank %}
+          <h2>{{ section.settings.values_heading | newline_to_br }}</h2>
+        {% endif %}
+      </div>
+
+      <div class="scentiva-story-values__grid">
+        {% for block in section.blocks %}
+          {% if block.type == 'value' %}
+            <article class="scentiva-story-value" {{ block.shopify_attributes }}>
+              <div class="scentiva-story-value__number">
+                {{ forloop.index | prepend: '0' }}
+              </div>
+
+              {% if block.settings.title != blank %}
+                <h3>{{ block.settings.title }}</h3>
+              {% endif %}
+
+              {% if block.settings.text != blank %}
+                <div class="scentiva-story-value__text">{{ block.settings.text }}</div>
+              {% endif %}
+            </article>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  <section class="scentiva-story-worlds">
+    <div class="scentiva-story-container">
+      <div class="scentiva-story-section-heading scentiva-story-section-heading--light">
+        {% if section.settings.worlds_eyebrow != blank %}
+          <p class="scentiva-story-eyebrow">{{ section.settings.worlds_eyebrow }}</p>
+        {% endif %}
+        {% if section.settings.worlds_heading != blank %}
+          <h2>{{ section.settings.worlds_heading | newline_to_br }}</h2>
+        {% endif %}
+        {% if section.settings.worlds_text != blank %}
+          <div class="scentiva-story-section-heading__text">{{ section.settings.worlds_text }}</div>
+        {% endif %}
+      </div>
+
+      <div class="scentiva-story-worlds__grid">
+        {% for block in section.blocks %}
+          {% if block.type == 'world' %}
+            <article class="scentiva-story-world" {{ block.shopify_attributes }}>
+              <div class="scentiva-story-world__media">
+                {% if block.settings.image != blank %}
+                  {{
+                    block.settings.image
+                    | image_url: width: 1400
+                    | image_tag:
+                      widths: '500, 800, 1100, 1400',
+                      sizes: '(min-width: 990px) 25vw, 50vw',
+                      loading: 'lazy',
+                      class: 'scentiva-story-image',
+                      alt: block.settings.image.alt | default: block.settings.title
+                  }}
+                {% else %}
+                  {{ 'product-1' | placeholder_svg_tag: 'scentiva-story-placeholder' }}
+                {% endif %}
+              </div>
+
+              <div class="scentiva-story-world__overlay"></div>
+
+              <div class="scentiva-story-world__content">
+                {% if block.settings.kicker != blank %}
+                  <p>{{ block.settings.kicker }}</p>
+                {% endif %}
+                {% if block.settings.title != blank %}
+                  <h3>{{ block.settings.title }}</h3>
+                {% endif %}
+                {% if block.settings.description != blank %}
+                  <div>{{ block.settings.description }}</div>
+                {% endif %}
+                {% if block.settings.button_label != blank and block.settings.collection != blank %}
+                  <a href="{{ block.settings.collection.url }}">{{ block.settings.button_label }} <span aria-hidden="true">→</span></a>
+                {% endif %}
+              </div>
+            </article>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  <section class="scentiva-story-closing">
+    <div class="scentiva-story-closing__media">
+      {% if section.settings.closing_image != blank %}
+        {{
+          section.settings.closing_image
+          | image_url: width: 2400
+          | image_tag:
+            widths: '900, 1200, 1600, 2000, 2400',
+            sizes: '100vw',
+            loading: 'lazy',
+            class: 'scentiva-story-image',
+            alt: section.settings.closing_image.alt | default: section.settings.closing_heading
+        }}
+      {% else %}
+        {{ 'lifestyle-2' | placeholder_svg_tag: 'scentiva-story-placeholder' }}
+      {% endif %}
+    </div>
+
+    <div class="scentiva-story-closing__veil"></div>
+
+    <div class="scentiva-story-container scentiva-story-closing__inner">
+      {% if section.settings.closing_eyebrow != blank %}
+        <p class="scentiva-story-eyebrow">{{ section.settings.closing_eyebrow }}</p>
+      {% endif %}
+
+      {% if section.settings.closing_heading != blank %}
+        <h2>{{ section.settings.closing_heading | newline_to_br }}</h2>
+      {% endif %}
+
+      {% if section.settings.closing_text != blank %}
+        <div class="scentiva-story-closing__text">{{ section.settings.closing_text }}</div>
+      {% endif %}
+
+      {% if section.settings.closing_button_label != blank %}
+        <a class="scentiva-story-button" href="{{ section.settings.closing_button_link | default: routes.all_products_collection_url }}">
+          <span>{{ section.settings.closing_button_label }}</span>
+          <span aria-hidden="true">→</span>
+        </a>
+      {% endif %}
+    </div>
+  </section>
+</section>
+
+<style>
+  #ScentivaOurStory-{{ section.id }} {
+    --scentiva-black: #0c0a08;
+    --scentiva-espresso: #17110d;
+    --scentiva-cream: #f3eee5;
+    --scentiva-stone: #e8e0d4;
+    --scentiva-gold: #c5a05b;
+    --scentiva-gold-soft: #a9874b;
+    --scentiva-ink: #17120e;
+    --scentiva-muted: #6e665d;
+    color: var(--scentiva-ink);
+    background: var(--scentiva-cream);
+  }
+
+  #ScentivaOurStory-{{ section.id }} *,
+  #ScentivaOurStory-{{ section.id }} *::before,
+  #ScentivaOurStory-{{ section.id }} *::after {
+    box-sizing: border-box;
+  }
+
+  #ScentivaOurStory-{{ section.id }} .scentiva-story-container {
+    width: min(1240px, calc(100% - 48px));
+    margin: 0 auto;
+  }
+
+  #ScentivaOurStory-{{ section.id }} .scentiva-story-image,
+  #ScentivaOurStory-{{ section.id }} .scentiva-story-placeholder {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  #ScentivaOurStory-{{ section.id }} .scentiva-story-eyebrow {
+    margin: 0 0 22px;
+    color: rgba(255,255,255,.72);
+    font-size: 10px;
+    line-height: 1.4;
+    font-weight: 500;
+    letter-spacing: .34em;
+    text-transform: uppercase;
+  }
+
+  #ScentivaOurStory-{{ section.id }} .scentiva-story-eyebrow--dark {
+    color: var(--scentiva-gold-soft);
+  }
+
+  #ScentivaOurStory-{{ section.id }} h1,
+  #ScentivaOurStory-{{ section.id }} h2,
+  #ScentivaOurStory-{{ section.id }} h3,
+  #ScentivaOurStory-{{ section.id }} p {
+    overflow-wrap: anywhere;
+  }
+
+  #ScentivaOurStory-{{ section.id }} h1,
+  #ScentivaOurStory-{{ section.id }} h2,
+  #ScentivaOurStory-{{ section.id }} h3 {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-weight: 400;
+  }
+
+  #ScentivaOurStory-{{ section.id }} .scentiva-story-hero {
+    position: relative;
+    min-height: min(760px, 86vh);
+    overflow: hidden;
+    color: #fff;
+    background: var(--scentiva-espresso);
+  }
+
+  #ScentivaOurStory-{{ section.id }} .scentiva-story-hero__media,
+  #ScentivaOurStory-{{ section.id }} .scentiva-story-hero__media img,
+  #ScentivaOurStory-{{ section.id }} .scentiva-story-hero__media svg {
+    position: absolute;
+    inset: 0;
+  }
+
+  #ScentivaOurStory-{{ section.id }} .scentiva-story-hero__media {
+    width: 100%;
+    height: 100%;
+  }
+
+  #ScentivaOurStory-{{ section.id }} .scentiva-story-hero__veil {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(90deg, rgba(8,6,4,.96) 0%, rgba(8,6,4,.84) 30%, rgba(8,6,4,.40) 58%, rgba(8,6,4,.08) 100%),
+      linear-gradient(0deg, rgba(8,6,4,.36), transparent 40%);
+  }
+
+  #ScentivaOurStory-{{ section.id }} .scentiva-story-hero__inner {
+    position: relative;
+    z-index: 2;
+    min-height: min(760px, 86vh);
+    display: flex;
+    align-items: center;
+    padding-top: 80px;
+    padding-bottom: 80px;
+  }
+
+  #ScentivaOurStory-{{ section.id }} .scentiva-story-hero__copy {
+    width: min(570px, 100%);
+  }
+
+  #ScentivaOurStory-{{ section.id }} .scentiva-story-hero h1 {
+    max-width: 620px;
+    margin: 0 0 24px;
+    color: #fff;
+    font-size: clamp(48px, 6vw, 88px);
+    line-height: .94;
+    letter-spacing: .025em;
+    text-transform: uppercase;
+  }
+
+  #ScentivaOurStory-{{ section.id }} .scentiva-story-hero__subheading {
+    margin: 0 0 22px;
+    color: var(--scentiva-gold);
+    font-size: 11px;
+    letter-spacing: .28em;
+    text-transform: uppercase;
+  }
+
+  #ScentivaOurStory-{{ section.id }} .scentiva-story-hero__text {
+    max-width: 520px;
+    margin-bottom: 34px;
+    color: rgba(255,255,255,.82);
+    font-size: 15px;
+    line-height: 1.9;
+    letter-spacing: .035em;
+  }
+
+  #ScentivaOurStory-{{ section.id }} .scentiva-story-button {
+    display: inline-flex;
+    min-width: 190px;
+    min-height: 50px;
+    align-items: center;
+    justify-content: center;
+    gap: 22px;
+    padding: 12px 22px;
+    border: 1px solid var(--scentiva-gold);
+    color: #fff;
+    background: transparent;
+    text-decoration: none;
+    font-size: 10px;
+    line-height: 1;
+    letter-spacing: .24em;
+    text-transform: uppercase;
+    transition: background .25s ease, border-color .25s ease, color .25s ease;
+  }
+
+  #ScentivaOurStory-{{ section.id }} .scentiva-story-button span:last-child {
+    font-size: 16px;
+    letter-spacing: 0;
+  }
+
+  #ScentivaOurStory-{{ section.id }} .scentiva-story-button:hover {
+    color: #111;
+    background: var(--scentiva-gold);
+    border-color: var(--scentiva-gold);
+  }
+
+  #ScentivaOurStory-{{ section.id }} .scentiva-story-philosophy {
+    padding: 110px 0;
+    background: var(--scentiva-cream);
+  }
+
+  #ScentivaOurStory-{{ section.id }} .scentiva-story-split {
+    display: grid;
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr);
+    align-items: center;
+    gap: clamp(50px, 8vw, 120px);
+  }
+
+  #ScentivaOurStory-{{ section.id }} .scentiva-story-split__media {
+    height: min(680px, 62vw);
+    min-height: 480px;
+    overflow: hidden;
+  }
+
+  #ScentivaOurStory-{{ section.id }} .scentiva-story-split__copy {
+    max-width: 510px;
+  }
+
+  #ScentivaOurStory-{{ section.id }} .scentiva-story-split h2,
+  #ScentivaOurStory-{{ section.id }} .scentiva-story-section-heading h2 {
+    margin: 0 0 28px;
+    color: var(--scentiva-ink);
+    font-size: clamp(38px, 4.2vw, 62px);
+    line-height: 1;
+    letter-spacing: .025em;
+    text-transform: uppercase;
+  }
+
+  #ScentivaOurStory-{{ section.id }} .scentiva-story-richtext {
+    color: var(--scentiva-muted);
+    font-size: 15px;
+    line-height: 1.95;
+    letter-spacing: .025em;
+  }
+
+  #ScentivaOurStory-{{ section.id }} .scentiva-story-richtext p {
+    margin: 0 0 18px;
+  }
+
+  #ScentivaOurStory-{{ section.id }} .scentiva-story-aspiration {
+    position: relative;
+    min-height: 640px;
+    overflow: hidden;
+    color: #fff;
+    background: var(--scentiva-espresso);
+  }
+
+  #ScentivaOurStory-{{ section.id }} .scentiva-story-aspiration__media,
+  #ScentivaOurStory-{{ section.id }} .scentiva-story-aspiration__media img,
+  #ScentivaOurStory-{{ section.id }} .scentiva-story-aspiration__media svg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  #ScentivaOurStory-{{ section.id }} .scentiva-story-aspiration__veil {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, rgba(8,6,4,.94), rgba(8,6,4,.62) 48%, rgba(8,6,4,.18));
+  }
+
+  #ScentivaOurStory-{{ section.id }} .scentiva-story-aspiration__inner {
+    position: relative;
+    z-index: 2;
+    min-height: 640px;
+    display: flex;
+    align-items: center;
+  }
+
+  #ScentivaOurStory-{{ section.id }} .scentiva-story-aspiration__copy {
+    width: min(650px, 100%);
+  }
+
+  #ScentivaOurStory-{{ section.id }} .scentiva-story-aspiration h2 {
+    margin: 0 0 30px;
+    color: #fff;
+    font-size: clamp(44px, 5.2vw, 76px);
+    line-height: .98;
+    letter-spacing: .02em;
+    text-transform: uppercase;
+  }
+
+  #ScentivaOurStory-{{ section.id }} .scentiva-story-aspiration .scentiva-story-richtext {
+    max-width: 570px;
+    color: rgba(255,255,255,.78);
+  }
+
+  #ScentivaOurStory-{{ section.id }} .scentiva-story-values {
+    padding: 110px 0 120px;
+    background: #f7f3ec;
+  }
+
+  #ScentivaOurStory-{{ section.id }} .scentiva-story-section-heading {
+    max-width: 760px;
+    margin-bottom: 58px;
+  }
+
+  #ScentivaOurStory-{{ section.id }} .scentiva-story-section-heading h2 {
+    margin-bottom: 0;
+  }
+
+  #ScentivaOurStory-{{ section.id }} .scentiva-story-values__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border-top: 1px solid rgba(23,18,14,.16);
+    border-bottom: 1px solid rgba(23,18,14,.16);
+  }
+
+  #ScentivaOurStory-{{ section.id }} .scentiva-story-value {
+    position: relative;
+    min-height: 300px;
+    padding: 40px 32px 36px;
+    border-right: 1px solid rgba(23,18,14,.16);
+  }
+
+  #ScentivaOurStory-{{ section.id }} .scentiva-story-value:last-child {
+    border-right: 0;
+  }
+
+  #ScentivaOurStory-{{ section.id }} .scentiva-story-value__number {
+    margin-bottom: 55px;
+    color: var(--scentiva-gold-soft);
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 14px;
+    letter-spacing: .14em;
+  }
+
+  #ScentivaOurStory-{{ section.id }} .scentiva-story-value h3 {
+    margin: 0 0 16px;
+    color: var(--scentiva-ink);
+    font-size: 22px;
+    line-height: 1.12;
+    letter-spacing: .05em;
+    text-transform: uppercase;
+  }
+
+  #ScentivaOurStory-{{ section.id }} .scentiva-story-value__text {
+    color: var(--scentiva-muted);
+    font-size: 13px;
+    line-height: 1.75;
+  }
+
+  #ScentivaOurStory-{{ section.id }} .scentiva-story-worlds {
+    padding: 115px 0 120px;
+    color: #fff;
+    background: var(--scentiva-black);
+  }
+
+  #ScentivaOurStory-{{ section.id }} .scentiva-story-section-heading--light h2 {
+    color: #fff;
+  }
+
+  #ScentivaOurStory-{{ section.id }} .scentiva-story-section-heading__text {
+    max-width: 650px;
+    color: rgba(255,255,255,.62);
+    font-size: 14px;
+    line-height: 1.8;
+    letter-spacing: .035em;
+  }
+
+  #ScentivaOurStory-{{ section.id }} .scentiva-story-worlds__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+  }
+
+  #ScentivaOurStory-{{ section.id }} .scentiva-story-world {
+    position: relative;
+    min-height: 560px;
+    overflow: hidden;
+    background: #211a14;
+  }
+
+  #ScentivaOurStory-{{ section.id }} .scentiva-story-world__media,
+  #ScentivaOurStory-{{ section.id }} .scentiva-story-world__media img,
+  #ScentivaOurStory-{{ section.id }} .scentiva-story-world__media svg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  #ScentivaOurStory-{{ section.id }} .scentiva-story-world__media img,
+  #ScentivaOurStory-{{ section.id }} .scentiva-story-world__media svg {
+    transition: transform .7s ease;
+  }
+
+  #ScentivaOurStory-{{ section.id }} .scentiva-story-world:hover .scentiva-story-world__media img {
+    transform: scale(1.045);
+  }
+
+  #ScentivaOurStory-{{ section.id }} .scentiva-story-world__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(5,4,3,.06) 15%, rgba(5,4,3,.84) 82%, rgba(5,4,3,.96));
+  }
+
+  #ScentivaOurStory-{{ section.id }} .scentiva-story-world__content {
+    position: absolute;
+    inset: auto 0 0;
+    z-index: 2;
+    padding: 32px 28px;
+  }
+
+  #ScentivaOurStory-{{ section.id }} .scentiva-story-world__content p {
+    margin: 0 0 12px;
+    color: var(--scentiva-gold);
+    font-size: 9px;
+    letter-spacing: .24em;
+    text-transform: uppercase;
+  }
+
+  #ScentivaOurStory-{{ section.id }} .scentiva-story-world__content h3 {
+    margin: 0 0 12px;
+    color: #fff;
+    font-size: 28px;
+    line-height: 1;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+  }
+
+  #ScentivaOurStory-{{ section.id }} .scentiva-story-world__content div {
+    color: rgba(255,255,255,.7);
+    font-size: 12px;
+    line-height: 1.7;
+  }
+
+  #ScentivaOurStory-{{ section.id }} .scentiva-story-world__content a {
+    display: inline-flex;
+    gap: 14px;
+    margin-top: 22px;
+    color: #fff;
+    text-decoration: none;
+    font-size: 9px;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+  }
+
+  #ScentivaOurStory-{{ section.id }} .scentiva-story-world__content a:hover {
+    color: var(--scentiva-gold);
+  }
+
+  #ScentivaOurStory-{{ section.id }} .scentiva-story-closing {
+    position: relative;
+    min-height: 650px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    color: #fff;
+    background: var(--scentiva-espresso);
+  }
+
+  #ScentivaOurStory-{{ section.id }} .scentiva-story-closing__media,
+  #ScentivaOurStory-{{ section.id }} .scentiva-story-closing__media img,
+  #ScentivaOurStory-{{ section.id }} .scentiva-story-closing__media svg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  #ScentivaOurStory-{{ section.id }} .scentiva-story-closing__veil {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, rgba(8,6,4,.91), rgba(8,6,4,.62) 50%, rgba(8,6,4,.24));
+  }
+
+  #ScentivaOurStory-{{ section.id }} .scentiva-story-closing__inner {
+    position: relative;
+    z-index: 2;
+  }
+
+  #ScentivaOurStory-{{ section.id }} .scentiva-story-closing h2 {
+    max-width: 760px;
+    margin: 0 0 26px;
+    color: #fff;
+    font-size: clamp(44px, 5.7vw, 82px);
+    line-height: .96;
+    letter-spacing: .025em;
+    text-transform: uppercase;
+  }
+
+  #ScentivaOurStory-{{ section.id }} .scentiva-story-closing__text {
+    max-width: 520px;
+    margin-bottom: 32px;
+    color: rgba(255,255,255,.74);
+    font-size: 14px;
+    line-height: 1.8;
+  }
+
+  @media (max-width: 989px) {
+    #ScentivaOurStory-{{ section.id }} .scentiva-story-values__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    #ScentivaOurStory-{{ section.id }} .scentiva-story-value:nth-child(2) {
+      border-right: 0;
+    }
+
+    #ScentivaOurStory-{{ section.id }} .scentiva-story-value:nth-child(-n+2) {
+      border-bottom: 1px solid rgba(23,18,14,.16);
+    }
+
+    #ScentivaOurStory-{{ section.id }} .scentiva-story-worlds__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    #ScentivaOurStory-{{ section.id }} .scentiva-story-world {
+      min-height: 500px;
+    }
+  }
+
+  @media (max-width: 749px) {
+    #ScentivaOurStory-{{ section.id }} .scentiva-story-container {
+      width: min(100% - 36px, 620px);
+    }
+
+    #ScentivaOurStory-{{ section.id }} .scentiva-story-hero,
+    #ScentivaOurStory-{{ section.id }} .scentiva-story-hero__inner {
+      min-height: 720px;
+    }
+
+    #ScentivaOurStory-{{ section.id }} .scentiva-story-hero__veil {
+      background:
+        linear-gradient(180deg, rgba(8,6,4,.18) 0%, rgba(8,6,4,.42) 42%, rgba(8,6,4,.94) 82%, rgba(8,6,4,1) 100%);
+    }
+
+    #ScentivaOurStory-{{ section.id }} .scentiva-story-hero__inner {
+      align-items: flex-end;
+      padding-top: 50px;
+      padding-bottom: 56px;
+    }
+
+    #ScentivaOurStory-{{ section.id }} .scentiva-story-hero h1 {
+      font-size: clamp(42px, 13vw, 64px);
+    }
+
+    #ScentivaOurStory-{{ section.id }} .scentiva-story-hero__text {
+      font-size: 13px;
+      line-height: 1.75;
+    }
+
+    #ScentivaOurStory-{{ section.id }} .scentiva-story-philosophy,
+    #ScentivaOurStory-{{ section.id }} .scentiva-story-values,
+    #ScentivaOurStory-{{ section.id }} .scentiva-story-worlds {
+      padding: 76px 0;
+    }
+
+    #ScentivaOurStory-{{ section.id }} .scentiva-story-split {
+      grid-template-columns: 1fr;
+      gap: 46px;
+    }
+
+    #ScentivaOurStory-{{ section.id }} .scentiva-story-split__media {
+      min-height: 390px;
+      height: 105vw;
+      max-height: 560px;
+    }
+
+    #ScentivaOurStory-{{ section.id }} .scentiva-story-split h2,
+    #ScentivaOurStory-{{ section.id }} .scentiva-story-section-heading h2 {
+      font-size: 39px;
+    }
+
+    #ScentivaOurStory-{{ section.id }} .scentiva-story-aspiration,
+    #ScentivaOurStory-{{ section.id }} .scentiva-story-aspiration__inner {
+      min-height: 650px;
+    }
+
+    #ScentivaOurStory-{{ section.id }} .scentiva-story-aspiration__veil {
+      background: linear-gradient(180deg, rgba(8,6,4,.24), rgba(8,6,4,.93) 78%);
+    }
+
+    #ScentivaOurStory-{{ section.id }} .scentiva-story-aspiration__inner {
+      align-items: flex-end;
+      padding-bottom: 62px;
+    }
+
+    #ScentivaOurStory-{{ section.id }} .scentiva-story-aspiration h2 {
+      font-size: 45px;
+    }
+
+    #ScentivaOurStory-{{ section.id }} .scentiva-story-values__grid,
+    #ScentivaOurStory-{{ section.id }} .scentiva-story-worlds__grid {
+      grid-template-columns: 1fr;
+    }
+
+    #ScentivaOurStory-{{ section.id }} .scentiva-story-value {
+      min-height: auto;
+      padding: 32px 0;
+      border-right: 0;
+      border-bottom: 1px solid rgba(23,18,14,.16);
+    }
+
+    #ScentivaOurStory-{{ section.id }} .scentiva-story-value:last-child {
+      border-bottom: 0;
+    }
+
+    #ScentivaOurStory-{{ section.id }} .scentiva-story-value__number {
+      margin-bottom: 28px;
+    }
+
+    #ScentivaOurStory-{{ section.id }} .scentiva-story-world {
+      min-height: 500px;
+    }
+
+    #ScentivaOurStory-{{ section.id }} .scentiva-story-closing {
+      min-height: 650px;
+    }
+
+    #ScentivaOurStory-{{ section.id }} .scentiva-story-closing__veil {
+      background: linear-gradient(180deg, rgba(8,6,4,.22), rgba(8,6,4,.94) 80%);
+    }
+
+    #ScentivaOurStory-{{ section.id }} .scentiva-story-closing__inner {
+      padding-top: 70px;
+      padding-bottom: 60px;
+      align-self: flex-end;
+    }
+
+    #ScentivaOurStory-{{ section.id }} .scentiva-story-closing h2 {
+      font-size: 46px;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Scentiva — Our Story",
+  "tag": "section",
+  "class": "scentiva-our-story-wrapper",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Hero"
+    },
+    {
+      "type": "image_picker",
+      "id": "hero_image",
+      "label": "Hero image"
+    },
+    {
+      "type": "text",
+      "id": "hero_eyebrow",
+      "label": "Eyebrow",
+      "default": "OUR STORY"
+    },
+    {
+      "type": "textarea",
+      "id": "hero_heading",
+      "label": "Heading",
+      "default": "A SCENT FOR EVERY\nJOURNEY"
+    },
+    {
+      "type": "text",
+      "id": "hero_subheading",
+      "label": "Subheading",
+      "default": "MORE THAN FRAGRANCES. A WAY OF LIVING."
+    },
+    {
+      "type": "richtext",
+      "id": "hero_text",
+      "label": "Text",
+      "default": "<p>Scentiva was born from a simple belief — that every scent has the power to inspire, ignite memories, and shape a better you. We curate fragrances for people who dream bigger, live fuller, and embrace every moment as a new story.</p>"
+    },
+    {
+      "type": "text",
+      "id": "hero_button_label",
+      "label": "Button label",
+      "default": "OUR VALUES"
+    },
+    {
+      "type": "url",
+      "id": "hero_button_link",
+      "label": "Button link"
+    },
+
+    {
+      "type": "header",
+      "content": "Philosophy"
+    },
+    {
+      "type": "image_picker",
+      "id": "philosophy_image",
+      "label": "Philosophy image"
+    },
+    {
+      "type": "text",
+      "id": "philosophy_eyebrow",
+      "label": "Eyebrow",
+      "default": "THE SCENTIVA PHILOSOPHY"
+    },
+    {
+      "type": "textarea",
+      "id": "philosophy_heading",
+      "label": "Heading",
+      "default": "MORE THAN\nFRAGRANCE."
+    },
+    {
+      "type": "richtext",
+      "id": "philosophy_text",
+      "label": "Text",
+      "default": "<p>Fragrance is more than what you wear. It is what you remember, what you become, and how you choose to be remembered.</p><p>At Scentiva, we believe the right scent can change a mood, sharpen a moment, and become part of the story you carry with you.</p>"
+    },
+
+    {
+      "type": "header",
+      "content": "Aspiration"
+    },
+    {
+      "type": "image_picker",
+      "id": "aspiration_image",
+      "label": "Aspiration image"
+    },
+    {
+      "type": "text",
+      "id": "aspiration_eyebrow",
+      "label": "Eyebrow",
+      "default": "OUR ASPIRATION"
+    },
+    {
+      "type": "textarea",
+      "id": "aspiration_heading",
+      "label": "Heading",
+      "default": "TO CREATE SCENTS\nTHAT BECOME STORIES."
+    },
+    {
+      "type": "richtext",
+      "id": "aspiration_text",
+      "label": "Text",
+      "default": "<p>We are building Scentiva for the moments that matter — the first impression, the bold decision, the celebration, the quiet confidence, and every new chapter in between.</p><p>Our ambition is simple: make fragrance feel personal, elevated, and inspiring enough to become part of who you are.</p>"
+    },
+
+    {
+      "type": "header",
+      "content": "Values"
+    },
+    {
+      "type": "text",
+      "id": "values_eyebrow",
+      "label": "Eyebrow",
+      "default": "WHAT WE BELIEVE"
+    },
+    {
+      "type": "textarea",
+      "id": "values_heading",
+      "label": "Heading",
+      "default": "THE PRINCIPLES\nBEHIND EVERY SCENT."
+    },
+
+    {
+      "type": "header",
+      "content": "Four Worlds"
+    },
+    {
+      "type": "text",
+      "id": "worlds_eyebrow",
+      "label": "Eyebrow",
+      "default": "FRAGRANCES FOR EVERY YOU"
+    },
+    {
+      "type": "textarea",
+      "id": "worlds_heading",
+      "label": "Heading",
+      "default": "FOUR WORLDS.\nONE SCENTIVA."
+    },
+    {
+      "type": "textarea",
+      "id": "worlds_text",
+      "label": "Intro text",
+      "default": "From effortless everyday elegance to rare and extraordinary creations, our collections are designed to meet you wherever your story takes you."
+    },
+
+    {
+      "type": "header",
+      "content": "Closing"
+    },
+    {
+      "type": "image_picker",
+      "id": "closing_image",
+      "label": "Closing image"
+    },
+    {
+      "type": "text",
+      "id": "closing_eyebrow",
+      "label": "Eyebrow",
+      "default": "YOUR NEXT CHAPTER AWAITS"
+    },
+    {
+      "type": "textarea",
+      "id": "closing_heading",
+      "label": "Heading",
+      "default": "WEAR THE MOMENT.\nCREATE THE MEMORY.\nBECOME THE STORY."
+    },
+    {
+      "type": "richtext",
+      "id": "closing_text",
+      "label": "Text",
+      "default": "<p>Whatever comes next, let it have a signature. Find the fragrance that feels like you.</p>"
+    },
+    {
+      "type": "text",
+      "id": "closing_button_label",
+      "label": "Button label",
+      "default": "EXPLORE FRAGRANCES"
+    },
+    {
+      "type": "url",
+      "id": "closing_button_link",
+      "label": "Button link"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "value",
+      "name": "Value",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "CURATED WITH PURPOSE"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Text",
+          "default": "<p>Thoughtfully selected fragrances for different personalities, moods and occasions.</p>"
+        }
+      ]
+    },
+    {
+      "type": "world",
+      "name": "Fragrance world",
+      "settings": [
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Collection"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "kicker",
+          "label": "Kicker",
+          "default": "EVERYDAY ELEGANCE"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "ESSENTIALS"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description",
+          "default": "Versatile, effortless and made for everyday moments."
+        },
+        {
+          "type": "text",
+          "id": "button_label",
+          "label": "Button label",
+          "default": "EXPLORE"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Scentiva — Our Story",
+      "blocks": [
+        {
+          "type": "value",
+          "settings": {
+            "title": "CURATED WITH PURPOSE",
+            "text": "<p>Thoughtfully selected fragrances for different personalities, moods and occasions.</p>"
+          }
+        },
+        {
+          "type": "value",
+          "settings": {
+            "title": "QUALITY YOU CAN TRUST",
+            "text": "<p>Premium fragrance experiences inspired by the world of fine perfumery.</p>"
+          }
+        },
+        {
+          "type": "value",
+          "settings": {
+            "title": "A SCENT FOR EVERY YOU",
+            "text": "<p>From everyday moments to life's biggest milestones, there is a fragrance for every expression.</p>"
+          }
+        },
+        {
+          "type": "value",
+          "settings": {
+            "title": "INSPIRED BY TOMORROW",
+            "text": "<p>Because every new day deserves a scent worth remembering.</p>"
+          }
+        },
+        {
+          "type": "world",
+          "settings": {
+            "collection": "essentials",
+            "kicker": "EVERYDAY ELEGANCE",
+            "title": "ESSENTIALS",
+            "description": "Versatile, affordable and effortlessly appealing. Designed for your daily moments.",
+            "button_label": "EXPLORE"
+          }
+        },
+        {
+          "type": "world",
+          "settings": {
+            "collection": "signature",
+            "kicker": "DISTINCTLY YOU",
+            "title": "SIGNATURE",
+            "description": "A refined balance of style and character. Fragrances that leave a lasting impression.",
+            "button_label": "EXPLORE"
+          }
+        },
+        {
+          "type": "world",
+          "settings": {
+            "collection": "maison",
+            "kicker": "INSPIRED BY ICONS",
+            "title": "MAISON",
+            "description": "Timeless compositions crafted for a more sophisticated expression.",
+            "button_label": "EXPLORE"
+          }
+        },
+        {
+          "type": "world",
+          "settings": {
+            "collection": "divine-series",
+            "kicker": "BEYOND THE ORDINARY",
+            "title": "DIVINE SERIES",
+            "description": "Rare, bold and extraordinary creations for true fragrance connoisseurs.",
+            "button_label": "EXPLORE"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

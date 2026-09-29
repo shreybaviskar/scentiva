@@ -1,0 +1,127 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "scentiva-our-story",
+      "blocks": {
+        "value_1": {
+          "type": "value",
+          "settings": {
+            "title": "CURATED WITH PURPOSE",
+            "text": "<p>Thoughtfully selected fragrances for different personalities, moods and occasions.</p>"
+          }
+        },
+        "value_2": {
+          "type": "value",
+          "settings": {
+            "title": "QUALITY YOU CAN TRUST",
+            "text": "<p>Premium fragrance experiences inspired by the world of fine perfumery.</p>"
+          }
+        },
+        "value_3": {
+          "type": "value",
+          "settings": {
+            "title": "A SCENT FOR EVERY YOU",
+            "text": "<p>From everyday moments to life's biggest milestones, there is a fragrance for every expression.</p>"
+          }
+        },
+        "value_4": {
+          "type": "value",
+          "settings": {
+            "title": "INSPIRED BY TOMORROW",
+            "text": "<p>Because every new day deserves a scent worth remembering.</p>"
+          }
+        },
+        "world_1": {
+          "type": "world",
+          "settings": {
+            "collection": "essentials",
+            "kicker": "EVERYDAY ELEGANCE",
+            "title": "ESSENTIALS",
+            "description": "Versatile, affordable and effortlessly appealing. Designed for your daily moments.",
+            "button_label": "EXPLORE"
+          }
+        },
+        "world_2": {
+          "type": "world",
+          "settings": {
+            "collection": "signature",
+            "kicker": "DISTINCTLY YOU",
+            "title": "SIGNATURE",
+            "description": "A refined balance of style and character. Fragrances that leave a lasting impression.",
+            "button_label": "EXPLORE"
+          }
+        },
+        "world_3": {
+          "type": "world",
+          "settings": {
+            "collection": "maison",
+            "kicker": "INSPIRED BY ICONS",
+            "title": "MAISON",
+            "description": "Timeless compositions crafted for a more sophisticated expression.",
+            "button_label": "EXPLORE"
+          }
+        },
+        "world_4": {
+          "type": "world",
+          "settings": {
+            "collection": "divine-series",
+            "kicker": "BEYOND THE ORDINARY",
+            "title": "DIVINE SERIES",
+            "description": "Rare, bold and extraordinary creations for true fragrance connoisseurs.",
+            "button_label": "EXPLORE"
+          }
+        }
+      },
+      "block_order": [
+        "value_1",
+        "value_2",
+        "value_3",
+        "value_4",
+        "world_1",
+        "world_2",
+        "world_3",
+        "world_4"
+      ],
+      "settings": {
+        "hero_image": "shopify://shop_images/ours-story_hero_2.png",
+        "hero_eyebrow": "OUR STORY",
+        "hero_heading": "A SCENT FOR EVERY\nJOURNEY",
+        "hero_subheading": "MORE THAN FRAGRANCES. A WAY OF LIVING.",
+        "hero_text": "<p>Scentiva was born from a simple belief — that every scent has the power to inspire, ignite memories, and shape a better you. We curate fragrances for people who dream bigger, live fuller, and embrace every moment as a new story.</p>",
+        "hero_button_label": "OUR VALUES",
+        "hero_button_link": "",
+        "philosophy_image": "shopify://shop_images/ourstory_image_2.png",
+        "philosophy_eyebrow": "THE SCENTIVA PHILOSOPHY",
+        "philosophy_heading": "MORE THAN\nFRAGRANCE.",
+        "philosophy_text": "<p>Fragrance is more than what you wear. It is what you remember, what you become, and how you choose to be remembered.</p><p>At Scentiva, we believe the right scent can change a mood, sharpen a moment, and become part of the story you carry with you.</p>",
+        "aspiration_image": "shopify://shop_images/ourstory_image_3.png",
+        "aspiration_eyebrow": "OUR ASPIRATION",
+        "aspiration_heading": "TO CREATE SCENTS\nTHAT BECOME STORIES.",
+        "aspiration_text": "<p>We are building Scentiva for the moments that matter — the first impression, the bold decision, the celebration, the quiet confidence, and every new chapter in between.</p><p>Our ambition is simple: make fragrance feel personal, elevated, and inspiring enough to become part of who you are.</p>",
+        "values_eyebrow": "WHAT WE BELIEVE",
+        "values_heading": "THE PRINCIPLES\nBEHIND EVERY SCENT.",
+        "worlds_eyebrow": "FRAGRANCES FOR EVERY YOU",
+        "worlds_heading": "FOUR WORLDS.\nONE SCENTIVA.",
+        "worlds_text": "From effortless everyday elegance to rare and extraordinary creations, our collections are designed to meet you wherever your story takes you.",
+        "closing_image": "shopify://shop_images/ourstory_image_4.png",
+        "closing_eyebrow": "YOUR NEXT CHAPTER AWAITS",
+        "closing_heading": "WEAR THE MOMENT.\nCREATE THE MEMORY.\nBECOME THE STORY.",
+        "closing_text": "<p>Whatever comes next, let it have a signature. Find the fragrance that feels like you.</p>",
+        "closing_button_label": "EXPLORE FRAGRANCES",
+        "closing_button_link": ""
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

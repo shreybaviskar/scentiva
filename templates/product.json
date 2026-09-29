@@ -86,7 +86,11 @@
       "type": "product_info",
       "name": "Day 3 Product Info",
       "settings": {
-        "heading": "Product Information"
+        "heading": "Product Information",
+        "show_vendor": true,
+        "show_product_type": false,
+        "padding_top": 64,
+        "padding_bottom": 64
       }
     },
     "disclosures": {
