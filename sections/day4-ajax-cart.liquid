@@ -2,6 +2,7 @@
 
   <h2>Day 4 AJAX Cart</h2>
 
+  <!-- Add to Cart Button -->
   <button
     type="button"
     data-day4-add-to-cart
@@ -11,209 +12,162 @@
 
   <p data-day4-cart-status></p>
 
+  <br>
+  
+  <!-- Show Cart Information Button -->
+  <button
+    type="button"
+    data-day4-show-cart
+  >
+    Show Cart Information
+  </button>
+
+  <div data-day4-cart-info style="margin-top: 15px;"></div>
+
 </div>
 
 <script>
   document.addEventListener('DOMContentLoaded', () => {
 
-    const button = document.querySelector(
-      '[data-day4-add-to-cart]'
-    );
+    const button = document.querySelector('[data-day4-add-to-cart]');
+    const status = document.querySelector('[data-day4-cart-status]');
+    const showCartBtn = document.querySelector('[data-day4-show-cart]');
+    const cartInfoDisplay = document.querySelector('[data-day4-cart-info]');
 
-    const status = document.querySelector(
-      '[data-day4-cart-status]'
-    );
+    // ==========================================
+    // 1. ADD TO CART LOGIC
+    // ==========================================
+    if (button && status) {
+      button.addEventListener('click', async () => {
 
-    if (!button || !status) return;
+        const productForm = document.querySelector('form[action="/cart/add"]');
 
-    button.addEventListener('click', async () => {
-
-      /*
-       * Find the Shopify product form.
-       */
-      const productForm = document.querySelector(
-        'form[action="/cart/add"]'
-      );
-
-      if (!productForm) {
-        status.textContent = 'Product form not found';
-        return;
-      }
-
-      /*
-       * Get the CURRENT selected variant.
-       */
-      const variantInput = productForm.querySelector(
-        'input[name="id"]'
-      );
-
-      if (!variantInput || !variantInput.value) {
-        status.textContent = 'Variant not found';
-        return;
-      }
-
-      const variantId = Number(variantInput.value);
-
-      console.log('Selected variant ID:', variantId);
-
-      status.textContent = 'Adding...';
-      button.disabled = true;
-
-      try {
-
-        /*
-         * STEP 1
-         * Add the selected variant to Shopify cart.
-         */
-        const response = await fetch('/cart/add.js', {
-          method: 'POST',
-
-          headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json'
-          },
-
-          body: JSON.stringify({
-            items: [
-              {
-                id: variantId,
-                quantity: 1
-              }
-            ]
-          })
-        });
-
-        const data = await response.json();
-
-        if (!response.ok) {
-          throw new Error(
-            data.description || 'Failed to add product'
-          );
+        if (!productForm) {
+          status.textContent = 'Product form not found';
+          return;
         }
 
-        console.log('Added to cart:', data);
+        const variantInput = productForm.querySelector('input[name="id"]');
 
-
-        /*
-         * STEP 2
-         * Get the updated cart drawer HTML.
-         */
-        const drawerResponse = await fetch(
-          '/?section_id=cart-drawer'
-        );
-
-        if (!drawerResponse.ok) {
-          throw new Error(
-            'Failed to load updated cart drawer'
-          );
+        if (!variantInput || !variantInput.value) {
+          status.textContent = 'Variant not found';
+          return;
         }
 
-        const drawerHTML = await drawerResponse.text();
+        const variantId = Number(variantInput.value);
+        console.log('Selected variant ID:', variantId);
 
-        console.log('Updated cart drawer received');
+        status.textContent = 'Adding...';
+        button.disabled = true;
 
+        try {
+          /*
+           * STEP 1: Add the selected variant to Shopify cart.
+           */
+          const response = await fetch('/cart/add.js', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'Accept': 'application/json'
+            },
+            body: JSON.stringify({
+              items: [{ id: variantId, quantity: 1 }]
+            })
+          });
 
-        /*
-         * STEP 3
-         * Convert returned HTML into a document.
-         */
-        const parser = new DOMParser();
+          const data = await response.json();
 
-        const html = parser.parseFromString(
-          drawerHTML,
-          'text/html'
-        );
+          if (!response.ok) {
+            throw new Error(data.description || 'Failed to add product');
+          }
+          console.log('Added to cart:', data);
 
-
-        /*
-         * STEP 4
-         * Find the new cart drawer.
-         */
-        const newCartDrawer = html.querySelector(
-          'cart-drawer'
-        );
-
-        const currentCartDrawer = document.querySelector(
-          'cart-drawer'
-        );
-
-
-        /*
-         * STEP 5
-         * Replace the old cart drawer.
-         */
-        if (newCartDrawer && currentCartDrawer) {
-
-          currentCartDrawer.replaceWith(
-            newCartDrawer
-          );
-
-        }
-
-
-        /*
-         * STEP 6
-         * Get the latest cart data.
-         */
-        const cartResponse = await fetch('/cart.js');
-
-        const cart = await cartResponse.json();
-
-        console.log(
-          'Updated cart:',
-          cart
-        );
-
-        console.log(
-          'Cart item count:',
-          cart.item_count
-        );
-
-
-        /*
-         * STEP 7
-         * Update cart bubble.
-         */
-        const cartBubble = document.querySelector(
-          '.cart-count-bubble'
-        );
-
-        if (cartBubble) {
-
-          const countElement =
-            cartBubble.querySelector(
-              '[aria-hidden="true"]'
-            );
-
-          if (countElement) {
-            countElement.textContent =
-              cart.item_count;
+          /*
+           * STEP 2 & 3: Get updated HTML for BOTH the drawer and the bubble.
+           */
+          // The current path is used so the cart updates accurately based on the page you are on.
+          const sectionsResponse = await fetch(window.location.pathname + '?sections=cart-drawer,cart-icon-bubble');
+          
+          if (!sectionsResponse.ok) {
+            throw new Error('Failed to load updated sections');
           }
 
+          const sectionsData = await sectionsResponse.json();
+          const parser = new DOMParser();
+
+          /*
+           * STEP 4 & 5: Replace the Cart Drawer
+           */
+          const drawerHtml = parser.parseFromString(sectionsData['cart-drawer'], 'text/html');
+          const newCartDrawer = drawerHtml.querySelector('cart-drawer');
+          const currentCartDrawer = document.querySelector('cart-drawer');
+
+          if (newCartDrawer && currentCartDrawer) {
+            currentCartDrawer.replaceWith(newCartDrawer);
+          }
+
+          /*
+           * STEP 6 & 7: Replace the Cart Icon Bubble
+           */
+          const bubbleHtml = parser.parseFromString(sectionsData['cart-icon-bubble'], 'text/html');
+          
+          // #cart-icon-bubble is the standard ID used in Dawn theme for the cart icon container
+          const newBubbleContent = bubbleHtml.querySelector('#cart-icon-bubble') || bubbleHtml.body.firstElementChild;
+          const currentBubbleContent = document.querySelector('#cart-icon-bubble');
+
+          if (newBubbleContent && currentBubbleContent) {
+            currentBubbleContent.innerHTML = newBubbleContent.innerHTML;
+          }
+
+          status.textContent = 'Added to cart';
+
+        } catch (error) {
+          console.error('Add to cart error:', error);
+          status.textContent = error.message || 'Something went wrong';
+        } finally {
+          button.disabled = false;
         }
 
+      });
+    }
 
-        status.textContent = 'Added to cart';
+    // ==========================================
+    // 2. SHOW CART INFO LOGIC
+    // ==========================================
+    if (showCartBtn && cartInfoDisplay) {
+      showCartBtn.addEventListener('click', async () => {
+        try {
+          cartInfoDisplay.innerHTML = 'Loading cart data...';
+          
+          // Fetch the cart data
+          const response = await fetch('/cart.js');
+          
+          if (!response.ok) {
+            throw new Error('Failed to fetch cart');
+          }
+          
+          const cart = await response.json();
+          
+          // Format the price to Indian Rupees (INR)
+          const price = cart.total_price / 100;
+          const formattedPrice = new Intl.NumberFormat('en-IN', {
+            style: 'currency',
+            currency: 'INR',
+            minimumFractionDigits: 0
+          }).format(price);
 
-
-      } catch (error) {
-
-        console.error(
-          'Add to cart error:',
-          error
-        );
-
-        status.textContent =
-          error.message ||
-          'Something went wrong';
-
-      } finally {
-
-        button.disabled = false;
-
-      }
-
-    });
+          // Update the UI
+          cartInfoDisplay.innerHTML = `
+            <strong>Items in cart:</strong> ${cart.item_count} <br>
+            <strong>Total:</strong> ${formattedPrice}
+          `;
+          
+        } catch (error) {
+          console.error('Error fetching cart details:', error);
+          cartInfoDisplay.textContent = 'Could not load cart information.';
+        }
+      });
+    }
 
   });
 </script>
