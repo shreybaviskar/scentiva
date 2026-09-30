@@ -1,0 +1,47 @@
+<section class="scentiva-story-promise">
+  {% if section.settings.image != blank %}
+    {{ section.settings.image | image_url: width: 2200 | image_tag:
+      loading: 'lazy',
+      widths: '900, 1400, 1800, 2200',
+      sizes: '100vw',
+      class: 'scentiva-story-promise__image',
+      alt: section.settings.image.alt | escape
+    }}
+  {% endif %}
+  <div class="scentiva-story-promise__overlay"></div>
+  <div class="scentiva-story-promise__content">
+    <p class="scentiva-eyebrow">{{ section.settings.eyebrow }}</p>
+    <h2>{{ section.settings.heading | escape | newline_to_br }}</h2>
+    <div>{{ section.settings.text }}</div>
+    {% if section.settings.button_label != blank and section.settings.button_link != blank %}
+      <a href="{{ section.settings.button_link }}" class="scentiva-story-button">{{ section.settings.button_label }} <span>→</span></a>
+    {% endif %}
+  </div>
+</section>
+
+<style>
+  .scentiva-story-promise{position:relative;min-height:440px;display:flex;align-items:center;overflow:hidden;background:#3b2415;color:#f7eee2}
+  .scentiva-story-promise__image{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .scentiva-story-promise__overlay{position:absolute;inset:0;background:linear-gradient(90deg,rgba(49,27,12,.88),rgba(49,27,12,.58),rgba(49,27,12,.25))}
+  .scentiva-story-promise__content{position:relative;z-index:1;width:min(1120px,calc(100% - 48px));margin:auto;padding:80px 0}
+  .scentiva-story-promise .scentiva-eyebrow{color:#d5b276}
+  .scentiva-story-promise h2{font-family:Georgia,"Times New Roman",serif;font-weight:400;font-size:clamp(42px,5vw,70px);line-height:.98;max-width:650px;margin:0 0 22px}
+  .scentiva-story-promise__content>div{max-width:560px;font-family:Georgia,"Times New Roman",serif;line-height:1.7;color:#eadfce}
+  .scentiva-story-promise .scentiva-story-button{border-color:#c6a36e;color:#f7eee2}
+  @media(max-width:749px){.scentiva-story-promise{min-height:520px}.scentiva-story-promise__content{width:calc(100% - 36px);padding:60px 0}.scentiva-story-promise__overlay{background:linear-gradient(180deg,rgba(49,27,12,.35),rgba(49,27,12,.9))}}
+</style>
+
+{% schema %}
+{
+  "name":"Story Promise",
+  "settings":[
+    {"type":"image_picker","id":"image","label":"Background image"},
+    {"type":"text","id":"eyebrow","label":"Eyebrow","default":"Our Promise"},
+    {"type":"textarea","id":"heading","label":"Heading","default":"FRAGRANCES\nFOR EVERY YOU."},
+    {"type":"richtext","id":"text","label":"Text","default":"<p>Scentiva is more than a fragrance house. It is a celebration of individuality, a reminder that every moment has a scent, and every scent has a story.</p>"},
+    {"type":"text","id":"button_label","label":"Button label","default":"Discover Your Scent"},
+    {"type":"url","id":"button_link","label":"Button link"}
+  ],
+  "presets":[{"name":"Story Promise"}]
+}
+{% endschema %}

@@ -1,0 +1,60 @@
+<section class="scentiva-story-philosophy">
+  <div class="scentiva-story-philosophy__inner">
+    <div class="scentiva-story-philosophy__intro">
+      <p class="scentiva-eyebrow">{{ section.settings.eyebrow }}</p>
+      <h2>{{ section.settings.heading }}</h2>
+    </div>
+    <div class="scentiva-story-philosophy__grid">
+      {% for block in section.blocks %}
+        <div class="scentiva-story-philosophy__item" {{ block.shopify_attributes }}>
+          {% if block.settings.symbol != blank %}<div class="scentiva-story-philosophy__symbol">{{ block.settings.symbol }}</div>{% endif %}
+          <h3>{{ block.settings.title }}</h3>
+          <p>{{ block.settings.text }}</p>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<style>
+  .scentiva-story-philosophy{background:#eee4d3;padding:78px 0;border-top:1px solid rgba(120,90,50,.14);border-bottom:1px solid rgba(120,90,50,.14)}
+  .scentiva-story-philosophy__inner{width:min(1120px,calc(100% - 48px));margin:auto;display:grid;grid-template-columns:240px 1fr;gap:70px}
+  .scentiva-eyebrow{text-transform:uppercase;letter-spacing:.28em;font-size:10px;color:#9b7745;margin:0 0 16px}
+  .scentiva-story-philosophy h2{font-family:Georgia,"Times New Roman",serif;font-size:42px;font-weight:400;line-height:1.05;margin:0;color:#17130f}
+  .scentiva-story-philosophy__grid{display:grid;grid-template-columns:repeat(4,1fr)}
+  .scentiva-story-philosophy__item{padding:0 24px;border-left:1px solid rgba(120,90,50,.22)}
+  .scentiva-story-philosophy__symbol{font-size:26px;color:#987242;margin-bottom:18px}
+  .scentiva-story-philosophy h3{font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:500;margin:0 0 12px;color:#28211b}
+  .scentiva-story-philosophy p{font-family:Georgia,"Times New Roman",serif;font-size:14px;line-height:1.65;color:#6a5d50;margin:0}
+  @media(max-width:900px){.scentiva-story-philosophy__inner{grid-template-columns:1fr;gap:40px}.scentiva-story-philosophy__grid{grid-template-columns:repeat(2,1fr);gap:28px}.scentiva-story-philosophy__item{border-left:0;padding:0}}
+  @media(max-width:520px){.scentiva-story-philosophy__grid{grid-template-columns:1fr}.scentiva-story-philosophy__inner{width:calc(100% - 36px)}}
+</style>
+
+{% schema %}
+{
+  "name":"Story Philosophy",
+  "settings":[
+    {"type":"text","id":"eyebrow","label":"Eyebrow","default":"Our Philosophy"},
+    {"type":"text","id":"heading","label":"Heading","default":"Crafted with Purpose"}
+  ],
+  "blocks":[
+    {
+      "type":"point",
+      "name":"Philosophy point",
+      "settings":[
+        {"type":"text","id":"symbol","label":"Symbol","default":"✦"},
+        {"type":"text","id":"title","label":"Title","default":"Inspired by real places"},
+        {"type":"textarea","id":"text","label":"Text","default":"Scents that capture the essence of cultures, landscapes and people."}
+      ]
+    }
+  ],
+  "presets":[
+    {"name":"Story Philosophy","blocks":[
+      {"type":"point","settings":{"symbol":"◌","title":"Inspired by real places","text":"Scents that capture the essence of cultures, landscapes and people."}},
+      {"type":"point","settings":{"symbol":"✿","title":"Timeless ingredients","text":"A blend of classic perfume artistry and modern expression."}},
+      {"type":"point","settings":{"symbol":"♢","title":"For every story","text":"Whether it is a quiet morning or a special occasion, there is a scent for your moment."}},
+      {"type":"point","settings":{"symbol":"◎","title":"A mindful approach","text":"Thoughtfully crafted with quality, responsibility and care."}}
+    ]}
+  ]
+}
+{% endschema %}

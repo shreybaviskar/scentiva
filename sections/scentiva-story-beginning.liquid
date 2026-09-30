@@ -1,0 +1,42 @@
+<section class="scentiva-story-beginning">
+  <div class="scentiva-story-beginning__inner">
+    <div class="scentiva-story-beginning__copy">
+      <p class="scentiva-eyebrow">{{ section.settings.eyebrow }}</p>
+      <h2>{{ section.settings.heading }}</h2>
+      <div class="scentiva-story-beginning__text">{{ section.settings.text }}</div>
+    </div>
+    <div class="scentiva-story-beginning__media">
+      {% if section.settings.image != blank %}
+        {{ section.settings.image | image_url: width: 1400 | image_tag:
+          loading: 'lazy',
+          widths: '700, 1000, 1400',
+          sizes: '(min-width: 750px) 50vw, 100vw',
+          alt: section.settings.image.alt | escape
+        }}
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+<style>
+  .scentiva-story-beginning{background:#f7f2e9;padding:clamp(70px,9vw,130px) 0}
+  .scentiva-story-beginning__inner{width:min(1120px,calc(100% - 48px));margin:auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+  .scentiva-eyebrow{text-transform:uppercase;letter-spacing:.28em;font-size:10px;color:#9b7745;margin:0 0 18px}
+  .scentiva-story-beginning h2{font-family:Georgia,"Times New Roman",serif;font-size:clamp(38px,4vw,58px);font-weight:400;margin:0 0 24px;color:#17130f}
+  .scentiva-story-beginning__text{max-width:530px;font-family:Georgia,"Times New Roman",serif;font-size:16px;line-height:1.85;color:#62584e}
+  .scentiva-story-beginning__media img{display:block;width:100%;aspect-ratio:1.35/1;object-fit:cover}
+  @media(max-width:749px){.scentiva-story-beginning__inner{grid-template-columns:1fr;gap:42px}.scentiva-story-beginning__inner{width:calc(100% - 36px)}}
+</style>
+
+{% schema %}
+{
+  "name":"Story Beginning",
+  "settings":[
+    {"type":"text","id":"eyebrow","label":"Eyebrow","default":"Our Beginning"},
+    {"type":"text","id":"heading","label":"Heading","default":"A Simple Belief"},
+    {"type":"richtext","id":"text","label":"Text","default":"<p>Scentiva was born from a simple belief — that fragrance has the power to capture moments, evoke emotions and become a part of your story.</p><p>What started as a passion for timeless scents has grown into a collection crafted for modern lives, inspired by places, people and possibilities across the world.</p>"},
+    {"type":"image_picker","id":"image","label":"Image"}
+  ],
+  "presets":[{"name":"Story Beginning"}]
+}
+{% endschema %}

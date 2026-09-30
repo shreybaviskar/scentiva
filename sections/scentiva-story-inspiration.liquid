@@ -1,0 +1,46 @@
+<section class="scentiva-story-inspiration">
+  <div class="scentiva-story-inspiration__media">
+    {% if section.settings.image != blank %}
+      {{ section.settings.image | image_url: width: 1800 | image_tag:
+        loading: 'lazy',
+        widths: '800, 1200, 1600, 1800',
+        sizes: '(min-width: 750px) 50vw, 100vw',
+        alt: section.settings.image.alt | escape
+      }}
+    {% endif %}
+  </div>
+  <div class="scentiva-story-inspiration__copy">
+    <p class="scentiva-eyebrow">{{ section.settings.eyebrow }}</p>
+    <h2>{{ section.settings.heading }}</h2>
+    <div>{{ section.settings.text }}</div>
+    {% if section.settings.button_label != blank and section.settings.button_link != blank %}
+      <a href="{{ section.settings.button_link }}" class="scentiva-story-button">{{ section.settings.button_label }} <span>→</span></a>
+    {% endif %}
+  </div>
+</section>
+
+<style>
+  .scentiva-story-inspiration{display:grid;grid-template-columns:1fr 1fr;background:#f7f2e9}
+  .scentiva-story-inspiration__media img{width:100%;height:100%;min-height:520px;display:block;object-fit:cover}
+  .scentiva-story-inspiration__copy{display:flex;flex-direction:column;justify-content:center;padding:80px clamp(36px,7vw,110px)}
+  .scentiva-eyebrow{text-transform:uppercase;letter-spacing:.28em;font-size:10px;color:#9b7745;margin:0 0 18px}
+  .scentiva-story-inspiration h2{font-family:Georgia,"Times New Roman",serif;font-weight:400;font-size:clamp(40px,4vw,60px);line-height:1.05;margin:0 0 24px;color:#17130f}
+  .scentiva-story-inspiration__copy>div{font-family:Georgia,"Times New Roman",serif;color:#62584e;line-height:1.8;max-width:520px}
+  .scentiva-story-button{display:inline-flex;align-items:center;gap:18px;width:max-content;margin-top:30px;padding:15px 25px;border:1px solid #89704f;color:#241d17;text-decoration:none;text-transform:uppercase;letter-spacing:.16em;font-size:10px}
+  @media(max-width:749px}{.scentiva-story-inspiration{grid-template-columns:1fr}.scentiva-story-inspiration__media{order:2}.scentiva-story-inspiration__media img{min-height:360px}.scentiva-story-inspiration__copy{order:1;padding:65px 24px}}
+</style>
+
+{% schema %}
+{
+  "name":"Story Inspiration",
+  "settings":[
+    {"type":"image_picker","id":"image","label":"Image"},
+    {"type":"text","id":"eyebrow","label":"Eyebrow","default":"Our Inspiration"},
+    {"type":"text","id":"heading","label":"Heading","default":"A World of Possibilities"},
+    {"type":"richtext","id":"text","label":"Text","default":"<p>From sunlit citrus groves to deep, resinous woods, every fragrance in our collection tells a story — a journey across time, place and emotion. We draw inspiration from nature, art, architecture and the people who make the world extraordinary.</p>"},
+    {"type":"text","id":"button_label","label":"Button label","default":"Explore Our Collection"},
+    {"type":"url","id":"button_link","label":"Button link"}
+  ],
+  "presets":[{"name":"Story Inspiration"}]
+}
+{% endschema %}
