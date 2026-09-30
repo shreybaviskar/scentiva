@@ -1,0 +1,157 @@
+<style>
+  .day5-variant-buttons button {
+    margin-right: 10px;
+    padding: 8px 16px;
+    cursor: pointer;
+  }
+  
+  .day5-variant-buttons button.selected {
+    background-color: #000;
+    color: #fff;
+    border-color: #000;
+  }
+
+  .day5-variant-buttons button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    text-decoration: line-through;
+  }
+</style>
+
+<div class="day5-variant-test">
+  <h2>Day 5 Variant Test: Form Integration</h2>
+
+  <div class="day5-variant-buttons">
+    {% for variant in product.variants %}
+      <button
+        type="button"
+        data-variant-id="{{ variant.id }}"
+        {% if variant.available == false %}disabled{% endif %}
+      >
+        {{ variant.title }}
+      </button>
+    {% endfor %}
+  </div>
+
+  <div class="day5-variant-output">
+    <p>
+      Selected Variant:
+      <span data-selected-variant> None </span>
+    </p>
+
+    <p>
+      Variant ID:
+      <span data-selected-id> - </span>
+    </p>
+
+    <p>
+      Price:
+      <span data-selected-price> - </span>
+    </p>
+
+    <p>
+      Availability:
+      <span data-selected-availability> - </span>
+    </p>
+  </div>
+
+  <hr>
+
+  <!-- 
+    REAL-WORLD CONCEPT: The Shopify Product Form 
+    This generates a standard <form action="/cart/add"> 
+  -->
+  {% form 'product', product, id: 'day5-product-form' %}
+    
+    <!-- This hidden input is what Shopify actually reads when adding to cart -->
+    <input 
+      type="hidden" 
+      name="id" 
+      value="{{ product.selected_or_first_available_variant.id }}"
+      data-product-form-id-input
+    >
+
+    <button type="submit" data-submit-button>
+      Add to Cart
+    </button>
+    
+  {% endform %}
+
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const productVariants = {{ product.variants | json }};
+
+  const variantButtons = document.querySelectorAll('[data-variant-id]');
+  const selectedVariantElement = document.querySelector('[data-selected-variant]');
+  const priceElement = document.querySelector('[data-selected-price]');
+  const availabilityElement = document.querySelector('[data-selected-availability]');
+  const idElement = document.querySelector('[data-selected-id]');
+  
+  // NEW: Select the hidden input inside the Shopify form
+  const formHiddenInput = document.querySelector('[data-product-form-id-input]');
+  const submitButton = document.querySelector('[data-submit-button]');
+
+  variantButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+      
+      // 1. Update visual selected state
+      variantButtons.forEach((btn) => {
+        btn.classList.remove('selected');
+      });
+      button.classList.add('selected');
+
+      // 2. Find the variant data
+      const variantId = button.dataset.variantId;
+      const variant = productVariants.find((v) => v.id == variantId);
+
+      if (!variant) return;
+
+      // --- NEW: THE MOST IMPORTANT REAL-WORLD STEP ---
+      // 3. Update the hidden form input value
+      if (formHiddenInput) {
+        formHiddenInput.value = variantId;
+      }
+
+      // 4. Update the text displays
+      idElement.textContent = variantId;
+      selectedVariantElement.textContent = variant.title;
+
+      const formattedPrice = new Intl.NumberFormat('en-IN', {
+        style: 'currency',
+        currency: 'INR'
+      }).format(variant.price / 100);
+
+      priceElement.textContent = formattedPrice;
+
+      // 5. Update availability and button state
+      if (variant.available) {
+        availabilityElement.textContent = 'Available';
+        if (submitButton) {
+          submitButton.disabled = false;
+          submitButton.textContent = 'Add to Cart';
+        }
+      } else {
+        availabilityElement.textContent = 'Sold out';
+        if (submitButton) {
+          submitButton.disabled = true;
+          submitButton.textContent = 'Sold out';
+        }
+      }
+    });
+  });
+});
+</script>
+
+{% schema %}
+{
+  "name": "Day 5 Variant Test",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Day 5 Variant Test"
+    }
+  ]
+}
+{% endschema %}
