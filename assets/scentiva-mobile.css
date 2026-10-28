@@ -359,7 +359,7 @@
     letter-spacing: 0.1em;
   }
 
-  .scentiva-fragrance-collections- [class*="scentiva-fragrance-collection-card"] {
+  .scentiva-fragrance-collections-{{ section.id }} [class*="scentiva-fragrance-collection-card"] {
     min-width: 0;
   }
 
@@ -368,7 +368,7 @@
   }
 
   .scentiva-collections-section[class*="scentiva-collections-"] .scentiva-heading h2,
-  .scentiva-fragrance-collections- [class*="scentiva-heading"] h2 {
+  .scentiva-fragrance-collections-{{ section.id }} [class*="scentiva-heading"] h2 {
     max-width: 70vw;
     font-size: clamp(1.25rem, 4vw, 1.5rem);
     letter-spacing: 0.11em;
@@ -378,7 +378,7 @@
   }
 
   .scentiva-collections-section[class*="scentiva-collections-"] .scentiva-heading span,
-  .scentiva-fragrance-collections- [class*="scentiva-heading"] span {
+  .scentiva-fragrance-collections-{{ section.id }} [class*="scentiva-heading"] span {
     width: clamp(1.2rem, 5vw, 2.8rem);
     flex-basis: clamp(1.2rem, 5vw, 2.8rem);
   }
