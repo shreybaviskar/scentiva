@@ -20,83 +20,219 @@
 </section>
 
 <style>
-  .scentiva-story-promise{position:relative;min-height:440px;display:flex;align-items:center;overflow:hidden;background:#3b2415;color:#f7eee2}
-  .scentiva-story-promise__image{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-  .scentiva-story-promise__overlay{position:absolute;inset:0;background:linear-gradient(90deg,rgba(49,27,12,.88),rgba(49,27,12,.58),rgba(49,27,12,.25))}
-  .scentiva-story-promise__content{position:relative;z-index:1;width:min(1120px,calc(100% - 48px));margin:auto;padding:80px 0}
-  .scentiva-story-promise .scentiva-eyebrow{color:#d5b276}
-  .scentiva-story-promise h2{font-family:Georgia,"Times New Roman",serif;font-weight:400;font-size:clamp(42px,5vw,70px);line-height:.98;max-width:650px;margin:0 0 22px}
-  .scentiva-story-promise__content>div{max-width:560px;font-family:Georgia,"Times New Roman",serif;line-height:1.7;color:#eadfce}
-  .scentiva-story-promise .scentiva-story-button{border-color:#c6a36e;color:#f7eee2}
-  @media(max-width:749px){.scentiva-story-promise{min-height:520px}.scentiva-story-promise__content{width:calc(100% - 36px);padding:60px 0}.scentiva-story-promise__overlay{background:linear-gradient(180deg,rgba(49,27,12,.35),rgba(49,27,12,.9))}}
-
-  /* Section-local editorial redesign */
   .scentiva-story-promise {
-    min-height: clamp(520px, 48vw, 700px);
-    color: #20170f;
+    position: relative;
+    display: flex;
+    align-items: center;
+    min-height: clamp(540px, 48vw, 720px);
+    overflow: hidden;
+    isolation: isolate;
+    background: #2b1a10;
+    color: #fff8ed;
   }
+
+  .scentiva-story-promise__image {
+    position: absolute;
+    z-index: -2;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
   .scentiva-story-promise__overlay {
-    background: linear-gradient(90deg, rgba(246,239,226,.94) 0%, rgba(246,239,226,.86) 38%, rgba(246,239,226,.36) 66%, rgba(246,239,226,.06) 100%);
+    position: absolute;
+    z-index: -1;
+    inset: 0;
+    background: linear-gradient(90deg,
+      rgba(24, 15, 9, .78) 0%,
+      rgba(24, 15, 9, .62) 38%,
+      rgba(24, 15, 9, .20) 72%,
+      rgba(24, 15, 9, .08) 100%);
   }
+
   .scentiva-story-promise__content {
+    position: relative;
+    z-index: 1;
     width: min(1240px, calc(100% - 64px));
-    padding: clamp(64px, 8vw, 112px) 0;
+    margin: 0 auto;
+    padding: clamp(64px, 7vw, 104px) 0;
   }
+
   .scentiva-story-promise .scentiva-eyebrow {
-    margin-bottom: 24px;
-    color: #8c642f;
+    margin: 0 0 22px;
+    color: #e0bd7d;
     font-family: Arial, sans-serif;
     font-size: 10px;
     font-weight: 600;
+    line-height: 1.5;
     letter-spacing: .3em;
+    text-transform: uppercase;
   }
+
   .scentiva-story-promise h2 {
     max-width: 11ch;
-    margin-bottom: 28px;
-    color: #19130e;
+    margin: 0 0 24px;
+    color: #fff8ed;
+    font-family: Georgia, "Times New Roman", serif;
     font-size: clamp(46px, 5.3vw, 76px);
+    font-weight: 400;
     line-height: 1.02;
     letter-spacing: -.025em;
     text-wrap: balance;
+    overflow-wrap: normal;
+    word-break: normal;
+    text-shadow: 0 3px 24px rgba(0, 0, 0, .25);
   }
-  .scentiva-story-promise__content>div {
+
+  .scentiva-story-promise__content > div {
     max-width: 48ch;
-    margin-bottom: 32px;
-    color: #44382c;
+    margin: 0;
+    color: rgba(255, 248, 237, .94);
+    font-family: Georgia, "Times New Roman", serif;
     font-size: 16px;
     line-height: 1.8;
+    text-shadow: 0 2px 14px rgba(0, 0, 0, .38);
   }
+
+  .scentiva-story-promise__content > div p {
+    margin: 0;
+  }
+
+  /* Desktop CTA only: keep the section layout unchanged, refine the button. */
   .scentiva-story-promise .scentiva-story-button {
-    min-height: 52px;
-    padding: 0 26px;
-    border: 1px solid #8e6b39;
-    background: #20170f;
-    color: #fffaf1;
-    letter-spacing: .16em;
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    width: auto;
+    min-width: 250px;
+    min-height: 54px;
+    margin-top: 30px;
+    padding: 0 24px;
+    border: 1px solid #d0ad70;
+    background: #21170f;
+    color: #fff8ed;
+    font-family: Arial, sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    line-height: 1.4;
+    letter-spacing: .15em;
+    text-decoration: none !important;
+    text-transform: uppercase;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, .16);
+    transition: background-color .2s ease, color .2s ease, border-color .2s ease;
   }
+
+  .scentiva-story-promise .scentiva-story-button span {
+    flex: 0 0 auto;
+    font-size: 17px;
+    line-height: 1;
+    text-decoration: none !important;
+  }
+
   .scentiva-story-promise .scentiva-story-button:hover {
-    background: #8e6b39;
-    color: #fffaf1;
+    border-color: #e0bd7d;
+    background: #e0bd7d;
+    color: #21170f;
+    text-decoration: none !important;
   }
-  @media(max-width:749px) {
-    .scentiva-story-promise { min-height: 620px; align-items: flex-end; }
-    .scentiva-story-promise__image { object-position: 62% center; }
-    .scentiva-story-promise__overlay {
-      background: linear-gradient(180deg, rgba(246,239,226,.05) 0%, rgba(246,239,226,.22) 30%, rgba(246,239,226,.94) 68%, #f6efe2 100%);
+
+  @media screen and (max-width: 749px) {
+    .scentiva-story-promise {
+      align-items: flex-end;
+      min-height: 0;
+      min-height: min(760px, 94svh);
     }
+
+    .scentiva-story-promise__image {
+      object-position: 62% center;
+    }
+
+    .scentiva-story-promise__overlay {
+      background: linear-gradient(180deg,
+        rgba(24, 15, 9, .03) 0%,
+        rgba(24, 15, 9, .12) 22%,
+        rgba(24, 15, 9, .58) 48%,
+        rgba(24, 15, 9, .94) 78%,
+        rgba(24, 15, 9, .98) 100%);
+    }
+
     .scentiva-story-promise__content {
       width: calc(100% - 40px);
-      padding: 230px 0 42px;
+      margin: 0 auto;
+      padding: 190px 0 34px;
     }
+
+    .scentiva-story-promise .scentiva-eyebrow {
+      margin-bottom: 14px;
+      color: #e6c58a;
+      font-size: 9px;
+      letter-spacing: .25em;
+    }
+
     .scentiva-story-promise h2 {
-      max-width: 10ch;
-      font-size: clamp(38px, 10vw, 48px);
-      line-height: 1.03;
+      width: 100%;
+      max-width: none;
+      margin-bottom: 18px;
+      color: #fff8ed;
+      font-size: clamp(34px, 8.5vw, 46px);
+      line-height: 1.04;
+      letter-spacing: -.02em;
+      text-wrap: initial;
+      overflow-wrap: normal;
+      word-break: keep-all;
     }
-    .scentiva-story-promise__content>div {
-      max-width: 38ch;
-      font-size: 14px;
+
+    .scentiva-story-promise__content > div {
+      max-width: 42ch;
+      margin: 0;
+      color: rgba(255, 248, 237, .96);
+      font-size: 15px;
       line-height: 1.7;
+    }
+
+    .scentiva-story-promise .scentiva-story-button {
+      display: inline-flex;
+      width: 100%;
+      min-width: 0;
+      min-height: 52px;
+      margin-top: 22px;
+      padding: 0 18px;
+      border-color: #d0ad70;
+      background: #f5ead7;
+      color: #21170f;
+      font-size: 10px;
+      letter-spacing: .12em;
+      box-shadow: none;
+    }
+
+    .scentiva-story-promise .scentiva-story-button:hover {
+      background: #e0bd7d;
+      color: #21170f;
+    }
+  }
+
+  @media screen and (max-width: 380px) {
+    .scentiva-story-promise__content {
+      width: calc(100% - 32px);
+      padding-top: 165px;
+      padding-bottom: 28px;
+    }
+
+    .scentiva-story-promise h2 {
+      font-size: 33px;
+    }
+
+    .scentiva-story-promise__content > div {
+      font-size: 14px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .scentiva-story-promise .scentiva-story-button {
+      transition: none;
     }
   }
 </style>
