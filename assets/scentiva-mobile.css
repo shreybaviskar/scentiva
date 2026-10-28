@@ -279,3 +279,192 @@
     transition-duration: 0.01ms !important;
   }
 }
+
+
+/* Scentiva-specific section overrides: mobile typography and spacing. */
+@media screen and (max-width: 749px) {
+  .scentiva-hero-section[class*="scentiva-hero-"] {
+    min-height: min(680px, 86svh);
+  }
+
+  .scentiva-hero-section[class*="scentiva-hero-"] .scentiva-hero__content {
+    min-height: min(680px, 86svh);
+    padding: 3.2rem 2rem;
+  }
+
+  .scentiva-hero-section[class*="scentiva-hero-"] h1 {
+    max-width: 10ch;
+    margin-bottom: 1.6rem;
+    font-size: clamp(3.4rem, 10vw, 4.4rem);
+    line-height: 1.02;
+    letter-spacing: 0.015em;
+    overflow-wrap: anywhere;
+  }
+
+  .scentiva-hero-section[class*="scentiva-hero-"] .scentiva-hero__eyebrow {
+    max-width: 29ch;
+    margin-bottom: 2rem;
+    font-size: 1rem;
+    line-height: 1.55;
+    letter-spacing: 0.2em;
+  }
+
+  .scentiva-hero-section[class*="scentiva-hero-"] .scentiva-hero__button {
+    width: 100%;
+    min-width: 0;
+    max-width: 32rem;
+    min-height: 4.8rem;
+    padding: 1.2rem 1.5rem;
+    font-size: 1rem;
+    line-height: 1.35;
+    letter-spacing: 0.14em;
+  }
+
+  .scentiva-featured-section[class*="scentiva-featured-"] .scentiva-products-grid {
+    gap: 1rem;
+  }
+
+  .scentiva-featured-section[class*="scentiva-featured-"] .scentiva-product-card {
+    min-width: 0;
+    padding: 0.8rem 0.8rem 1.4rem;
+  }
+
+  .scentiva-featured-section[class*="scentiva-featured-"] .scentiva-product-card__image {
+    aspect-ratio: 0.88 / 1;
+  }
+
+  .scentiva-featured-section[class*="scentiva-featured-"] .scentiva-product-card__info {
+    padding-top: 1rem;
+  }
+
+  .scentiva-featured-section[class*="scentiva-featured-"] h3 {
+    margin-bottom: 0.6rem;
+    font-size: 1.15rem;
+    line-height: 1.45;
+    letter-spacing: 0.08em;
+    overflow-wrap: anywhere;
+  }
+
+  .scentiva-featured-section[class*="scentiva-featured-"] .scentiva-product-card__price {
+    font-size: 1.25rem;
+  }
+
+  .scentiva-featured-section[class*="scentiva-featured-"] .scentiva-quick-add button {
+    width: 100%;
+    min-width: 0;
+    min-height: 4.2rem;
+    padding: 1rem 0.7rem;
+    font-size: 0.9rem;
+    line-height: 1.35;
+    letter-spacing: 0.1em;
+  }
+
+  .scentiva-fragrance-collections- [class*="scentiva-fragrance-collection-card"] {
+    min-width: 0;
+  }
+
+  .scentiva-fragrance-collections- [class*="scentiva-fragrance-collection-card__title"] {
+    overflow-wrap: anywhere;
+  }
+
+  .scentiva-collections-section[class*="scentiva-collections-"] .scentiva-heading h2,
+  .scentiva-fragrance-collections- [class*="scentiva-heading"] h2 {
+    max-width: 70vw;
+    font-size: clamp(1.25rem, 4vw, 1.5rem);
+    letter-spacing: 0.11em;
+    line-height: 1.35;
+    white-space: normal;
+    text-wrap: balance;
+  }
+
+  .scentiva-collections-section[class*="scentiva-collections-"] .scentiva-heading span,
+  .scentiva-fragrance-collections- [class*="scentiva-heading"] span {
+    width: clamp(1.2rem, 5vw, 2.8rem);
+    flex-basis: clamp(1.2rem, 5vw, 2.8rem);
+  }
+
+  .scentiva-collections-section[class*="scentiva-collections-"] .scentiva-collection-card {
+    min-width: 0;
+  }
+
+  .scentiva-story-section[class*="scentiva-story-"] {
+    min-height: 60rem;
+  }
+
+  .scentiva-story-section[class*="scentiva-story-"] .scentiva-story__content {
+    min-height: 60rem;
+    padding: clamp(20rem, 55vw, 26rem) 2rem 3rem;
+  }
+
+  .scentiva-story-section[class*="scentiva-story-"] .scentiva-story__copy {
+    max-width: 36rem;
+  }
+
+  .scentiva-story-section[class*="scentiva-story-"] h2 {
+    font-size: clamp(3.2rem, 9.5vw, 4.4rem);
+    line-height: 1.04;
+    letter-spacing: 0;
+    overflow-wrap: anywhere;
+  }
+
+  .scentiva-story-section[class*="scentiva-story-"] .scentiva-story__text {
+    font-size: 1.4rem;
+    line-height: 1.65;
+  }
+
+  .scentiva-story-section[class*="scentiva-story-"] .scentiva-story__button {
+    width: 100%;
+    max-width: 28rem;
+    min-height: 4.8rem;
+    font-size: 1rem;
+    letter-spacing: 0.16em;
+  }
+
+  /* Luxury tier cards already form a two-column grid; reduce the
+     oversized fixed heights to keep scrolling comfortable. */
+  .scentiva-luxury-collections .scentiva-luxury-card {
+    min-height: 0;
+  }
+
+  .scentiva-luxury-collections .scentiva-luxury-card__content {
+    min-height: 0;
+    padding: 1.6rem 1rem 1.4rem;
+  }
+
+  .scentiva-luxury-collections .scentiva-luxury-card__title {
+    font-size: clamp(1.8rem, 5.4vw, 2.5rem);
+    line-height: 1.08;
+    overflow-wrap: anywhere;
+  }
+
+  .scentiva-luxury-collections .scentiva-luxury-card__description {
+    font-size: 1.2rem;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+  }
+
+  .scentiva-luxury-collections .scentiva-luxury-card__button {
+    width: 100%;
+    min-height: 4.2rem;
+    margin-top: 1.2rem;
+    font-size: 0.8rem;
+    letter-spacing: 0.09em;
+  }
+}
+
+@media screen and (max-width: 390px) {
+  .scentiva-featured-section[class*="scentiva-featured-"] .scentiva-heading h2 {
+    font-size: 1.25rem;
+    letter-spacing: 0.1em;
+  }
+
+  .scentiva-collections-section[class*="scentiva-collections-"] .scentiva-collections__grid {
+    gap: 0.7rem;
+  }
+
+  .scentiva-luxury-collections .scentiva-luxury-card__subtitle {
+    font-size: 0.65rem;
+    letter-spacing: 0.14em;
+    overflow-wrap: anywhere;
+  }
+}
