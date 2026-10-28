@@ -26,6 +26,65 @@
   .scentiva-story-beginning__text{max-width:530px;font-family:Georgia,"Times New Roman",serif;font-size:16px;line-height:1.85;color:#62584e}
   .scentiva-story-beginning__media img{display:block;width:100%;aspect-ratio:1.35/1;object-fit:cover}
   @media(max-width:749px){.scentiva-story-beginning__inner{grid-template-columns:1fr;gap:42px}.scentiva-story-beginning__inner{width:calc(100% - 36px)}}
+
+  /* Section-local editorial redesign */
+  .scentiva-story-beginning {
+    padding: clamp(64px, 7.5vw, 104px) 0;
+    background: #f6f1e8;
+  }
+  .scentiva-story-beginning__inner {
+    width: min(1240px, calc(100% - 64px));
+    grid-template-columns: minmax(0, .92fr) minmax(0, 1.08fr);
+    gap: clamp(40px, 6vw, 88px);
+  }
+  .scentiva-story-beginning__copy { max-width: 540px; }
+  .scentiva-story-beginning .scentiva-eyebrow {
+    margin-bottom: 22px;
+    color: #98713d;
+    font-family: Arial, sans-serif;
+    font-weight: 600;
+    letter-spacing: .28em;
+  }
+  .scentiva-story-beginning h2 {
+    max-width: 12ch;
+    margin-bottom: 28px;
+    font-size: clamp(42px, 4.4vw, 64px);
+    line-height: 1.04;
+    letter-spacing: -.025em;
+    text-wrap: balance;
+  }
+  .scentiva-story-beginning__text {
+    max-width: 48ch;
+    font-size: 16px;
+    line-height: 1.85;
+    color: #554b41;
+  }
+  .scentiva-story-beginning__text p { margin: 0 0 1.25em; }
+  .scentiva-story-beginning__text p:last-child { margin-bottom: 0; }
+  .scentiva-story-beginning__media {
+    min-width: 0;
+    overflow: hidden;
+    background: #e6dccb;
+  }
+  .scentiva-story-beginning__media img {
+    aspect-ratio: 1.12 / 1;
+    object-position: center;
+  }
+  @media(max-width: 749px) {
+    .scentiva-story-beginning { padding: 56px 0; }
+    .scentiva-story-beginning__inner {
+      width: calc(100% - 40px);
+      grid-template-columns: minmax(0, 1fr);
+      gap: 30px;
+    }
+    .scentiva-story-beginning h2 {
+      max-width: 13ch;
+      font-size: clamp(36px, 9vw, 46px);
+      line-height: 1.06;
+    }
+    .scentiva-story-beginning__text { font-size: 15px; line-height: 1.75; }
+    .scentiva-story-beginning__media img { aspect-ratio: 1.08 / 1; }
+  }
 </style>
 
 {% schema %}

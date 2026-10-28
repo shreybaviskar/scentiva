@@ -849,6 +849,76 @@
       font-size: 46px;
     }
   }
+
+  /* Section-local editorial redesign: this selector includes the dynamic Shopify section ID. */
+  [id^="ScentivaOurStory-"] .scentiva-story-hero__veil {
+    background:
+      linear-gradient(90deg, rgba(13, 9, 6, .82) 0%, rgba(13, 9, 6, .64) 34%, rgba(13, 9, 6, .2) 67%, rgba(13, 9, 6, .02) 100%),
+      linear-gradient(0deg, rgba(13, 9, 6, .2), transparent 48%);
+  }
+  [id^="ScentivaOurStory-"] .scentiva-story-hero__copy {
+    max-width: 600px;
+    padding: clamp(28px, 3.4vw, 48px);
+    border-left: 2px solid #c5a05b;
+    background: linear-gradient(120deg, rgba(15, 11, 8, .48), rgba(15, 11, 8, .12));
+  }
+  [id^="ScentivaOurStory-"] .scentiva-story-hero h1 {
+    max-width: 10ch;
+    margin-bottom: 24px;
+    color: #fffaf1;
+    font-size: clamp(48px, 5.4vw, 78px);
+    line-height: 1;
+    letter-spacing: -.025em;
+    text-wrap: balance;
+  }
+  [id^="ScentivaOurStory-"] .scentiva-story-hero__text {
+    max-width: 48ch;
+    color: rgba(255, 250, 241, .92);
+    font-size: 15px;
+    line-height: 1.8;
+    letter-spacing: 0;
+  }
+  [id^="ScentivaOurStory-"] .scentiva-story-split__copy { max-width: 530px; }
+  [id^="ScentivaOurStory-"] .scentiva-story-split h2 {
+    max-width: 12ch;
+    font-size: clamp(40px, 4vw, 60px);
+    line-height: 1.05;
+    letter-spacing: -.02em;
+    text-transform: none;
+    text-wrap: balance;
+  }
+  [id^="ScentivaOurStory-"] .scentiva-story-richtext {
+    max-width: 52ch;
+    font-size: 15px;
+    line-height: 1.8;
+    letter-spacing: 0;
+  }
+  [id^="ScentivaOurStory-"] .scentiva-story-richtext p + p { margin-top: 1.3em; }
+  @media(max-width: 749px) {
+    [id^="ScentivaOurStory-"] .scentiva-story-hero,
+    [id^="ScentivaOurStory-"] .scentiva-story-hero__inner { min-height: min(740px, 90svh); }
+    [id^="ScentivaOurStory-"] .scentiva-story-hero__veil {
+      background: linear-gradient(180deg, rgba(13,9,6,.04) 0%, rgba(13,9,6,.18) 28%, rgba(13,9,6,.88) 100%);
+    }
+    [id^="ScentivaOurStory-"] .scentiva-story-hero__inner {
+      align-items: flex-end;
+      padding-top: 8rem;
+      padding-bottom: 3.2rem;
+    }
+    [id^="ScentivaOurStory-"] .scentiva-story-hero__copy {
+      padding: 24px 20px;
+      background: rgba(15,11,8,.52);
+    }
+    [id^="ScentivaOurStory-"] .scentiva-story-hero h1 {
+      font-size: clamp(38px, 10.5vw, 50px);
+      line-height: 1.02;
+    }
+    [id^="ScentivaOurStory-"] .scentiva-story-hero__text { font-size: 14px; line-height: 1.7; }
+    [id^="ScentivaOurStory-"] .scentiva-story-split h2 {
+      font-size: clamp(36px, 9.5vw, 46px);
+      line-height: 1.05;
+    }
+  }
 </style>
 
 {% schema %}
