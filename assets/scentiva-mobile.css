@@ -1,0 +1,281 @@
+
+/* =========================================================
+   SCENTIVA — MOBILE-FIRST REFINEMENT LAYER
+   Keep the desktop design; improve spacing, readability and
+   tap targets on phones without changing storefront behaviour.
+   ========================================================= */
+
+@media screen and (max-width: 749px) {
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+
+  body {
+    overflow-x: clip;
+  }
+
+  img,
+  video,
+  iframe,
+  svg {
+    max-width: 100%;
+  }
+
+  .page-width {
+    padding-left: 1.6rem;
+    padding-right: 1.6rem;
+  }
+
+  .utility-bar__grid.page-width {
+    padding-left: 1.6rem;
+    padding-right: 1.6rem;
+  }
+
+  /* Header: consistent height, clear icon spacing and logo bounds. */
+  .header {
+    column-gap: 0.6rem;
+    padding-top: 0.8rem;
+    padding-bottom: 0.8rem;
+  }
+
+  .header__heading,
+  .header__heading-link {
+    min-width: 0;
+    max-width: 54vw;
+  }
+
+  .header__heading-logo {
+    display: block;
+    width: auto;
+    max-width: 100%;
+    max-height: 4.4rem;
+    object-fit: contain;
+  }
+
+  .header__icons {
+    gap: 0.2rem;
+  }
+
+  .header__icon {
+    width: 4rem;
+    height: 4rem;
+  }
+
+  .header__icon .icon {
+    width: 1.9rem;
+    height: 1.9rem;
+  }
+
+  /* Reusable headings: avoid long letter-spacing forcing overflow. */
+  .collection-list-title {
+    gap: 0.8rem !important;
+    max-width: 100%;
+    padding-inline: 1.6rem;
+    font-size: 1.35rem !important;
+    letter-spacing: 0.16em !important;
+    line-height: 1.35 !important;
+  }
+
+  .collection-list-title::before,
+  .collection-list-title::after {
+    width: clamp(1.4rem, 7vw, 3.8rem) !important;
+    flex-basis: clamp(1.4rem, 7vw, 3.8rem) !important;
+  }
+
+  /* Native Dawn product cards and collection/product grids. */
+  .product-grid {
+    column-gap: 0.9rem !important;
+    row-gap: 1.8rem !important;
+  }
+
+  .product-grid .grid__item {
+    min-width: 0;
+  }
+
+  .card__heading {
+    font-size: 1.35rem;
+    line-height: 1.4;
+    letter-spacing: 0.01em;
+  }
+
+  .card-information > * {
+    font-size: 1.25rem;
+  }
+
+  .price {
+    font-size: 1.35rem;
+  }
+
+  .card__content {
+    padding-top: 0.8rem;
+  }
+
+  .card__inner,
+  .card__media {
+    overflow: hidden;
+  }
+
+  /* Buttons and form controls should be comfortable to tap. */
+  .button,
+  .shopify-challenge__button,
+  .customer button,
+  .shopify-payment-button__button {
+    min-height: 4.6rem;
+  }
+
+  .field__input,
+  .select__select,
+  .customer .field input,
+  .customer select {
+    min-height: 4.6rem;
+    font-size: 1.6rem;
+  }
+
+  /* Product page: prioritize media first, then compact readable details. */
+  .product {
+    row-gap: 1.6rem;
+  }
+
+  .product__media-wrapper,
+  .product__info-wrapper {
+    min-width: 0;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .product__info-container {
+    padding-inline: 0;
+  }
+
+  .product__title h1,
+  .product__title > * {
+    font-size: clamp(2.4rem, 7vw, 3.2rem);
+    line-height: 1.12;
+    letter-spacing: 0.005em;
+    overflow-wrap: anywhere;
+  }
+
+  .product__description,
+  .product__description p,
+  .product__accordion .accordion__content {
+    font-size: 1.45rem;
+    line-height: 1.65;
+  }
+
+  .product-form__buttons,
+  .product-form__submit,
+  .shopify-payment-button {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .product-form__submit {
+    padding-inline: 1.2rem;
+    letter-spacing: 0.08em;
+  }
+
+  .product__media-list {
+    margin-bottom: 0;
+  }
+
+  /* Collection listing: keep filters accessible and cards evenly spaced. */
+  .facets-container {
+    padding-top: 0.8rem;
+    padding-bottom: 1.2rem;
+  }
+
+  .facets__form,
+  .facets__wrapper {
+    gap: 0.8rem;
+  }
+
+  .mobile-facets__open {
+    min-height: 4.4rem;
+  }
+
+  /* Cart: prevent item titles and totals from squeezing controls. */
+  .cart-item__name {
+    font-size: 1.45rem;
+    line-height: 1.4;
+    overflow-wrap: anywhere;
+  }
+
+  .cart-item__details,
+  .cart-item__totals,
+  .cart-item__quantity {
+    min-width: 0;
+  }
+
+  .cart__ctas,
+  .cart__checkout-button {
+    width: 100%;
+  }
+
+  .cart__checkout-button {
+    min-height: 5rem;
+  }
+
+  /* Footer: reduce vertical clutter, keep links readable. */
+  .footer {
+    overflow: hidden;
+  }
+
+  .footer-block__heading {
+    font-size: 1.4rem;
+    letter-spacing: 0.08em;
+  }
+
+  .footer-block__details-content,
+  .footer-block__details-content a {
+    font-size: 1.35rem;
+    line-height: 1.7;
+  }
+
+  /* Avoid hover-only movement/animations on touch screens. */
+  .product-grid .card-wrapper:hover,
+  .collection-list .card-wrapper:hover,
+  .scentiva-collection-card:hover,
+  .scentiva-fragrance-collection-card:hover {
+    transform: none;
+  }
+}
+
+@media screen and (max-width: 390px) {
+  .page-width,
+  .utility-bar__grid.page-width {
+    padding-left: 1.2rem;
+    padding-right: 1.2rem;
+  }
+
+  .header__heading,
+  .header__heading-link {
+    max-width: 48vw;
+  }
+
+  .header__icon {
+    width: 3.6rem;
+  }
+
+  .product-grid {
+    column-gap: 0.7rem !important;
+  }
+
+  .card__heading {
+    font-size: 1.25rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
