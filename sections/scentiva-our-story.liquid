@@ -919,6 +919,145 @@
       line-height: 1.05;
     }
   }
+
+  
+  /* Our Story hero: editorial contrast treatment for the uploaded Scentiva banner */
+  #ScentivaOurStory-{{ section.id }} .scentiva-story-hero__veil {
+    background:
+      linear-gradient(90deg,
+        rgba(18, 11, 6, .88) 0%,
+        rgba(18, 11, 6, .76) 31%,
+        rgba(18, 11, 6, .48) 47%,
+        rgba(18, 11, 6, .12) 70%,
+        rgba(18, 11, 6, .02) 100%),
+      linear-gradient(0deg, rgba(18, 11, 6, .28), transparent 45%);
+  }
+
+  #ScentivaOurStory-{{ section.id }} .scentiva-story-hero__copy {
+    width: min(650px, 100%);
+    padding: clamp(26px, 3vw, 42px);
+    border-left: 2px solid #c5a05b;
+    background: linear-gradient(115deg, rgba(16, 11, 7, .56), rgba(16, 11, 7, .18));
+    box-shadow: 0 18px 55px rgba(0, 0, 0, .08);
+  }
+
+  #ScentivaOurStory-{{ section.id }} .scentiva-story-hero .scentiva-story-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 24px;
+    color: #e7c98e;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: .3em;
+    text-shadow: 0 2px 12px rgba(0, 0, 0, .4);
+  }
+
+  #ScentivaOurStory-{{ section.id }} .scentiva-story-hero .scentiva-story-eyebrow::after {
+    content: "";
+    display: block;
+    width: 76px;
+    height: 1px;
+    background: rgba(231, 201, 142, .7);
+  }
+
+  #ScentivaOurStory-{{ section.id }} .scentiva-story-hero h1 {
+    max-width: 11ch;
+    margin: 0 0 24px;
+    color: #fffaf1;
+    font-size: clamp(48px, 5.4vw, 78px);
+    line-height: .99;
+    letter-spacing: -.025em;
+    text-shadow: 0 3px 24px rgba(0, 0, 0, .28);
+    text-wrap: balance;
+  }
+
+  #ScentivaOurStory-{{ section.id }} .scentiva-story-hero__subheading {
+    color: #e7c98e;
+    font-size: 11px;
+    line-height: 1.7;
+    letter-spacing: .2em;
+  }
+
+  #ScentivaOurStory-{{ section.id }} .scentiva-story-hero__text {
+    max-width: 48ch;
+    margin: 0 0 30px;
+    color: rgba(255, 250, 241, .96);
+    font-size: 16px;
+    line-height: 1.75;
+    letter-spacing: .005em;
+    text-shadow: 0 2px 14px rgba(0, 0, 0, .45);
+  }
+
+  #ScentivaOurStory-{{ section.id }} .scentiva-story-button {
+    min-height: 54px;
+    padding: 0 25px;
+    border-color: #d4b16e;
+    background: #20170f;
+    color: #fffaf1;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, .2);
+    letter-spacing: .16em;
+  }
+
+  #ScentivaOurStory-{{ section.id }} .scentiva-story-button:hover {
+    background: #d4b16e;
+    border-color: #d4b16e;
+    color: #20170f;
+  }
+
+  @media screen and (max-width: 749px) {
+    #ScentivaOurStory-{{ section.id }} .scentiva-story-hero,
+    #ScentivaOurStory-{{ section.id }} .scentiva-story-hero__inner {
+      min-height: min(760px, 92svh);
+    }
+
+    #ScentivaOurStory-{{ section.id }} .scentiva-story-hero__veil {
+      background:
+        linear-gradient(180deg,
+          rgba(18, 11, 6, .03) 0%,
+          rgba(18, 11, 6, .12) 24%,
+          rgba(18, 11, 6, .72) 53%,
+          rgba(18, 11, 6, .94) 100%);
+    }
+
+    #ScentivaOurStory-{{ section.id }} .scentiva-story-hero__inner {
+      align-items: flex-end;
+      padding-top: 100px;
+      padding-bottom: 32px;
+    }
+
+    #ScentivaOurStory-{{ section.id }} .scentiva-story-hero__copy {
+      width: 100%;
+      padding: 24px 20px;
+      border-left-width: 2px;
+      background: rgba(16, 11, 7, .48);
+    }
+
+    #ScentivaOurStory-{{ section.id }} .scentiva-story-hero .scentiva-story-eyebrow {
+      margin-bottom: 18px;
+      font-size: 9px;
+    }
+
+    #ScentivaOurStory-{{ section.id }} .scentiva-story-hero h1 {
+      max-width: 10ch;
+      margin-bottom: 18px;
+      font-size: clamp(38px, 10.5vw, 52px);
+      line-height: 1.02;
+    }
+
+    #ScentivaOurStory-{{ section.id }} .scentiva-story-hero__text {
+      margin-bottom: 24px;
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    #ScentivaOurStory-{{ section.id }} .scentiva-story-button {
+      min-height: 50px;
+      width: 100%;
+      max-width: 320px;
+    }
+  }
+
 </style>
 
 {% schema %}
