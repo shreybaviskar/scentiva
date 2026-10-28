@@ -465,7 +465,9 @@
 /* Force the collection catalog to keep two equal product columns on phones.
    Dawn's column utility can be overridden by other theme/custom section CSS. */
 @media screen and (max-width: 749px) {
-  body.template-collection #product-grid.product-grid {
+  #MainContent #product-grid.product-grid {
+    width: 100% !important;
+    max-width: 100% !important;
     display: grid !important;
     grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
     column-gap: 1.2rem !important;
@@ -473,22 +475,22 @@
     align-items: start;
   }
 
-  body.template-collection #product-grid.product-grid > .grid__item {
+  #MainContent #product-grid.product-grid > .grid__item {
     width: auto !important;
     max-width: none !important;
     min-width: 0 !important;
     margin: 0 !important;
   }
 
-  body.template-collection #product-grid .card-wrapper,
-  body.template-collection #product-grid .card,
-  body.template-collection #product-grid .card__content {
+  #MainContent #product-grid .card-wrapper,
+  #MainContent #product-grid .card,
+  #MainContent #product-grid .card__content {
     min-width: 0;
     width: 100%;
   }
 
-  body.template-collection #product-grid .card__heading,
-  body.template-collection #product-grid .price {
+  #MainContent #product-grid .card__heading,
+  #MainContent #product-grid .price {
     overflow-wrap: anywhere;
   }
 }
