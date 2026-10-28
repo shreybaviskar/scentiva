@@ -12,7 +12,7 @@
     "story_hero": {
       "type": "scentiva-story-hero",
       "settings": {
-        "image": "shopify://shop_images/our_story_hero.png",
+        "image": "shopify://shop_images/ourrstorymain.png",
         "eyebrow": "Our Story",
         "heading": "MORE THAN\nA SCENT.\nA STORY.",
         "subheading": "The art of olfaction — fragrance created to capture moments, evoke emotion and become part of your story."
@@ -24,7 +24,7 @@
         "eyebrow": "Our Beginning",
         "heading": "A Simple Belief",
         "text": "<p>Scentiva was born from a simple belief — that fragrance has the power to capture moments, evoke emotions and become a part of your story.</p><p>What started as a passion for timeless scents has grown into a collection crafted for modern lives, inspired by places, people and possibilities across the world.</p>",
-        "image": "shopify://shop_images/our_story_1.png"
+        "image": "shopify://shop_images/Vanilla_Amber_Atelier_Still_Life.png"
       }
     },
     "story_philosophy": {
@@ -88,7 +88,7 @@
     "story_promise": {
       "type": "scentiva-story-promise",
       "settings": {
-        "image": "shopify://shop_images/our_story_3.png",
+        "image": "shopify://shop_images/Sunlit_Vanilla_and_Amber_Still_Life.png",
         "eyebrow": "Our Promise",
         "heading": "FRAGRANCES\nFOR EVERY YOU.",
         "text": "<p>Scentiva is more than a fragrance house. It is a celebration of individuality, a reminder that every moment has a scent, and every scent has a story.</p>",
