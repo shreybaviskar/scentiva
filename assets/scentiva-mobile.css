@@ -494,3 +494,241 @@
     overflow-wrap: anywhere;
   }
 }
+
+
+/* =========================================================
+   SCENTIVA — EDITORIAL SECTION POLISH
+   Improve contrast, readable line lengths and visual rhythm.
+   ========================================================= */
+
+/* Homepage image-banner hero: give the copy a calm, readable surface
+   without hiding the fragrance photography. */
+@media screen and (min-width: 750px) {
+  body.template-index .banner__content {
+    justify-content: flex-start;
+  }
+
+  body.template-index .banner__box {
+    width: min(100%, 660px);
+    max-width: 660px;
+    padding: clamp(2.8rem, 4vw, 5.2rem);
+    background: rgba(248, 244, 236, 0.9);
+    border: 1px solid rgba(168, 134, 69, 0.32);
+    box-shadow: 0 18px 55px rgba(31, 20, 10, 0.12);
+    backdrop-filter: blur(3px);
+  }
+
+  body.template-index .banner__heading {
+    max-width: 12ch;
+    margin-bottom: 1.8rem;
+    font-size: clamp(3.8rem, 4.2vw, 6.4rem);
+    line-height: 0.98;
+    letter-spacing: -0.025em;
+    text-wrap: balance;
+  }
+
+  body.template-index .banner__text {
+    max-width: 52ch;
+    margin-inline: 0;
+    font-size: 1.55rem;
+    line-height: 1.75;
+  }
+}
+
+/* Our Story page — readable hero text and less oversized spacing. */
+#ScentivaOurStory .scentiva-story-hero__veil {
+  background:
+    linear-gradient(90deg, rgba(12, 9, 6, 0.84) 0%, rgba(12, 9, 6, 0.68) 34%, rgba(12, 9, 6, 0.22) 68%, rgba(12, 9, 6, 0.04) 100%),
+    linear-gradient(0deg, rgba(12, 9, 6, 0.24), transparent 55%) !important;
+}
+
+#ScentivaOurStory .scentiva-story-hero__copy {
+  max-width: 590px;
+  padding: clamp(2.4rem, 3.5vw, 4.2rem);
+  background: linear-gradient(135deg, rgba(18, 13, 9, 0.48), rgba(18, 13, 9, 0.08));
+  border-left: 2px solid #c5a05b;
+}
+
+#ScentivaOurStory .scentiva-story-hero h1 {
+  max-width: 10ch;
+  margin-bottom: 2rem;
+  color: #fffaf1 !important;
+  font-size: clamp(4.4rem, 5.5vw, 7.4rem);
+  line-height: 0.98;
+  letter-spacing: -0.025em;
+  text-wrap: balance;
+}
+
+#ScentivaOurStory .scentiva-story-hero__text {
+  max-width: 48ch;
+  color: rgba(255, 250, 241, 0.92);
+  font-size: 1.55rem;
+  line-height: 1.8;
+  letter-spacing: 0.01em;
+}
+
+/* The philosophy split: balanced image/text proportions, restrained gap,
+   and a comfortable reading measure. */
+#ScentivaOurStory .scentiva-story-philosophy {
+  padding-block: clamp(6rem, 8vw, 10rem);
+}
+
+#ScentivaOurStory .scentiva-story-split {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 0.9fr);
+  gap: clamp(3.2rem, 5.5vw, 7.2rem);
+}
+
+#ScentivaOurStory .scentiva-story-split__media {
+  height: clamp(420px, 42vw, 620px);
+  min-height: 0;
+}
+
+#ScentivaOurStory .scentiva-story-split__copy {
+  max-width: 540px;
+  padding-block: 2rem;
+}
+
+#ScentivaOurStory .scentiva-story-split h2 {
+  max-width: 12ch;
+  margin-bottom: 2.4rem;
+  font-size: clamp(3.8rem, 4vw, 5.8rem);
+  line-height: 1.04;
+  letter-spacing: -0.02em;
+  text-transform: none;
+  text-wrap: balance;
+}
+
+#ScentivaOurStory .scentiva-story-richtext {
+  max-width: 54ch;
+  color: #5d554c;
+  font-size: 1.55rem;
+  line-height: 1.85;
+  letter-spacing: 0;
+}
+
+#ScentivaOurStory .scentiva-story-richtext p + p {
+  margin-top: 1.6rem;
+}
+
+/* Story/aspiration image section: protect contrast and avoid extra-wide text. */
+#ScentivaOurStory .scentiva-story-aspiration__veil {
+  background: linear-gradient(90deg, rgba(12, 9, 6, 0.82) 0%, rgba(12, 9, 6, 0.62) 42%, rgba(12, 9, 6, 0.18) 78%, rgba(12, 9, 6, 0.06) 100%) !important;
+}
+
+#ScentivaOurStory .scentiva-story-aspiration h2 {
+  max-width: 10ch;
+  color: #fffaf1 !important;
+  font-size: clamp(4.2rem, 5.2vw, 7.2rem);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+
+#ScentivaOurStory .scentiva-story-aspiration .scentiva-story-richtext {
+  max-width: 50ch;
+  color: rgba(255, 250, 241, 0.9);
+  font-size: 1.55rem;
+  line-height: 1.8;
+}
+
+@media screen and (max-width: 749px) {
+  body.template-index .banner__box {
+    width: calc(100% - 2.4rem);
+    max-width: none;
+    padding: 2.2rem 1.8rem;
+    background: rgba(248, 244, 236, 0.92);
+    border: 1px solid rgba(168, 134, 69, 0.28);
+    text-align: left;
+  }
+
+  body.template-index .banner__heading {
+    max-width: 11ch;
+    font-size: clamp(3rem, 9vw, 4.2rem);
+    line-height: 1.02;
+    letter-spacing: -0.02em;
+  }
+
+  body.template-index .banner__text {
+    font-size: 1.4rem;
+    line-height: 1.7;
+  }
+
+  #ScentivaOurStory .scentiva-story-hero,
+  #ScentivaOurStory .scentiva-story-hero__inner {
+    min-height: min(720px, 88svh);
+  }
+
+  #ScentivaOurStory .scentiva-story-hero__inner {
+    align-items: flex-end;
+    padding-top: 8rem;
+    padding-bottom: 4rem;
+  }
+
+  #ScentivaOurStory .scentiva-story-hero__veil {
+    background: linear-gradient(180deg, rgba(12, 9, 6, 0.08) 0%, rgba(12, 9, 6, 0.3) 35%, rgba(12, 9, 6, 0.88) 100%) !important;
+  }
+
+  #ScentivaOurStory .scentiva-story-hero__copy {
+    padding: 2rem 1.8rem;
+    background: rgba(18, 13, 9, 0.42);
+    border-left-width: 2px;
+  }
+
+  #ScentivaOurStory .scentiva-story-hero h1 {
+    font-size: clamp(3.6rem, 11vw, 5rem);
+    line-height: 1;
+  }
+
+  #ScentivaOurStory .scentiva-story-hero__text {
+    font-size: 1.4rem;
+    line-height: 1.7;
+  }
+
+  #ScentivaOurStory .scentiva-story-philosophy {
+    padding-block: 4.8rem;
+  }
+
+  #ScentivaOurStory .scentiva-story-split {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 2.8rem;
+  }
+
+  #ScentivaOurStory .scentiva-story-split__media {
+    height: clamp(280px, 82vw, 430px);
+    min-height: 0;
+  }
+
+  #ScentivaOurStory .scentiva-story-split__copy {
+    padding-block: 0;
+  }
+
+  #ScentivaOurStory .scentiva-story-split h2 {
+    max-width: 12ch;
+    margin-bottom: 1.8rem;
+    font-size: clamp(3.4rem, 10vw, 4.8rem);
+    line-height: 1.03;
+  }
+
+  #ScentivaOurStory .scentiva-story-richtext {
+    font-size: 1.45rem;
+    line-height: 1.75;
+  }
+
+  #ScentivaOurStory .scentiva-story-aspiration,
+  #ScentivaOurStory .scentiva-story-aspiration__inner {
+    min-height: 600px;
+  }
+
+  #ScentivaOurStory .scentiva-story-aspiration__inner {
+    align-items: flex-end;
+    padding-block: 5rem;
+  }
+
+  #ScentivaOurStory .scentiva-story-aspiration__veil {
+    background: linear-gradient(180deg, rgba(12, 9, 6, 0.08) 0%, rgba(12, 9, 6, 0.32) 35%, rgba(12, 9, 6, 0.9) 100%) !important;
+  }
+
+  #ScentivaOurStory .scentiva-story-aspiration h2 {
+    font-size: clamp(3.6rem, 10.5vw, 5rem);
+  }
+}
