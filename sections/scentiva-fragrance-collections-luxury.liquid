@@ -2,7 +2,7 @@
   assign section_id = 'scentiva-luxury-collections-' | append: section.id
 -%}
 
-<section id="{{ section_id }}" class="scentiva-luxury-collections">
+<section id="{{ section_id }}" class="scentiva-luxury-collections scentiva-luxury-collections-{{ section.id }}">
   <div class="scentiva-luxury-collections__intro">
     <div class="scentiva-luxury-collections__side scentiva-luxury-collections__side--left">
       {{ section.settings.left_label | newline_to_br }}
