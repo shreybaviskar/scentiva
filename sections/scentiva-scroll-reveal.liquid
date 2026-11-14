@@ -1,0 +1,749 @@
+
+{% liquid
+  assign product = section.settings.product
+  assign variant = product.selected_or_first_available_variant
+%}
+
+<section id="scentiva-reveal-{{ section.id }}" class="sr-section">
+  <div class="sr-scroll">
+    <div class="sr-stage">
+
+      <!-- BACKGROUND TYPOGRAPHY -->
+      <div class="sr-typography" aria-hidden="true">
+        <div class="sr-type-column sr-type-left">
+          <span>SCENTIVA</span>
+          <span>FRAGRANCE</span>
+          <span>SCENTIVA</span>
+          <span>FRAGRANCE</span>
+        </div>
+        <div class="sr-type-column sr-type-middle">
+          <span>THE ART OF SCENT</span>
+          <span>DISCOVER MORE</span>
+          <span>THE ART OF SCENT</span>
+          <span>DISCOVER MORE</span>
+        </div>
+        <div class="sr-type-column sr-type-right">
+          <span>EXTRAORDINARY</span>
+          <span>SCENTIVA</span>
+          <span>EXTRAORDINARY</span>
+          <span>SCENTIVA</span>
+        </div>
+      </div>
+
+      <!-- CUSTOM IMAGE: NEVER USE PRODUCT IMAGE -->
+      <div class="sr-image-frame">
+        {% if section.settings.custom_image != blank %}
+          {{
+            section.settings.custom_image
+            | image_url: width: 2400
+            | image_tag:
+              class: 'sr-custom-image',
+              loading: 'lazy',
+              widths: '750, 1100, 1500, 1900, 2400',
+              sizes: '100vw',
+              alt: section.settings.image_alt
+          }}
+        {% else %}
+          {{ 'lifestyle-2' | placeholder_svg_tag: 'sr-custom-image placeholder-svg' }}
+        {% endif %}
+      </div>
+
+      <!-- INITIAL PRODUCT INTRO -->
+      <div class="sr-intro">
+        <span class="sr-eyebrow">{{ section.settings.eyebrow }}</span>
+
+        {% if product != blank %}
+          <h2>{{ product.title }}</h2>
+
+          <p>
+            {{ product.description | strip_html | truncate: 140 }}
+          </p>
+
+          <span class="sr-intro-price">
+            {{ variant.price | money }}
+          </span>
+        {% else %}
+          <h2>{{ section.settings.heading }}</h2>
+          <p>{{ section.settings.description }}</p>
+        {% endif %}
+      </div>
+
+      <!-- FINAL PRODUCT REVEAL -->
+      <div class="sr-final">
+        <div class="sr-final-content">
+          <span class="sr-eyebrow">
+            {{ section.settings.final_eyebrow }}
+          </span>
+
+          {% if product != blank %}
+            <h2>{{ product.title }}</h2>
+
+            <p class="sr-final-description">
+              {{ product.description | strip_html | truncate: 150 }}
+            </p>
+
+            <span class="sr-final-price">
+              {{ variant.price | money }}
+            </span>
+
+            <div class="sr-buttons">
+              <form action="{{ routes.cart_add_url }}" method="post">
+                <input type="hidden" name="id" value="{{ variant.id }}">
+                <input type="hidden" name="quantity" value="1">
+                <input type="hidden" name="return_to" value="/checkout">
+
+                <button
+                  type="submit"
+                  class="sr-buy-button"
+                  {% unless variant.available %}disabled{% endunless %}
+                >
+                  <span>
+                    {% if variant.available %}BUY NOW{% else %}SOLD OUT{% endif %}
+                  </span>
+                  <span>↗</span>
+                </button>
+              </form>
+
+              <a href="{{ product.url }}" class="sr-view-button">
+                <span>VIEW PRODUCT</span>
+                <span>↗</span>
+              </a>
+            </div>
+
+          {% else %}
+            <h2>{{ section.settings.heading }}</h2>
+            <p>{{ section.settings.description }}</p>
+            <a href="{{ routes.all_products_collection_url }}"
+               class="sr-view-button">
+              EXPLORE COLLECTION ↗
+            </a>
+          {% endif %}
+        </div>
+      </div>
+
+      <!-- SCROLL INDICATOR -->
+      <div class="sr-scroll-indicator">
+        <span>01</span>
+        <i></i>
+        <span>01</span>
+      </div>
+
+      <div class="sr-scroll-label">SCROLL TO DISCOVER ↓</div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+  #scentiva-reveal-{{ section.id }} {
+    --sr-bg: {{ section.settings.background }};
+    --sr-text: {{ section.settings.text }};
+    --sr-gold: {{ section.settings.gold }};
+    --sr-brown: {{ section.settings.brown }};
+
+    background: var(--sr-bg);
+    color: var(--sr-text);
+    width: 100%;
+    position: relative;
+    overflow: clip;
+  }
+
+  #scentiva-reveal-{{ section.id }} * {
+    box-sizing: border-box;
+  }
+
+  #scentiva-reveal-{{ section.id }} .sr-scroll {
+    height: {{ section.settings.scroll_length }}vh;
+    position: relative;
+  }
+
+  #scentiva-reveal-{{ section.id }} .sr-stage {
+    height: 100svh;
+    min-height: 620px;
+    width: 100%;
+    position: sticky;
+    top: 0;
+    overflow: hidden;
+    isolation: isolate;
+    background: var(--sr-bg);
+  }
+
+  /* TYPOGRAPHY */
+
+  #scentiva-reveal-{{ section.id }} .sr-typography {
+    position: absolute;
+    inset: -30% 0;
+    display: flex;
+    justify-content: space-between;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  #scentiva-reveal-{{ section.id }} .sr-type-column {
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 65px;
+    will-change: transform;
+  }
+
+  #scentiva-reveal-{{ section.id }} .sr-type-column span {
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    font-size: clamp(85px, 12vw, 175px);
+    font-weight: 700;
+    line-height: 0.8;
+    letter-spacing: -0.08em;
+    color: var(--sr-gold);
+    opacity: 0.09;
+    white-space: nowrap;
+  }
+
+  #scentiva-reveal-{{ section.id }} .sr-type-middle span {
+    font-size: clamp(50px, 7vw, 100px);
+    opacity: 0.055;
+  }
+
+  /* IMAGE FRAME */
+
+  #scentiva-reveal-{{ section.id }} .sr-image-frame {
+    position: absolute;
+    z-index: 2;
+    top: 5%;
+    left: 26.2%;
+    width: 45.3%;
+    height: 92%;
+    overflow: hidden;
+    background: #d8c4a9;
+    will-change: width, height, top, left, border-radius;
+    transform: translateZ(0);
+  }
+
+  #scentiva-reveal-{{ section.id }} .sr-custom-image {
+    position: absolute;
+    inset: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: {{ section.settings.image_position }};
+    max-width: none;
+  }
+
+  /* INITIAL TEXT */
+
+  #scentiva-reveal-{{ section.id }} .sr-intro {
+    position: absolute;
+    z-index: 3;
+    top: 50%;
+    right: 8%;
+    transform: translateY(-50%);
+    width: 26%;
+    max-width: 430px;
+    transition: opacity .25s ease;
+  }
+
+  #scentiva-reveal-{{ section.id }} .sr-eyebrow {
+    font-size: 9px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--sr-gold);
+    display: block;
+    margin-bottom: 24px;
+  }
+
+  #scentiva-reveal-{{ section.id }} .sr-intro h2 {
+    font-family: inherit;
+    font-size: clamp(32px, 3vw, 48px);
+    line-height: 1.05;
+    font-weight: 400;
+    letter-spacing: -1.8px;
+    margin: 0 0 20px;
+    color: var(--sr-text);
+  }
+
+  #scentiva-reveal-{{ section.id }} .sr-intro p {
+    color: var(--sr-text);
+    opacity: .65;
+    font-size: 13px;
+    line-height: 1.9;
+    margin: 0 0 25px;
+  }
+
+  #scentiva-reveal-{{ section.id }} .sr-intro-price {
+    display: block;
+    font-size: 14px;
+    letter-spacing: .5px;
+  }
+
+  /* FINAL REVEAL */
+
+  #scentiva-reveal-{{ section.id }} .sr-final {
+    position: absolute;
+    z-index: 5;
+    right: 8%;
+    bottom: 12%;
+    width: 400px;
+    max-width: 36%;
+    color: white;
+    opacity: 0;
+    transform: translateY(25px);
+    pointer-events: none;
+    transition: opacity .45s ease, transform .55s ease;
+  }
+
+  #scentiva-reveal-{{ section.id }} .sr-final::before {
+    content: "";
+    position: absolute;
+    inset: -35px -35px;
+    background: linear-gradient(
+      90deg,
+      rgba(30, 20, 14, 0),
+      rgba(30, 20, 14, .52)
+    );
+    z-index: -1;
+    pointer-events: none;
+  }
+
+  #scentiva-reveal-{{ section.id }} .sr-final h2 {
+    color: white;
+    font-size: clamp(30px, 3vw, 46px);
+    line-height: 1.05;
+    font-weight: 400;
+    letter-spacing: -1.5px;
+    margin: 0 0 15px;
+  }
+
+  #scentiva-reveal-{{ section.id }} .sr-final-description {
+    color: rgba(255,255,255,.76);
+    font-size: 12px;
+    line-height: 1.8;
+    margin: 0 0 16px;
+  }
+
+  #scentiva-reveal-{{ section.id }} .sr-final-price {
+    display: block;
+    font-size: 15px;
+    margin-bottom: 25px;
+    color: white;
+  }
+
+  #scentiva-reveal-{{ section.id }} .sr-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  #scentiva-reveal-{{ section.id }} .sr-buttons form {
+    width: 100%;
+  }
+
+  #scentiva-reveal-{{ section.id }} .sr-buy-button,
+  #scentiva-reveal-{{ section.id }} .sr-view-button {
+    width: 100%;
+    height: 61px;
+    padding: 0 22px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-decoration: none;
+    font-family: inherit;
+    font-size: 9px;
+    letter-spacing: 2px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: .3s ease;
+  }
+
+  #scentiva-reveal-{{ section.id }} .sr-buy-button {
+    background: var(--sr-brown);
+    border: 1px solid var(--sr-brown);
+    color: white;
+  }
+
+  #scentiva-reveal-{{ section.id }} .sr-buy-button:hover {
+    background: var(--sr-gold);
+    border-color: var(--sr-gold);
+    color: #261b14;
+  }
+
+  #scentiva-reveal-{{ section.id }} .sr-view-button {
+    background: transparent;
+    border: 1px solid rgba(255,255,255,.75);
+    color: white;
+  }
+
+  #scentiva-reveal-{{ section.id }} .sr-view-button:hover {
+    background: white;
+    color: var(--sr-brown);
+  }
+
+  /* INDICATORS */
+
+  #scentiva-reveal-{{ section.id }} .sr-scroll-indicator {
+    position: absolute;
+    z-index: 4;
+    left: 5.2%;
+    bottom: 22px;
+    display: flex;
+    align-items: center;
+    gap: 17px;
+    font-size: 9px;
+    color: var(--sr-text);
+    opacity: .65;
+  }
+
+  #scentiva-reveal-{{ section.id }} .sr-scroll-indicator i {
+    display: block;
+    height: 1px;
+    width: 55px;
+    background: var(--sr-gold);
+  }
+
+  #scentiva-reveal-{{ section.id }} .sr-scroll-label {
+    position: absolute;
+    right: 5%;
+    bottom: 26px;
+    z-index: 4;
+    font-size: 8px;
+    letter-spacing: 2px;
+    color: var(--sr-text);
+    opacity: .55;
+  }
+
+  /* REVEALED STATE */
+
+  #scentiva-reveal-{{ section.id }}.is-revealed .sr-intro {
+    opacity: 0;
+  }
+
+  #scentiva-reveal-{{ section.id }}.is-revealed .sr-final {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+
+  #scentiva-reveal-{{ section.id }}.is-revealed .sr-scroll-label,
+  #scentiva-reveal-{{ section.id }}.is-revealed .sr-scroll-indicator {
+    opacity: 0;
+  }
+
+  /* MOBILE */
+
+  @media(max-width: 749px) {
+    #scentiva-reveal-{{ section.id }} .sr-scroll {
+      height: {{ section.settings.mobile_scroll_length }}vh;
+    }
+
+    #scentiva-reveal-{{ section.id }} .sr-stage {
+      min-height: 600px;
+    }
+
+    #scentiva-reveal-{{ section.id }} .sr-image-frame {
+      top: 17%;
+      left: 8%;
+      width: 84%;
+      height: 63%;
+    }
+
+    #scentiva-reveal-{{ section.id }} .sr-type-column span {
+      font-size: 90px;
+    }
+
+    #scentiva-reveal-{{ section.id }} .sr-intro {
+      top: 7%;
+      left: 8%;
+      right: auto;
+      transform: none;
+      width: 84%;
+      max-width: none;
+    }
+
+    #scentiva-reveal-{{ section.id }} .sr-eyebrow {
+      font-size: 8px;
+      margin-bottom: 10px;
+    }
+
+    #scentiva-reveal-{{ section.id }} .sr-intro h2 {
+      font-size: 27px;
+      margin-bottom: 8px;
+    }
+
+    #scentiva-reveal-{{ section.id }} .sr-intro p {
+      display: none;
+    }
+
+    #scentiva-reveal-{{ section.id }} .sr-intro-price {
+      font-size: 12px;
+    }
+
+    #scentiva-reveal-{{ section.id }} .sr-final {
+      left: 7%;
+      right: 7%;
+      bottom: 7%;
+      width: auto;
+      max-width: none;
+    }
+
+    #scentiva-reveal-{{ section.id }} .sr-final h2 {
+      font-size: 29px;
+      margin-bottom: 9px;
+    }
+
+    #scentiva-reveal-{{ section.id }} .sr-final-description {
+      font-size: 10px;
+      margin-bottom: 8px;
+    }
+
+    #scentiva-reveal-{{ section.id }} .sr-final-price {
+      margin-bottom: 12px;
+    }
+
+    #scentiva-reveal-{{ section.id }} .sr-buy-button,
+    #scentiva-reveal-{{ section.id }} .sr-view-button {
+      height: 45px;
+    }
+
+    #scentiva-reveal-{{ section.id }} .sr-scroll-indicator,
+    #scentiva-reveal-{{ section.id }} .sr-scroll-label {
+      display: none;
+    }
+  }
+
+  @media(prefers-reduced-motion: reduce) {
+    #scentiva-reveal-{{ section.id }} .sr-final,
+    #scentiva-reveal-{{ section.id }} .sr-intro {
+      transition: none;
+    }
+  }
+</style>
+
+<script>
+(() => {
+  const section = document.getElementById(
+    'scentiva-reveal-{{ section.id }}'
+  );
+
+  if (!section || section.dataset.ready) return;
+  section.dataset.ready = 'true';
+
+  const scrollArea = section.querySelector('.sr-scroll');
+  const stage = section.querySelector('.sr-stage');
+  const frame = section.querySelector('.sr-image-frame');
+  const columns = section.querySelectorAll('.sr-type-column');
+
+  const reduced = window.matchMedia(
+    '(prefers-reduced-motion: reduce)'
+  ).matches;
+
+  let ticking = false;
+
+  const clamp = (value, min, max) =>
+    Math.max(min, Math.min(max, value));
+
+  const lerp = (a, b, p) =>
+    a + (b - a) * p;
+
+  function animate() {
+    const rect = scrollArea.getBoundingClientRect();
+
+    const maxScroll = Math.max(
+      1,
+      scrollArea.offsetHeight - stage.offsetHeight
+    );
+
+    const progress = reduced
+      ? 1
+      : clamp(-rect.top / maxScroll, 0, 1);
+
+    // Smooth easing
+    const p = progress * progress * (3 - 2 * progress);
+
+    const mobile = window.innerWidth <= 749;
+
+    // IMAGE START AND END DIMENSIONS
+    const start = mobile
+      ? { left: 8, top: 17, width: 84, height: 63 }
+      : { left: 26.2, top: 5, width: 45.3, height: 92 };
+
+    const end = { left: 0, top: 0, width: 100, height: 100 };
+
+    // The image expands into a full-screen photograph.
+    // Hold the final reveal until the image is nearly full screen.
+    const imageProgress = clamp(progress / 0.82, 0, 1);
+    const imageEase = imageProgress * imageProgress *
+      (3 - 2 * imageProgress);
+
+    frame.style.left = lerp(start.left, end.left, imageEase) + '%';
+    frame.style.top = lerp(start.top, end.top, imageEase) + '%';
+    frame.style.width = lerp(start.width, end.width, imageEase) + '%';
+    frame.style.height = lerp(start.height, end.height, imageEase) + '%';
+
+    // Vertical typography movement
+    columns.forEach((column, index) => {
+      const direction = index === 1 ? 1 : -1;
+      const distance = (index + 1) * 95 * p;
+
+      column.style.transform =
+        `translate3d(0, ${direction * distance}px, 0)`;
+    });
+
+    // Final product information
+    if (progress >= 0.78) {
+      section.classList.add('is-revealed');
+    } else {
+      section.classList.remove('is-revealed');
+    }
+
+    ticking = false;
+  }
+
+  function onScroll() {
+    if (!ticking) {
+      requestAnimationFrame(animate);
+      ticking = true;
+    }
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll);
+
+  animate();
+})();
+</script>
+
+{% schema %}
+{
+  "name": "Scentiva Image Reveal",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Custom Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "custom_image",
+      "label": "Upload lifestyle image"
+    },
+    {
+      "type": "text",
+      "id": "image_alt",
+      "label": "Image description",
+      "default": "Scentiva luxury fragrance campaign"
+    },
+    {
+      "type": "select",
+      "id": "image_position",
+      "label": "Image crop position",
+      "options": [
+        {"value": "center center", "label": "Center"},
+        {"value": "center top", "label": "Top"},
+        {"value": "center bottom", "label": "Bottom"},
+        {"value": "left center", "label": "Left"},
+        {"value": "right center", "label": "Right"}
+      ],
+      "default": "center center"
+    },
+    {
+      "type": "header",
+      "content": "Product Details"
+    },
+    {
+      "type": "product",
+      "id": "product",
+      "label": "Select product for details and checkout"
+    },
+    {
+      "type": "header",
+      "content": "Initial Content"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "DISCOVER THE FRAGRANCE"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "The art of unforgettable fragrance."
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Discover a fragrance that becomes part of your identity."
+    },
+    {
+      "type": "header",
+      "content": "Final Reveal"
+    },
+    {
+      "type": "text",
+      "id": "final_eyebrow",
+      "label": "Final eyebrow",
+      "default": "EXPERIENCE SCENTIVA"
+    },
+    {
+      "type": "header",
+      "content": "Scroll Animation"
+    },
+    {
+      "type": "range",
+      "id": "scroll_length",
+      "label": "Desktop scroll length",
+      "min": 200,
+      "max": 500,
+      "step": 25,
+      "default": 300,
+      "unit": "%"
+    },
+    {
+      "type": "range",
+      "id": "mobile_scroll_length",
+      "label": "Mobile scroll length",
+      "min": 200,
+      "max": 500,
+      "step": 25,
+      "default": 300,
+      "unit": "%"
+    },
+    {
+      "type": "header",
+      "content": "Scentiva Color Palette"
+    },
+    {
+      "type": "color",
+      "id": "background",
+      "label": "Background",
+      "default": "#F2EFEC"
+    },
+    {
+      "type": "color",
+      "id": "text",
+      "label": "Text",
+      "default": "#382820"
+    },
+    {
+      "type": "color",
+      "id": "gold",
+      "label": "Accent gold",
+      "default": "#B18A60"
+    },
+    {
+      "type": "color",
+      "id": "brown",
+      "label": "Button brown",
+      "default": "#402B23"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Scentiva Image Reveal"
+    }
+  ]
+}
+{% endschema %}

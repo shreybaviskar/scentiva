@@ -153,6 +153,26 @@
         "footer_quote": "NOT JUST FRAGRANCES, BUT WORLDS WITHIN."
       }
     },
+    "scentiva_scroll_reveal_PtteCX": {
+      "type": "scentiva-scroll-reveal",
+      "name": "Scentiva Image Reveal",
+      "settings": {
+        "custom_image": "shopify://shop_images/Scentiva__Golden_Elegance_in_Stone.png",
+        "image_alt": "Scentiva luxury fragrance campaign",
+        "image_position": "center center",
+        "product": "the-immortal",
+        "eyebrow": "DISCOVER THE FRAGRANCE",
+        "heading": "The art of unforgettable fragrance.",
+        "description": "Discover a fragrance that becomes part of your identity.",
+        "final_eyebrow": "EXPERIENCE SCENTIVA",
+        "scroll_length": 300,
+        "mobile_scroll_length": 300,
+        "background": "#F2EFEC",
+        "text": "#382820",
+        "gold": "#B18A60",
+        "brown": "#402B23"
+      }
+    },
     "story": {
       "type": "scentiva-story",
       "settings": {
@@ -169,6 +189,7 @@
     "scent_collections",
     "featured_fragrances",
     "fragrance_collections_luxury",
+    "scentiva_scroll_reveal_PtteCX",
     "story"
   ]
 }
